@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dupe Snacks — Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .glow1 {
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 180, 166, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow2 {
+            position: fixed;
+            bottom: -30%;
+            left: -10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(107, 76, 230, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .logo {
+            font-size: 4em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .dupe {
+            color: #00b4a6;
+            text-shadow: 0 0 30px rgba(0, 180, 166, 0.4);
+        }
+
+        .snacks {
+            color: #6b4ce6;
+            text-shadow: 0 0 30px rgba(107, 76, 230, 0.4);
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            color: #aaa;
+            font-weight: 300;
+            margin-top: 15px;
+        }
+
+        .hero {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: #bbb;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .features {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .features li {
+            background: rgba(0, 180, 166, 0.08);
+            border-left: 3px solid #00b4a6;
+            padding: 15px 20px;
+            border-radius: 4px;
+            font-size: 1.05em;
+            color: #e0e0e0;
+        }
+
+        .cta {
+            background: rgba(107, 76, 230, 0.1);
+            border: 2px solid #6b4ce6;
+            border-radius: 12px;
+            padding: 50px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .cta h3 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .input {
+            flex: 1;
+            min-width: 200px;
+            padding: 14px 18px;
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: #e0e0e0;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: #00b4a6;
+            box-shadow: 0 0 15px rgba(0, 180, 166, 0.3);
+        }
+
+        .input::placeholder {
+            color: #666;
+        }
+
+        .button {
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #00b4a6 0%, #6b4ce6 100%);
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 180, 166, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            color: #888;
+            font-size: 0.95em;
+        }
+
+        .socials {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .socials a {
+            color: #00b4a6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .socials a:hover {
+            color: #6b4ce6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5em;
+            }
+            .hero h2 {
+                font-size: 1.8em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            .form {
+                flex-direction: column;
+            }
+            .button {
+                width: 100%;
+            }
+            .cta {
+                padding: 30px 20px;
+            }
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow1"></div>
+    <div class="glow2"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">
+                <span class="dupe">Dupe</span>
+                <span class="snacks">Snacks</span>
+            </h1>
+            <p class="tagline">Love Cheetos? Can't eat gluten? We found something better.</p>
+        </header>
+
+        <section class="hero">
+            <h2>Snacks You Actually Miss</h2>
+            <p>Discover gluten-free alternatives to your favorite snacks. Real products. Real reviews. Real craving satisfaction.</p>
+            <ul class="features">
+                <li>🍿 Hundreds of GF snack alternatives</li>
+                <li>⭐ Real reviews from real people</li>
+                <li>🛒 Buy directly on Amazon</li>
+                <li>💜 Built for Gen Z celiacs</li>
+            </ul>
+        </section>
+
+        <section class="cta">
+            <h3>Get early access. It's coming soon.</h3>
+            <form class="form" method="POST" action="https://dupesnacks.us18.list-manage.com/subscribe/post?u=14fb38c3b6a0&amp;id=5581c9e2e2">
+                <input 
+                    type="email" 
+                    class="input" 
+                    placeholder="your@email.com" 
+                    name="EMAIL"
+                    required
+                >
+                <button type="submit" class="button">Notify Me</button>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <p>© 2026 Dupe Snacks. All rights reserved.</p>
+            <div class="socials">
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+                <a href="https://tiktok.com" target="_blank">TikTok</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
