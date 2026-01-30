@@ -223,6 +223,89 @@
             color: #6b4ce6;
         }
 
+        /* Story Section */
+        .story-section {
+            margin: 80px auto 0;
+            max-width: 900px;
+            padding: 60px 20px;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-image {
+            order: -1;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 180, 166, 0.15);
+        }
+
+        .story-text h3 {
+            font-size: 1.8em;
+            color: #00b4a6;
+            margin-bottom: 25px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .story-text p {
+            font-size: 1em;
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .story-text p strong {
+            color: #00b4a6;
+            font-weight: 600;
+        }
+
+        .story-text p em {
+            color: #6b4ce6;
+            font-style: italic;
+        }
+
+        .story-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .story-section {
+                padding: 40px 20px;
+                margin: 60px auto 0;
+            }
+
+            .story-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .story-image {
+                order: 0;
+                margin-bottom: 10px;
+            }
+
+            .story-text h3 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+
+            .story-text p {
+                font-size: 0.95em;
+                line-height: 1.7;
+                margin-bottom: 16px;
+            }
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -651,13 +734,35 @@
             </form>
         </section>
 
+        <!-- Story Section -->
+        <section class="story-section">
+            <div class="story-container">
+                <div class="story-image">
+                    <img src="/about-us-illustration.jpg" alt="Why we built Dupe Snacks">
+                </div>
+                <div class="story-text">
+                    <h3>Why We Built Dupe Snacks</h3>
+                    <p>When our daughter was 11 months old, we noticed something was wrong. She was losing weight, getting weaker. Within months, we found ourselves in the ER. Terrified.</p>
+                    
+                    <p>When we got the diagnosis—celiac disease—everything clicked. We changed her diet. Within days, she came alive. She was <em>our daughter</em> again.</p>
+                    
+                    <p>But the first gluten-free grocery trip was a nightmare. Dee spent three hours in the store, crying. Every snack aisle felt like a minefield.</p>
+                    
+                    <p><strong>We created Dupe Snacks because no one should feel that helpless.</strong></p>
+                    
+                    <p>No more three-hour shopping trips. No more watching your kid miss out on snacks everyone else gets to enjoy. No more feeling like you have to say goodbye to normal life.</p>
+                    
+                    <p>One tap. A snack you actually want. Right now. Because gluten-free doesn't mean joyless.</p>
+                </div>
+            </div>
+        </section>
+
         <footer class="footer">
             <p>© 2026 Dupe Snacks. All rights reserved.</p>
             <div class="socials">
                 <a href="https://twitter.com/dupesnacks" target="_blank">Twitter</a>
                 <a href="https://instagram.com/dupesnacks" target="_blank">Instagram</a>
                 <a href="https://tiktok.com/@dupesnacks" target="_blank">TikTok</a>
-                <a href="#" onclick="openAboutUs(event)" style="cursor: pointer;">About Us</a>
             </div>
         </footer>
     </div>
