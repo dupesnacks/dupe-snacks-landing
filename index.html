@@ -234,6 +234,74 @@
             }
         }
 
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #fff;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .logo {
                 font-size: 2.5em;
@@ -255,6 +323,13 @@
             }
             .features {
                 grid-template-columns: 1fr;
+            }
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 24px;
             }
         }
     </style>
@@ -284,17 +359,25 @@
 
         <section style="margin: 60px 0;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; align-items: center;">
-                <a href="screen-1.jpg" target="_blank" style="cursor: pointer; display: block;">
+                <div style="cursor: pointer; display: block;" onclick="openLightbox('screen-1.jpg')">
                     <img src="screen-1.jpg" alt="Dupe Snacks home screen" style="max-width: 100%; height: auto; border-radius: 12px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                </a>
-                <a href="screen-2.jpg" target="_blank" style="cursor: pointer; display: block;">
+                </div>
+                <div style="cursor: pointer; display: block;" onclick="openLightbox('screen-2.jpg')">
                     <img src="screen-2.jpg" alt="Dupe Snacks search screen" style="max-width: 100%; height: auto; border-radius: 12px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                </a>
-                <a href="screen-3.jpg" target="_blank" style="cursor: pointer; display: block;">
+                </div>
+                <div style="cursor: pointer; display: block;" onclick="openLightbox('screen-3.jpg')">
                     <img src="screen-3.jpg" alt="Dupe Snacks product detail screen" style="max-width: 100%; height: auto; border-radius: 12px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                </a>
+                </div>
             </div>
         </section>
+
+        <!-- Lightbox Modal -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+            <div class="lightbox-content" onclick="event.stopPropagation()">
+                <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+                <img id="lightbox-image" src="" alt="Expanded view">
+            </div>
+        </div>
 
         <section class="cta">
             <h3>Get early access. It's coming soon.</h3>
@@ -319,5 +402,32 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            lightboxImage.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        }
+
+        function closeLightbox(event) {
+            // If event exists and it's from the close button or background, close
+            if (event && event.target.id !== 'lightbox') {
+                return;
+            }
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scroll
+        }
+
+        // Close lightbox on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
