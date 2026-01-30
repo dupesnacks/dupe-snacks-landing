@@ -23,7 +23,33 @@
             justify-content: center;
             position: relative;
             overflow-y: auto;
-            padding-top: 40px;
+            padding-top: 80px;
+        }
+
+        nav.navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(15, 15, 30, 0.95);
+            border-bottom: 1px solid rgba(0, 180, 166, 0.2);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
         }
 
         .container {
@@ -646,6 +672,12 @@
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <a href="/" style="display: flex; align-items: center; height: 100%;">
+            <img src="/hero-logo-v1.png" alt="Dupe Snacks Logo" class="logo-img">
+        </a>
+    </nav>
+
     <div class="glow1"></div>
     <div class="glow2"></div>
 
