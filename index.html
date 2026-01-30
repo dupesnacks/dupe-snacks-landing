@@ -402,30 +402,48 @@
             position: relative;
             background: #1a1a2e;
             border-radius: 12px;
-            max-width: 900px;
+            max-width: 1000px;
             width: 100%;
-            max-height: 85vh;
+            max-height: 90vh;
             overflow-y: auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding: 40px;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            padding: 60px;
             border: 2px solid #6b4ce6;
+        }
+
+        .about-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .about-text h2 {
             color: #00b4a6;
-            font-size: 1.8em;
-            margin-bottom: 20px;
+            font-size: 2.2em;
+            margin-bottom: 40px;
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .about-text p {
-            color: #ddd;
-            font-size: 1.05em;
-            line-height: 1.7;
-            margin-bottom: 16px;
+            color: #e0e0e0;
+            font-size: 1em;
+            line-height: 1.8;
+            margin-bottom: 22px;
             text-align: left;
+        }
+
+        .about-text p strong {
+            color: #00b4a6;
+            font-weight: 600;
+        }
+
+        .about-text p em {
+            color: #6b4ce6;
+            font-style: italic;
+            font-weight: 500;
         }
 
         .about-text p:last-child {
@@ -436,12 +454,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
         .about-illustration img {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 180, 166, 0.2);
         }
 
         .about-close {
@@ -468,27 +488,58 @@
             transform: rotate(90deg);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .about-content {
                 grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 30px 20px;
+                gap: 40px;
+                padding: 50px;
             }
 
             .about-text h2 {
-                font-size: 1.5em;
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+
+            .about-illustration {
+                order: -1;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-lightbox {
+                padding: 0;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 40px 25px;
+                border-radius: 8px;
+                max-height: 95vh;
+            }
+
+            .about-text h2 {
+                font-size: 1.6em;
+                margin-bottom: 25px;
             }
 
             .about-text p {
-                font-size: 1em;
+                font-size: 0.95em;
+                line-height: 1.7;
+                margin-bottom: 18px;
             }
 
             .about-close {
-                top: 15px;
-                right: 15px;
+                top: 12px;
+                right: 12px;
                 width: 35px;
                 height: 35px;
                 font-size: 24px;
+            }
+
+            .about-illustration {
+                margin-top: 10px;
             }
         }
 
@@ -580,27 +631,29 @@
         <div id="about-lightbox" class="about-lightbox" onclick="closeAboutUs(event)">
             <div class="about-content" onclick="event.stopPropagation()">
                 <div class="about-close" onclick="closeAboutUs()">&times;</div>
-                <div class="about-text">
-                    <h2>Why We Built Dupe Snacks</h2>
-                    <p>When our daughter was 11 months old, we noticed something was wrong. She was losing weight, getting weaker. A few hours after waking up, she'd need a nap. Then another. Then another. She didn't have the energy to play.</p>
-                    
-                    <p>We ended up in the ER. Terrified.</p>
-                    
-                    <p>It took months to get answers. But when we did—celiac disease—everything clicked. We changed her diet. Within days, she came alive. The energy came back. The smile came back. She was <em>our daughter</em> again.</p>
-                    
-                    <p>But the first gluten-free grocery trip? That was its own nightmare.</p>
-                    
-                    <p>Dee spent over three hours in the store. She was crying. Not because of the diagnosis, but because every snack aisle felt like a minefield. "Is this safe?" "Does she have to miss out on this too?" "Why is this so hard to figure out?"</p>
-                    
-                    <p>A new diagnosis is scary. There are so many unknowns. So many small losses—the snacks your kid loves, the candy on Halloween, the treats at birthday parties.</p>
-                    
-                    <p><strong>We created Dupe Snacks because no one should feel that helpless.</strong></p>
-                    
-                    <p>We wanted to make sure that when you get diagnosed (or when your kid does), you don't have to spend three hours crying in the grocery store. You don't have to feel like you're saying goodbye to normal life. You don't have to watch other kids enjoy snacks your child can't have.</p>
-                    
-                    <p>Instead: One tap. A snack you actually want. Right now.</p>
-                    
-                    <p>Because gluten-free doesn't mean joyless. It means celebrating the food <em>you can</em> eat—and finding it fast.</p>
+                <div class="about-wrapper">
+                    <div class="about-text">
+                        <h2>Why We Built Dupe Snacks</h2>
+                        <p>When our daughter was 11 months old, we noticed something was wrong. She was losing weight, getting weaker. A few hours after waking up, she'd need a nap. Then another. Then another. She didn't have the energy to play.</p>
+                        
+                        <p>We ended up in the ER. Terrified.</p>
+                        
+                        <p>It took months to get answers. But when we did—celiac disease—everything clicked. We changed her diet. Within days, she came alive. The energy came back. The smile came back. She was <em>our daughter</em> again.</p>
+                        
+                        <p>But the first gluten-free grocery trip? That was its own nightmare.</p>
+                        
+                        <p>Dee spent over three hours in the store. She was crying. Not because of the diagnosis, but because every snack aisle felt like a minefield. "Is this safe?" "Does she have to miss out on this too?" "Why is this so hard to figure out?"</p>
+                        
+                        <p>A new diagnosis is scary. There are so many unknowns. So many small losses—the snacks your kid loves, the candy on Halloween, the treats at birthday parties.</p>
+                        
+                        <p><strong>We created Dupe Snacks because no one should feel that helpless.</strong></p>
+                        
+                        <p>We wanted to make sure that when you get diagnosed (or when your kid does), you don't have to spend three hours crying in the grocery store. You don't have to feel like you're saying goodbye to normal life. You don't have to watch other kids enjoy snacks your child can't have.</p>
+                        
+                        <p>Instead: One tap. A snack you actually want. Right now.</p>
+                        
+                        <p>Because gluten-free doesn't mean joyless. It means celebrating the food <em>you can</em> eat—and finding it fast.</p>
+                    </div>
                 </div>
                 <div class="about-illustration">
                     <img src="about-us-illustration.jpg" alt="Dupe Snacks founder's daughter thriving">
