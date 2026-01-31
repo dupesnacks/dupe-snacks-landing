@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Database Schema & Structure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            border-bottom: 2px solid #00b4a6;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #00b4a6 0%, #6b4ce6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background: #1a1a2e;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid #00b4a6;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: #00b4a6;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #6b4ce6;
+        }
+        
+        h3 {
+            font-size: 1.3em;
+            color: #6b4ce6;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .json-block {
+            background: #0f0f1e;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+        
+        .json-block code {
+            color: #00d9d9;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            white-space: pre;
+        }
+        
+        .json-key {
+            color: #6b4ce6;
+            font-weight: bold;
+        }
+        
+        .json-string {
+            color: #90ee90;
+        }
+        
+        .json-number {
+            color: #ffa500;
+        }
+        
+        .json-bool {
+            color: #ff6347;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: #0f0f1e;
+            color: #00b4a6;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #00b4a6;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #333;
+        }
+        
+        tr:hover {
+            background: #0f0f1e;
+        }
+        
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .category-item {
+            background: #0f0f1e;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #00b4a6;
+        }
+        
+        .category-item strong {
+            color: #6b4ce6;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .category-item .id {
+            color: #888;
+            font-size: 0.85em;
+            font-family: 'Monaco', monospace;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: #0f0f1e;
+            padding: 20px;
+            text-align: center;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            color: #00b4a6;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        .note {
+            background: #6b4ce6;
+            color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .note strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        code {
+            background: #0f0f1e;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #00d9d9;
+            font-family: 'Monaco', monospace;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 20px;
+            border-top: 2px solid #00b4a6;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .json-block {
+                font-size: 0.8em;
+            }
+            
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Snack Database Schema</h1>
+            <p class="subtitle">Complete data structure documentation for the Gluten-Free Snack Alternatives Database</p>
+        </header>
+        
+        <!-- OVERVIEW SECTION -->
+        <div class="section">
+            <h2>📋 Database Overview</h2>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Original Snacks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">75+</div>
+                    <div class="stat-label">GF Alternatives</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Verified GF</div>
+                </div>
+            </div>
+            
+            <h3>Purpose</h3>
+            <p>This database provides a comprehensive mapping of popular gluten-containing snacks to their gluten-free alternatives. Each snack includes pricing, affiliate links, certifications, and detailed descriptions to help users find safe alternatives.</p>
+            
+            <h3>Use Cases</h3>
+            <ul>
+                <li><strong>E-commerce Integration:</strong> Power product recommendation engines and comparison tools</li>
+                <li><strong>Content Marketing:</strong> Generate comparison articles and buying guides</li>
+                <li><strong>Mobile App Backend:</strong> Fuel a snack discovery mobile application</li>
+                <li><strong>Affiliate Revenue:</strong> Generate affiliate commissions through Amazon links</li>
+                <li><strong>SEO Content:</strong> Support search-optimized comparison pages</li>
+            </ul>
+        </div>
+        
+        <!-- ROOT STRUCTURE -->
+        <div class="section">
+            <h2>🏗️ Root Structure</h2>
+            
+            <p>The database root contains metadata, category definitions, and the snacks array:</p>
+            
+            <div class="json-block">
+                <code>{
+  <span class="json-key">"metadata"</span>: {
+    <span class="json-key">"version"</span>: <span class="json-string">"1.0"</span>,
+    <span class="json-key">"lastUpdated"</span>: <span class="json-string">"2026-01-31"</span>,
+    <span class="json-key">"totalSnacks"</span>: <span class="json-number">25</span>,
+    <span class="json-key">"categories"</span>: [<span class="json-string">"Cookies"</span>, <span class="json-string">"Crackers"</span>, ...],
+    <span class="json-key">"description"</span>: <span class="json-string">"..."</span>
+  },
+  <span class="json-key">"categories"</span>: { ... },
+  <span class="json-key">"snacks"</span>: [ ... ]
+}</code>
+            </div>
+        </div>
+        
+        <!-- CATEGORIES SECTION -->
+        <div class="section">
+            <h2>🏷️ Categories</h2>
+            
+            <p>Seven main categories organize snacks by type:</p>
+            
+            <div class="category-list">
+                <div class="category-item">
+                    <strong>🍪 Cookies</strong>
+                    <div class="id">ID: cookies</div>
+                    <p>Classic cookie snacks and their GF alternatives</p>
+                </div>
+                <div class="category-item">
+                    <strong>🥔 Crackers</strong>
+                    <div class="id">ID: crackers</div>
+                    <p>Savory crackers and cracker snacks</p>
+                </div>
+                <div class="category-item">
+                    <strong>🌽 Chips</strong>
+                    <div class="id">ID: chips</div>
+                    <p>Potato, corn, and other chip varieties</p>
+                </div>
+                <div class="category-item">
+                    <strong>🎂 Snack Cakes</strong>
+                    <div class="id">ID: snack_cakes</div>
+                    <p>Pre-packaged cakes and sweet snack cakes</p>
+                </div>
+                <div class="category-item">
+                    <strong>🍫 Candy</strong>
+                    <div class="id">ID: candy</div>
+                    <p>Candy bars and chocolate confections</p>
+                </div>
+                <div class="category-item">
+                    <strong>🥣 Cereal Snacks</strong>
+                    <div class="id">ID: cereal</div>
+                    <p>Cereal-based snack products</p>
+                </div>
+                <div class="category-item">
+                    <strong>✨ Other</strong>
+                    <div class="id">ID: other</div>
+                    <p>Miscellaneous snack items</p>
+                </div>
+            </div>
+            
+            <h3>Category Object Structure</h3>
+            <div class="json-block">
+                <code>{
+  <span class="json-key">"id"</span>: <span class="json-string">"cookies"</span>,
+  <span class="json-key">"displayName"</span>: <span class="json-string">"Cookies"</span>,
+  <span class="json-key">"description"</span>: <span class="json-string">"Classic cookie snacks and their GF alternatives"</span>
+}</code>
+            </div>
+        </div>
+        
+        <!-- SNACK OBJECT STRUCTURE -->
+        <div class="section">
+            <h2>🍟 Snack Object Structure</h2>
+            
+            <p>Each snack contains the original product info and up to 4 gluten-free alternatives:</p>
+            
+            <div class="json-block">
+                <code>{
+  <span class="json-key">"id"</span>: <span class="json-string">"oreos"</span>,
+  <span class="json-key">"originalSnack"</span>: <span class="json-string">"Oreos"</span>,
+  <span class="json-key">"category"</span>: <span class="json-string">"Cookies"</span>,
+  <span class="json-key">"description"</span>: <span class="json-string">"Classic sandwich cookies with vanilla cream filling"</span>,
+  <span class="json-key">"glutenStatus"</span>: <span class="json-string">"CONTAINS GLUTEN - Wheat flour"</span>,
+  <span class="json-key">"price"</span>: <span class="json-string">"$3.49"</span>,
+  <span class="json-key">"affiliateLink"</span>: <span class="json-string">"https://amazon.com/..."</span>,
+  <span class="json-key">"alternatives"</span>: [
+    {
+      <span class="json-key">"name"</span>: <span class="json-string">"Kinnikinnick Sandwich Wafers"</span>,
+      <span class="json-key">"glutenFree"</span>: <span class="json-bool">true</span>,
+      <span class="json-key">"certifications"</span>: [<span class="json-string">"Certified GF"</span>],
+      <span class="json-key">"price"</span>: <span class="json-string">"$4.49"</span>,
+      <span class="json-key">"retailer"</span>: <span class="json-string">"Amazon"</span>,
+      <span class="json-key">"description"</span>: <span class="json-string">"Closest GF alternative"</span>
+    }
+  ]
+}</code>
+            </div>
+            
+            <h3>Field Definitions</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>id</code></td>
+                        <td>String</td>
+                        <td>Unique identifier (snake_case, e.g., "oreos")</td>
+                    </tr>
+                    <tr>
+                        <td><code>originalSnack</code></td>
+                        <td>String</td>
+                        <td>Name of the original gluten-containing snack</td>
+                    </tr>
+                    <tr>
+                        <td><code>category</code></td>
+                        <td>String</td>
+                        <td>Category name (must match categories object keys)</td>
+                    </tr>
+                    <tr>
+                        <td><code>description</code></td>
+                        <td>String</td>
+                        <td>Brief description of the snack and its characteristics</td>
+                    </tr>
+                    <tr>
+                        <td><code>glutenStatus</code></td>
+                        <td>String</td>
+                        <td>Gluten status with notes (e.g., "CONTAINS GLUTEN - Wheat flour")</td>
+                    </tr>
+                    <tr>
+                        <td><code>price</code></td>
+                        <td>String</td>
+                        <td>Approximate retail price in USD format</td>
+                    </tr>
+                    <tr>
+                        <td><code>affiliateLink</code></td>
+                        <td>String (optional)</td>
+                        <td>Amazon affiliate URL with dupesnacks-20 tag</td>
+                    </tr>
+                    <tr>
+                        <td><code>alternatives</code></td>
+                        <td>Array</td>
+                        <td>2-4 gluten-free alternative products</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- ALTERNATIVE OBJECT STRUCTURE -->
+        <div class="section">
+            <h2>🔄 Alternative Object Structure</h2>
+            
+            <p>Each alternative contains detailed product information:</p>
+            
+            <div class="json-block">
+                <code>{
+  <span class="json-key">"name"</span>: <span class="json-string">"Kinnikinnick Chocolate Sandwich Wafer Cookies"</span>,
+  <span class="json-key">"glutenFree"</span>: <span class="json-bool">true</span>,
+  <span class="json-key">"certifications"</span>: [
+    <span class="json-string">"Certified Gluten-Free"</span>
+  ],
+  <span class="json-key">"price"</span>: <span class="json-string">"$4.49"</span>,
+  <span class="json-key">"retailer"</span>: <span class="json-string">"Amazon"</span>,
+  <span class="json-key">"affiliateLink"</span>: <span class="json-string">"https://amazon.com/..."</span>,
+  <span class="json-key">"description"</span>: <span class="json-string">"Closest GF alternative - sandwich-style wafer cookies"</span>
+}</code>
+            </div>
+            
+            <h3>Alternative Fields</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>name</code></td>
+                        <td>String</td>
+                        <td>Full product name including brand</td>
+                    </tr>
+                    <tr>
+                        <td><code>glutenFree</code></td>
+                        <td>Boolean</td>
+                        <td>Always true for alternatives (verification required)</td>
+                    </tr>
+                    <tr>
+                        <td><code>certifications</code></td>
+                        <td>Array</td>
+                        <td>List of certifications (e.g., "Certified Gluten-Free", "Vegan")</td>
+                    </tr>
+                    <tr>
+                        <td><code>price</code></td>
+                        <td>String</td>
+                        <td>Approximate retail price in USD</td>
+                    </tr>
+                    <tr>
+                        <td><code>retailer</code></td>
+                        <td>String</td>
+                        <td>Primary retailer (Amazon, Walmart, Target, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td><code>affiliateLink</code></td>
+                        <td>String (optional)</td>
+                        <td>Amazon affiliate link with dupesnacks-20 tag</td>
+                    </tr>
+                    <tr>
+                        <td><code>description</code></td>
+                        <td>String</td>
+                        <td>Why this is a good alternative (flavor, texture, quality)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- GLUTEN STATUS VALUES -->
+        <div class="section">
+            <h2>⚠️ Gluten Status Reference</h2>
+            
+            <p>Standard values for the <code>glutenStatus</code> field:</p>
+            
+            <div class="note">
+                <strong>Classification Standards:</strong>
+                <ul>
+                    <li><code>CONTAINS GLUTEN</code> - Product definitively contains gluten</li>
+                    <li><code>CONTAINS GLUTEN (Most varieties)</code> - Some varieties are GF, most aren't</li>
+                    <li><code>NATURALLY GLUTEN-FREE</code> - Pure ingredient, inherently GF</li>
+                    <li><code>CHECK LABELS</code> - Highly variable by product, requires verification</li>
+                </ul>
+            </div>
+            
+            <p><strong>Format:</strong> Always include reasoning or affected ingredients</p>
+            <p style="margin-top: 10px;"><code>Example: "CONTAINS GLUTEN - Enriched wheat flour, modified food starch"</code></p>
+        </div>
+        
+        <!-- DATA QUALITY NOTES -->
+        <div class="section">
+            <h2>✅ Data Quality Standards</h2>
+            
+            <ul>
+                <li><strong>Gluten-Free Verification:</strong> All alternatives are verified as gluten-free from product labels or official certifications</li>
+                <li><strong>Pricing:</strong> Current as of January 2026, sourced from Amazon, Walmart, and Target</li>
+                <li><strong>Affiliate Links:</strong> All Amazon links include the dupesnacks-20 affiliate tag</li>
+                <li><strong>Certifications:</strong> Sourced from product packaging and official certifications</li>
+                <li><strong>Descriptions:</strong> Written to guide users toward appropriate substitutes based on flavor, texture, and quality</li>
+                <li><strong>Completeness:</strong> Each snack includes 2-4 alternatives to provide variety</li>
+            </ul>
+            
+            <div class="note">
+                <strong>⚠️ Important:</strong> While care has been taken to verify gluten-free status, users with celiac disease or severe gluten sensitivity should always verify certifications independently before consuming any product.
+            </div>
+        </div>
+        
+        <!-- USAGE EXAMPLES -->
+        <div class="section">
+            <h2>💡 Usage Examples</h2>
+            
+            <h3>1. Find All Alternatives for a Snack</h3>
+            <div class="json-block">
+                <code>// JavaScript Example
+const snack = snackData.snacks.find(s => s.id === 'oreos');
+console.log(snack.alternatives); // Array of 4 GF alternatives</code>
+            </div>
+            
+            <h3>2. Filter by Category</h3>
+            <div class="json-block">
+                <code>// Get all cookie snacks
+const cookies = snackData.snacks.filter(s => s.category === 'Cookies');
+// cookies now contains all snacks in the Cookies category</code>
+            </div>
+            
+            <h3>3. Get Products with Affiliate Links</h3>
+            <div class="json-block">
+                <code>// Find alternatives with affiliate links
+const alternatives = snack.alternatives.filter(a => a.affiliateLink);
+// Use these for "Shop on Amazon" buttons</code>
+            </div>
+            
+            <h3>4. Search by Certification</h3>
+            <div class="json-block">
+                <code>// Find organic GF alternatives
+const organic = snackData.snacks
+  .flatMap(s => s.alternatives)
+  .filter(a => a.certifications.includes('Organic'));</code>
+            </div>
+        </div>
+        
+        <!-- VERSION HISTORY -->
+        <div class="section">
+            <h2>📝 Version History</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Version</th>
+                        <th>Date</th>
+                        <th>Changes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.0</td>
+                        <td>2026-01-31</td>
+                        <td>Initial release with 25+ snacks and 75+ alternatives</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer>
+            <p><strong>Snack Database Documentation v1.0</strong></p>
+            <p style="margin-top: 15px;">Complete schema and structure reference for the Gluten-Free Snack Alternatives Database</p>
+            <p style="margin-top: 10px; color: #666; font-size: 0.85em;">Last updated: 2026-01-31</p>
+        </footer>
+    </div>
+</body>
+</html>

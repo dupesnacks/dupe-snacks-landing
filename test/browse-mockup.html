@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Snacks - Dupe Snacks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+            background: #0f0f1e;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        /* NAVIGATION */
+        nav {
+            background: rgba(15, 15, 30, 0.95);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.6em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00b4a6 0%, #6b4ce6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #00b4a6;
+        }
+        
+        /* HEADER */
+        .page-header {
+            padding: 50px 20px;
+            background: linear-gradient(135deg, rgba(0, 180, 166, 0.05) 0%, rgba(107, 76, 230, 0.05) 100%);
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            color: #888;
+            font-size: 1.1em;
+        }
+        
+        /* MAIN CONTENT */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        /* SIDEBAR FILTERS */
+        .sidebar {
+            background: #1a1a2e;
+            padding: 30px 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 180, 166, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 90px;
+        }
+        
+        .filter-title {
+            font-size: 1.3em;
+            color: #00b4a6;
+            margin-bottom: 20px;
+            font-weight: bold;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #6b4ce6;
+        }
+        
+        .filter-group {
+            margin-bottom: 25px;
+        }
+        
+        .filter-label {
+            color: #6b4ce6;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: block;
+            font-size: 0.95em;
+        }
+        
+        .category-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            background: #0f0f1e;
+            color: #888;
+            border: 1px solid rgba(0, 180, 166, 0.1);
+            border-radius: 6px;
+            text-align: left;
+            cursor: pointer;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .category-btn:hover {
+            border-color: #00b4a6;
+            color: #00b4a6;
+        }
+        
+        .category-btn.active {
+            background: #00b4a6;
+            color: #0f0f1e;
+            border-color: #00b4a6;
+        }
+        
+        .filter-checkbox {
+            margin-right: 10px;
+        }
+        
+        /* SNACK GRID */
+        .snacks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .snack-card {
+            background: #1a1a2e;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .snack-card:hover {
+            transform: translateY(-10px);
+            border-color: #00b4a6;
+            box-shadow: 0 15px 40px rgba(0, 180, 166, 0.2);
+        }
+        
+        .snack-card-header {
+            background: linear-gradient(135deg, rgba(0, 180, 166, 0.1) 0%, rgba(107, 76, 230, 0.1) 100%);
+            padding: 25px 20px;
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .snack-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .snack-title {
+            font-size: 1.5em;
+            color: #00b4a6;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .snack-tag {
+            display: inline-block;
+            background: #6b4ce6;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+        
+        .snack-card-body {
+            padding: 20px;
+        }
+        
+        .snack-description {
+            color: #888;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .gluten-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #8b0000;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .alternative-count {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .alt-count-text {
+            color: #888;
+        }
+        
+        .alt-count-number {
+            background: #6b4ce6;
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .snack-cta {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00b4a6 0%, #00d9d9 100%);
+            color: #0f0f1e;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .snack-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 180, 166, 0.3);
+        }
+        
+        /* STATS BAR */
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #1a1a2e;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .stats-left {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .stat-item strong {
+            color: #00b4a6;
+            font-size: 1.2em;
+        }
+        
+        .stat-item span {
+            color: #888;
+        }
+        
+        .sort-dropdown {
+            padding: 10px 15px;
+            background: #0f0f1e;
+            border: 1px solid rgba(0, 180, 166, 0.1);
+            color: #888;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .sort-dropdown:hover {
+            border-color: #00b4a6;
+        }
+        
+        /* EMPTY STATE */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5em;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .snacks-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.8em;
+            }
+            
+            .sidebar {
+                display: flex;
+                gap: 15px;
+                overflow-x: auto;
+                padding: 15px;
+            }
+            
+            .filter-group {
+                flex-shrink: 0;
+                display: flex;
+                gap: 8px;
+            }
+            
+            .filter-title {
+                display: none;
+            }
+            
+            .category-btn {
+                padding: 10px 15px;
+                font-size: 0.9em;
+                white-space: nowrap;
+            }
+            
+            .snacks-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stats-left {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">🍪 Dupe Snacks</a>
+            <ul class="nav-links">
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <div class="header-container">
+            <h1>Browse All Snacks</h1>
+            <p>40+ Popular snacks with gluten-free alternatives. Find your match.</p>
+        </div>
+    </div>
+    
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <!-- SIDEBAR FILTERS -->
+        <aside class="sidebar">
+            <div class="filter-title">🔍 Filter</div>
+            
+            <div class="filter-group">
+                <label class="filter-label">Category</label>
+                <button class="category-btn active" data-category="all">
+                    ✓ All Snacks
+                </button>
+                <button class="category-btn" data-category="cookies">
+                    🍪 Cookies
+                </button>
+                <button class="category-btn" data-category="crackers">
+                    🥔 Crackers
+                </button>
+                <button class="category-btn" data-category="chips">
+                    🌽 Chips
+                </button>
+                <button class="category-btn" data-category="cakes">
+                    🎂 Snack Cakes
+                </button>
+                <button class="category-btn" data-category="candy">
+                    🍫 Candy
+                </button>
+                <button class="category-btn" data-category="cereal">
+                    🥣 Cereal
+                </button>
+                <button class="category-btn" data-category="other">
+                    ✨ Other
+                </button>
+            </div>
+        </aside>
+        
+        <!-- SNACKS DISPLAY -->
+        <main>
+            <!-- STATS BAR -->
+            <div class="stats-bar">
+                <div class="stats-left">
+                    <div class="stat-item">
+                        <span>📊 Showing</span>
+                        <strong>25</strong>
+                        <span>snacks</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>✓ All verified</span>
+                        <strong>100% GF</strong>
+                    </div>
+                </div>
+                <select class="sort-dropdown">
+                    <option>Sort by: Most Popular</option>
+                    <option>Sort by: Most Alternatives</option>
+                    <option>Sort by: Price (Low to High)</option>
+                    <option>Sort by: Price (High to Low)</option>
+                    <option>Sort by: Newest</option>
+                </select>
+            </div>
+            
+            <!-- SNACKS GRID -->
+            <div class="snacks-container">
+                <!-- Oreos Card -->
+                <div class="snack-card" data-category="cookies">
+                    <div class="snack-card-header">
+                        <div class="snack-icon">🍪</div>
+                        <h3 class="snack-title">Oreos</h3>
+                        <span class="snack-tag">COOKIES</span>
+                    </div>
+                    <div class="snack-card-body">
+                        <span class="gluten-badge">❌ CONTAINS GLUTEN</span>
+                        <p class="snack-description">
+                            Classic sandwich cookies with vanilla cream filling. The snack that defined generations.
+                        </p>
+                        <div class="alternative-count">
+                            <span class="alt-count-text">Alternatives:</span>
+                            <span class="alt-count-number">4</span>
+                        </div>
+                        <a href="snack-detail-mockup.html?snack=oreos" class="snack-cta">See Alternatives →</a>
+                    </div>
+                </div>
+                
+                <!-- Cheez-Its Card -->
+                <div class="snack-card" data-category="crackers">
+                    <div class="snack-card-header">
+                        <div class="snack-icon">🥔</div>
+                        <h3 class="snack-title">Cheez-Its</h3>
+                        <span class="snack-tag">CRACKERS</span>
+                    </div>
+                    <div class="snack-card-body">
+                        <span class="gluten-badge">❌ CONTAINS GLUTEN</span>
+                        <p class="snack-description">
+                            Cheddar-flavored baked cheese crackers with that perfect crunch you crave.
+                        </p>
+                        <div class="alternative-count">
+                            <span class="alt-count-text">Alternatives:</span>
+                            <span class="alt-count-number">3</span>
+                        </div>
+                        <a href="#snack" class="snack-cta">See Alternatives →</a>
+                    </div>
+                </div>
+                
+                <!-- Doritos Card -->
+                <div class="snack-card" data-category="chips">
+                    <div class="snack-card-header">
+                        <div class="snack-icon">🌽</div>
+                        <h3 class="snack-title">Doritos</h3>
+                        <span class="snack-tag">CHIPS</span>
+                    </div>
+                    <div class="snack-card-body">
+                        <span class="gluten-badge">❌ CONTAINS GLUTEN</span>
+                        <p class="snack-description">
+                            Bold, triangular corn chips with iconic seasoning. A true snacking legend.
+                        </p>
+                        <div class="alternative-count">
+                            <span class="alt-count-text">Alternatives:</span>
+                            <span class="alt-count-number">3</span>
+                        </div>
+                        <a href="#snack" class="snack-cta">See Alternatives →</a>
+                    </div>
+                </div>
+                
+                <!-- Twinkies Card -->
+                <div class="snack-card" data-category="cakes">
+                    <div class="snack-card-header">
+                        <div class="snack-icon">🎂</div>
+                        <h3 class="snack-title">Twinkies</h3>
+                        <span class="snack-tag">SNACK CAKES</span>
+                    </div>
+                    <div class="snack-card-body">
+                        <span class="gluten-badge">❌ CONTAINS GLUTEN</span>
+                        <p class="snack-description">
+                            Cream-filled sponge cakes that bring back childhood memories.
+                        </p>
+                        <div class="alternative-count">
+                            <span class="alt-count-text">Alternatives:</span>
+                            <span class="alt-count-number">2</span>
+                        </div>
+                        <a href="#snack" class="snack-cta">See Alternatives →</a>
+                    </div>
+                </div>
+                
+                <!-- Reese's Card -->
+                <div class="snack-card" data-category="candy">
+                    <div class="snack-card-header">
+                        <div class="snack-icon">🍫</div>
+                        <h3 class="snack-title">Reese's Cups</h3>
+                        <span class="snack-tag">CANDY</span>
+                    </div>
+                    <div class="snack-card-body">
+                        <span class="gluten-badge">❌ CONTAINS GLUTEN</span>
+                        <p class="snack-description">
+                            Chocolate and peanut butter in perfect harmony. The ultimate combination.
+                        </p>
+                        <div class="alternative-count">
+                            <span class="alt-count-text">Alternatives:</span>
+                            <span class="alt-count-number">3</span>
+                        </div>
+                        <a href="#snack" class="snack-cta">See Alternatives →</a>
+                    </div>
+                </div>
+                
+                <!-- Chips Ahoy Card -->
+                <div class="snack-card" data-category="cookies">
+                    <div class="snack-card-header">
+                        <div class="snack-icon">🍪</div>
+                        <h3 class="snack-title">Chips Ahoy</h3>
+                        <span class="snack-tag">COOKIES</span>
+                    </div>
+                    <div class="snack-card-body">
+                        <span class="gluten-badge">❌ CONTAINS GLUTEN</span>
+                        <p class="snack-description">
+                            Crispy chocolate chip cookies packed with flavor and nostalgia.
+                        </p>
+                        <div class="alternative-count">
+                            <span class="alt-count-text">Alternatives:</span>
+                            <span class="alt-count-number">3</span>
+                        </div>
+                        <a href="#snack" class="snack-cta">See Alternatives →</a>
+                    </div>
+                </div>
+                
+                <!-- Goldfish Card -->
+                <div class="snack-card" data-category="crackers">
+                    <div class="snack-card-header">
+                        <div class="snack-icon">🥔</div>
+                        <h3 class="snack-title">Goldfish</h3>
+                        <span class="snack-tag">CRACKERS</span>
+                    </div>
+                    <div class="snack-card-body">
+                        <span class="gluten-badge">❌ CONTAINS GLUTEN</span>
+                        <p class="snack-description">
+                            Tiny cheese-flavored crackers shaped like fish. Fun for all ages.
+                        </p>
+                        <div class="alternative-count">
+                            <span class="alt-count-text">Alternatives:</span>
+                            <span class="alt-count-number">3</span>
+                        </div>
+                        <a href="#snack" class="snack-cta">See Alternatives →</a>
+                    </div>
+                </div>
+                
+                <!-- Lay's Card -->
+                <div class="snack-card" data-category="chips">
+                    <div class="snack-card-header">
+                        <div class="snack-icon">🌽</div>
+                        <h3 class="snack-title">Lay's Chips</h3>
+                        <span class="snack-tag">CHIPS</span>
+                    </div>
+                    <div class="snack-card-body">
+                        <span class="gluten-badge">❌ CONTAINS GLUTEN</span>
+                        <p class="snack-description">
+                            Classic salted potato chips. Simple, satisfying, and endlessly craveable.
+                        </p>
+                        <div class="alternative-count">
+                            <span class="alt-count-text">Alternatives:</span>
+                            <span class="alt-count-number">3</span>
+                        </div>
+                        <a href="#snack" class="snack-cta">See Alternatives →</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Category filter functionality
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const snackCards = document.querySelectorAll('.snack-card');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active state
+                categoryButtons.forEach(b => b.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Filter snacks
+                const category = button.dataset.category;
+                snackCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

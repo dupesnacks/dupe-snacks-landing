@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dupe Snacks - Find Your Gluten-Free Alternative</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+            background: #0f0f1e;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        /* NAVIGATION */
+        nav {
+            background: rgba(15, 15, 30, 0.95);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00b4a6 0%, #6b4ce6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #00b4a6;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 180, 166, 0.05) 0%, rgba(107, 76, 230, 0.05) 100%);
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-highlight {
+            background: linear-gradient(135deg, #00b4a6 0%, #00d9d9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3em;
+            color: #888;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00b4a6 0%, #00d9d9 100%);
+            color: #0f0f1e;
+            box-shadow: 0 5px 20px rgba(0, 180, 166, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 180, 166, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #00b4a6;
+            border: 2px solid #00b4a6;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 180, 166, 0.1);
+        }
+        
+        /* VALUE PROPS */
+        .value-props {
+            padding: 80px 20px;
+            background: #1a1a2e;
+        }
+        
+        .value-props-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #e0e0e0;
+        }
+        
+        .section-title span {
+            color: #00b4a6;
+        }
+        
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .prop-card {
+            background: #0f0f1e;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(0, 180, 166, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .prop-card:hover {
+            border-color: #00b4a6;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 180, 166, 0.2);
+        }
+        
+        .prop-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .prop-title {
+            font-size: 1.4em;
+            color: #00b4a6;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .prop-description {
+            color: #888;
+            line-height: 1.8;
+        }
+        
+        /* FEATURED SNACKS */
+        .featured {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(0, 180, 166, 0.05) 0%, rgba(107, 76, 230, 0.05) 100%);
+        }
+        
+        .featured-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .snack-preview {
+            background: #1a1a2e;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-left: 4px solid #00b4a6;
+        }
+        
+        .snack-preview:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 180, 166, 0.2);
+            border-left-color: #6b4ce6;
+        }
+        
+        .snack-header {
+            padding: 20px;
+            background: rgba(0, 180, 166, 0.05);
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .snack-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #00b4a6;
+            margin-bottom: 5px;
+        }
+        
+        .snack-category {
+            font-size: 0.85em;
+            color: #666;
+        }
+        
+        .snack-body {
+            padding: 20px;
+        }
+        
+        .snack-alts {
+            margin-bottom: 15px;
+        }
+        
+        .alt-count {
+            display: inline-block;
+            background: #6b4ce6;
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .snack-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #00b4a6 0%, #00d9d9 100%);
+            color: #0f0f1e;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+        
+        .snack-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 180, 166, 0.3);
+        }
+        
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 80px 20px;
+            background: #1a1a2e;
+        }
+        
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial {
+            background: #0f0f1e;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #6b4ce6;
+        }
+        
+        .testimonial-text {
+            color: #888;
+            font-size: 0.95em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            color: #00b4a6;
+            font-weight: bold;
+        }
+        
+        .stars {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        /* CTA SECTION */
+        .final-cta {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(107, 76, 230, 0.1) 0%, rgba(0, 180, 166, 0.1) 100%);
+            border-top: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .final-cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .final-cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+        
+        .final-cta p {
+            font-size: 1.1em;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #0f0f1e;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(0, 180, 166, 0.1);
+            text-align: center;
+            color: #666;
+        }
+        
+        footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: #00b4a6;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #00d9d9;
+        }
+        
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .hero-subtitle {
+                font-size: 1em;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                font-size: 0.9em;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .props-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .final-cta h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🍪 Dupe Snacks</div>
+            <ul class="nav-links">
+                <li><a href="#browse">Browse</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Find Your Perfect <span class="hero-highlight">Gluten-Free Snack</span> Match</h1>
+            <p class="hero-subtitle">
+                Missing your favorite snack? We've found gluten-free alternatives for all your cravings. 
+                No compromise on taste. No guesswork on ingredients.
+            </p>
+            <div class="cta-buttons">
+                <a href="#browse" class="btn btn-primary">Start Browsing →</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- VALUE PROPOSITIONS -->
+    <section class="value-props">
+        <div class="value-props-container">
+            <h2 class="section-title">Why <span>Dupe Snacks</span>?</h2>
+            
+            <div class="props-grid">
+                <div class="prop-card">
+                    <div class="prop-icon">✅</div>
+                    <div class="prop-title">100% Verified GF</div>
+                    <div class="prop-description">
+                        Every alternative has been verified for gluten-free status from product labels 
+                        and official certifications. Your safety is our priority.
+                    </div>
+                </div>
+                
+                <div class="prop-card">
+                    <div class="prop-icon">💰</div>
+                    <div class="prop-title">Real Prices</div>
+                    <div class="prop-description">
+                        Current pricing from major retailers (Amazon, Walmart, Target). 
+                        No surprises at checkout.
+                    </div>
+                </div>
+                
+                <div class="prop-card">
+                    <div class="prop-icon">🎯</div>
+                    <div class="prop-title">Smart Matches</div>
+                    <div class="prop-description">
+                        We don't just find gluten-free snacks—we find ones that match 
+                        the taste and texture you miss.
+                    </div>
+                </div>
+                
+                <div class="prop-card">
+                    <div class="prop-icon">🔗</div>
+                    <div class="prop-title">Direct Links</div>
+                    <div class="prop-description">
+                        One-click shopping with affiliate links to Amazon, Walmart, and Target. 
+                        Buy instantly from the snacks you love.
+                    </div>
+                </div>
+                
+                <div class="prop-card">
+                    <div class="prop-icon">📚</div>
+                    <div class="prop-title">Organized by Category</div>
+                    <div class="prop-description">
+                        Find alternatives to cookies, crackers, chips, snack cakes, and more. 
+                        All neatly organized for easy browsing.
+                    </div>
+                </div>
+                
+                <div class="prop-card">
+                    <div class="prop-icon">🚀</div>
+                    <div class="prop-title">Always Growing</div>
+                    <div class="prop-description">
+                        We're constantly adding new snacks and alternatives as new 
+                        gluten-free products hit the market.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FEATURED SNACKS -->
+    <section class="featured" id="browse">
+        <div class="featured-container">
+            <h2 class="section-title">Featured <span>Snacks</span></h2>
+            
+            <div class="featured-grid">
+                <div class="snack-preview">
+                    <div class="snack-header">
+                        <div class="snack-name">Oreos</div>
+                        <div class="snack-category">🍪 Cookies</div>
+                    </div>
+                    <div class="snack-body">
+                        <p style="color: #888; font-size: 0.9em; margin-bottom: 15px;">
+                            Classic sandwich cookies that define snack time
+                        </p>
+                        <div class="snack-alts">
+                            <span class="alt-count">4 Alternatives</span>
+                        </div>
+                        <a href="#" class="snack-btn">View Alternatives</a>
+                    </div>
+                </div>
+                
+                <div class="snack-preview">
+                    <div class="snack-header">
+                        <div class="snack-name">Cheez-Its</div>
+                        <div class="snack-category">🥔 Crackers</div>
+                    </div>
+                    <div class="snack-body">
+                        <p style="color: #888; font-size: 0.9em; margin-bottom: 15px;">
+                            Cheddar-flavored baked cheese crackers perfect for snacking
+                        </p>
+                        <div class="snack-alts">
+                            <span class="alt-count">3 Alternatives</span>
+                        </div>
+                        <a href="#" class="snack-btn">View Alternatives</a>
+                    </div>
+                </div>
+                
+                <div class="snack-preview">
+                    <div class="snack-header">
+                        <div class="snack-name">Doritos</div>
+                        <div class="snack-category">🌽 Chips</div>
+                    </div>
+                    <div class="snack-body">
+                        <p style="color: #888; font-size: 0.9em; margin-bottom: 15px;">
+                            Triangular corn chips with bold seasoning
+                        </p>
+                        <div class="snack-alts">
+                            <span class="alt-count">3 Alternatives</span>
+                        </div>
+                        <a href="#" class="snack-btn">View Alternatives</a>
+                    </div>
+                </div>
+                
+                <div class="snack-preview">
+                    <div class="snack-header">
+                        <div class="snack-name">Twinkies</div>
+                        <div class="snack-category">🎂 Snack Cakes</div>
+                    </div>
+                    <div class="snack-body">
+                        <p style="color: #888; font-size: 0.9em; margin-bottom: 15px;">
+                            Cream-filled sponge cakes—a true snack time classic
+                        </p>
+                        <div class="snack-alts">
+                            <span class="alt-count">2 Alternatives</span>
+                        </div>
+                        <a href="#" class="snack-btn">View Alternatives</a>
+                    </div>
+                </div>
+                
+                <div class="snack-preview">
+                    <div class="snack-header">
+                        <div class="snack-name">Reese's Cups</div>
+                        <div class="snack-category">🍫 Candy</div>
+                    </div>
+                    <div class="snack-body">
+                        <p style="color: #888; font-size: 0.9em; margin-bottom: 15px;">
+                            Chocolate and peanut butter perfection
+                        </p>
+                        <div class="snack-alts">
+                            <span class="alt-count">3 Alternatives</span>
+                        </div>
+                        <a href="#" class="snack-btn">View Alternatives</a>
+                    </div>
+                </div>
+                
+                <div class="snack-preview">
+                    <div class="snack-header">
+                        <div class="snack-name">Nature Valley Bars</div>
+                        <div class="snack-category">✨ Snack Bars</div>
+                    </div>
+                    <div class="snack-body">
+                        <p style="color: #888; font-size: 0.9em; margin-bottom: 15px;">
+                            Chewy granola bars for on-the-go snacking
+                        </p>
+                        <div class="snack-alts">
+                            <span class="alt-count">3 Alternatives</span>
+                        </div>
+                        <a href="#" class="snack-btn">View Alternatives</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title">Real Stories from <span>Our Community</span></h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        "I was diagnosed with celiac disease and thought I'd have to give up all my favorite snacks. 
+                        Dupe Snacks made the transition so easy. I found great alternatives in minutes!"
+                    </div>
+                    <div class="testimonial-author">— Sarah M., Colorado</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        "The affiliate links actually work, the prices are current, and most importantly—
+                        every alternative actually tastes good. This is a game-changer."
+                    </div>
+                    <div class="testimonial-author">— James R., New York</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-text">
+                        "Finally, a resource that understands that gluten-free doesn't mean flavorless. 
+                        These alternatives are genuinely delicious."
+                    </div>
+                    <div class="testimonial-author">— Emily T., California</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="final-cta-container">
+            <h2>Your Favorite Snacks. Gluten-Free.</h2>
+            <p>Browse 40+ popular snacks with verified gluten-free alternatives. 
+            No more guessing. Just better snacking.</p>
+            <a href="#browse" class="btn btn-primary">Explore All Snacks →</a>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <p><strong>🍪 Dupe Snacks</strong></p>
+            <p>Your guide to gluten-free snack alternatives</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">Contact</a>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.85em;">
+                © 2026 Dupe Snacks. All affiliate links include our partner commission. 
+                Every product verified for gluten-free status.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

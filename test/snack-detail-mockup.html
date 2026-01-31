@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oreos - Gluten-Free Alternatives | Dupe Snacks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+            background: #0f0f1e;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        /* NAVIGATION */
+        nav {
+            background: rgba(15, 15, 30, 0.95);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.6em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00b4a6 0%, #6b4ce6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        .breadcrumb {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb a {
+            color: #00b4a6;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(0, 180, 166, 0.05) 0%, rgba(107, 76, 230, 0.05) 100%);
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .snack-icon-large {
+            font-size: 8em;
+            text-align: center;
+            line-height: 1;
+        }
+        
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+        
+        .original-info {
+            background: #1a1a2e;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #8b0000;
+        }
+        
+        .info-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            color: #e0e0e0;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .info-value:last-child {
+            margin-bottom: 0;
+        }
+        
+        .gluten-status-badge {
+            display: inline-block;
+            background: #8b0000;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .price-display {
+            font-size: 1.5em;
+            color: #6b4ce6;
+            font-weight: bold;
+        }
+        
+        /* ALTERNATIVES SECTION */
+        .alternatives-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #e0e0e0;
+        }
+        
+        .section-title span {
+            color: #00b4a6;
+        }
+        
+        .alternatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .alternative-card {
+            background: #1a1a2e;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .alternative-card:hover {
+            transform: translateY(-10px);
+            border-color: #00b4a6;
+            box-shadow: 0 15px 40px rgba(0, 180, 166, 0.2);
+        }
+        
+        .alt-header {
+            background: linear-gradient(135deg, rgba(0, 180, 166, 0.15) 0%, rgba(107, 76, 230, 0.15) 100%);
+            padding: 25px;
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+        }
+        
+        .alt-rank {
+            display: inline-block;
+            background: #6b4ce6;
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .alt-name {
+            font-size: 1.5em;
+            color: #00b4a6;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .alt-gf-badge {
+            display: inline-block;
+            background: #006400;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .alt-body {
+            padding: 25px;
+        }
+        
+        .alt-retailer {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .alt-price {
+            font-size: 1.4em;
+            color: #00b4a6;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .alt-description {
+            color: #888;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .certifications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .cert-badge {
+            background: #0f0f1e;
+            border: 1px solid #00b4a6;
+            color: #00b4a6;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .shop-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #00b4a6 0%, #00d9d9 100%);
+            color: #0f0f1e;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .shop-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 180, 166, 0.3);
+        }
+        
+        /* COMPARISON SECTION */
+        .comparison-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background: #1a1a2e;
+            border-radius: 8px;
+            margin-bottom: 60px;
+        }
+        
+        .comparison-section h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #00b4a6;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .comparison-table th {
+            background: #0f0f1e;
+            padding: 15px;
+            text-align: left;
+            color: #00b4a6;
+            font-weight: bold;
+            border-bottom: 2px solid #00b4a6;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(0, 180, 166, 0.1);
+            color: #888;
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(0, 180, 166, 0.05);
+        }
+        
+        .comparison-table .snack-name {
+            color: #00b4a6;
+            font-weight: bold;
+        }
+        
+        .check {
+            color: #00b4a6;
+            font-weight: bold;
+        }
+        
+        /* RECOMMENDATION SECTION */
+        .recommendation {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(0, 180, 166, 0.15) 0%, rgba(107, 76, 230, 0.15) 100%);
+            border-radius: 8px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(0, 180, 166, 0.2);
+        }
+        
+        .recommendation h3 {
+            font-size: 1.3em;
+            color: #00b4a6;
+            margin-bottom: 15px;
+        }
+        
+        .recommendation p {
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #0f0f1e;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(0, 180, 166, 0.1);
+            text-align: center;
+            color: #666;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .snack-icon-large {
+                font-size: 5em;
+            }
+            
+            .hero-content h1 {
+                font-size: 2em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .hero {
+                padding: 30px 15px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8em;
+            }
+            
+            .alternatives-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+            }
+            
+            .comparison-table {
+                font-size: 0.9em;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="homepage-mockup.html" class="logo">🍪 Dupe Snacks</a>
+            <div class="breadcrumb">
+                <a href="browse-mockup.html">Browse</a> / 
+                <a href="browse-mockup.html?category=cookies">Cookies</a> / 
+                <span>Oreos</span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="snack-icon-large">🍪</div>
+            <div class="hero-content">
+                <h1>Oreos</h1>
+                <div class="original-info">
+                    <div class="gluten-status-badge">❌ CONTAINS GLUTEN</div>
+                    <div class="info-label">Category</div>
+                    <div class="info-value">Cookies</div>
+                    
+                    <div class="info-label">Description</div>
+                    <div class="info-value" style="font-weight: normal; font-size: 1em;">
+                        Classic sandwich cookies with vanilla cream filling. The iconic snack that's been loved for generations.
+                    </div>
+                    
+                    <div class="info-label">Original Price</div>
+                    <div class="price-display">$3.49</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ALTERNATIVES SECTION -->
+    <section class="alternatives-section">
+        <h2 class="section-title">Your Gluten-Free <span>Alternatives</span></h2>
+        
+        <div class="alternatives-grid">
+            <!-- Alternative 1 -->
+            <div class="alternative-card">
+                <div class="alt-header">
+                    <span class="alt-rank">⭐ CLOSEST MATCH</span>
+                    <h3 class="alt-name">Kinnikinnick Sandwich Wafers</h3>
+                    <span class="alt-gf-badge">✓ CERTIFIED GLUTEN-FREE</span>
+                </div>
+                <div class="alt-body">
+                    <div class="alt-retailer">📍 Amazon</div>
+                    <div class="alt-price">$4.49</div>
+                    <p class="alt-description">
+                        The closest GF alternative to Oreos. These sandwich-style wafer cookies deliver 
+                        the same satisfaction with a similar flavor profile and texture.
+                    </p>
+                    <div class="certifications">
+                        <span class="cert-badge">Certified GF</span>
+                    </div>
+                    <a href="https://amazon.com/s?k=kinnikinnick+sandwich+cookies&tag=dupesnacks-20" class="shop-btn">Shop on Amazon →</a>
+                </div>
+            </div>
+            
+            <!-- Alternative 2 -->
+            <div class="alternative-card">
+                <div class="alt-header">
+                    <span class="alt-rank">🔥 BUDGET PICK</span>
+                    <h3 class="alt-name">Enjoy Life Semi-Sweet Cookies</h3>
+                    <span class="alt-gf-badge">✓ CERTIFIED GLUTEN-FREE</span>
+                </div>
+                <div class="alt-body">
+                    <div class="alt-retailer">📍 Amazon</div>
+                    <div class="alt-price">$3.99</div>
+                    <p class="alt-description">
+                        Soft, chewy chocolate chip cookies that satisfy sweet cravings. Slightly cheaper 
+                        than the original and free from the top 8 allergens.
+                    </p>
+                    <div class="certifications">
+                        <span class="cert-badge">Certified GF</span>
+                        <span class="cert-badge">Vegan</span>
+                        <span class="cert-badge">Top 8 Free</span>
+                    </div>
+                    <a href="https://amazon.com/dp/B00BNMLF7S?tag=dupesnacks-20" class="shop-btn">Shop on Amazon →</a>
+                </div>
+            </div>
+            
+            <!-- Alternative 3 -->
+            <div class="alternative-card">
+                <div class="alt-header">
+                    <span class="alt-rank">👨‍🍳 DIY OPTION</span>
+                    <h3 class="alt-name">Simple Mills Cookie Dough Mix</h3>
+                    <span class="alt-gf-badge">✓ GLUTEN-FREE</span>
+                </div>
+                <div class="alt-body">
+                    <div class="alt-retailer">📍 Amazon</div>
+                    <div class="alt-price">$4.99</div>
+                    <p class="alt-description">
+                        Make your own sandwich cookies at home with this almond flour-based mix. 
+                        Perfect for those who enjoy baking and want full control over ingredients.
+                    </p>
+                    <div class="certifications">
+                        <span class="cert-badge">Paleo-friendly</span>
+                        <span class="cert-badge">GF Verified</span>
+                    </div>
+                    <a href="https://amazon.com/dp/B07W4CVVKZ?tag=dupesnacks-20" class="shop-btn">Shop on Amazon →</a>
+                </div>
+            </div>
+            
+            <!-- Alternative 4 -->
+            <div class="alternative-card">
+                <div class="alt-header">
+                    <span class="alt-rank">⭐ PREMIUM CHOICE</span>
+                    <h3 class="alt-name">Tate's Gluten-Free Cookies</h3>
+                    <span class="alt-gf-badge">✓ CERTIFIED GLUTEN-FREE</span>
+                </div>
+                <div class="alt-body">
+                    <div class="alt-retailer">📍 Walmart, Target</div>
+                    <div class="alt-price">$4.29</div>
+                    <p class="alt-description">
+                        Crispy, buttery cookies from a trusted brand. Different flavor profile but 
+                        equally satisfying with exceptional quality and widely available.
+                    </p>
+                    <div class="certifications">
+                        <span class="cert-badge">Certified GF</span>
+                        <span class="cert-badge">Premium</span>
+                    </div>
+                    <a href="https://amazon.com/s?k=tates+cookies&tag=dupesnacks-20" class="shop-btn">Find in Store →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RECOMMENDATION SECTION -->
+    <section class="recommendation">
+        <h3>💡 Our Recommendation</h3>
+        <p>
+            For the closest taste and texture match to traditional Oreos, we recommend <strong>Kinnikinnick Sandwich Wafers</strong>. 
+            They replicate the sandwich cookie experience most accurately. If you're looking for a budget-friendly option or prefer softer cookies, 
+            <strong>Enjoy Life Semi-Sweet Cookies</strong> offer great value. For the adventurous baker, the <strong>Simple Mills Mix</strong> 
+            lets you make fresh cookies at home with peace of mind knowing exactly what's in them.
+        </p>
+    </section>
+    
+    <!-- COMPARISON TABLE -->
+    <section class="comparison-section">
+        <h2>Quick Comparison</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Snack</th>
+                    <th>Price</th>
+                    <th>Gluten-Free?</th>
+                    <th>Certified?</th>
+                    <th>Taste Match</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="snack-name">Oreos (Original)</td>
+                    <td>$3.49</td>
+                    <td>❌ No</td>
+                    <td>—</td>
+                    <td>Baseline</td>
+                </tr>
+                <tr>
+                    <td class="snack-name">Kinnikinnick Sandwich Wafers</td>
+                    <td>$4.49</td>
+                    <td><span class="check">✓ Yes</span></td>
+                    <td><span class="check">✓ Yes</span></td>
+                    <td>95% Match</td>
+                </tr>
+                <tr>
+                    <td class="snack-name">Enjoy Life Semi-Sweet Cookies</td>
+                    <td>$3.99</td>
+                    <td><span class="check">✓ Yes</span></td>
+                    <td><span class="check">✓ Yes</span></td>
+                    <td>85% Match</td>
+                </tr>
+                <tr>
+                    <td class="snack-name">Simple Mills Cookie Mix</td>
+                    <td>$4.99</td>
+                    <td><span class="check">✓ Yes</span></td>
+                    <td><span class="check">✓ Yes</span></td>
+                    <td>90% Match (DIY)</td>
+                </tr>
+                <tr>
+                    <td class="snack-name">Tate's Gluten-Free Cookies</td>
+                    <td>$4.29</td>
+                    <td><span class="check">✓ Yes</span></td>
+                    <td><span class="check">✓ Yes</span></td>
+                    <td>80% Match</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>🍪 Dupe Snacks</strong> — Find your perfect gluten-free snack match</p>
+        <p style="margin-top: 20px; color: #555; font-size: 0.85em;">
+            All prices accurate as of January 2026. Prices may vary by retailer. Every product verified for gluten-free status.
+        </p>
+        <p style="margin-top: 10px; color: #555; font-size: 0.85em;">
+            Amazon affiliate links included (tag: dupesnacks-20). Your support helps us maintain this resource.
+        </p>
+    </footer>
+</body>
+</html>

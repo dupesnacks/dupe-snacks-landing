@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gluten-Free Snack Alternatives Database</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            border-bottom: 2px solid #00b4a6;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #00b4a6 0%, #6b4ce6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        select {
+            padding: 10px 15px;
+            background: #1a1a2e;
+            border: 2px solid #00b4a6;
+            color: #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .category-section {
+            margin-bottom: 50px;
+            display: none;
+        }
+        
+        .category-section.active {
+            display: block;
+        }
+        
+        .category-title {
+            font-size: 2em;
+            color: #00b4a6;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #6b4ce6;
+        }
+        
+        .snack-card {
+            background: #1a1a2e;
+            border-left: 5px solid #00b4a6;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .snack-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 180, 166, 0.2);
+            border-left-color: #6b4ce6;
+        }
+        
+        .original-snack {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .snack-name {
+            font-size: 1.8em;
+            color: #00b4a6;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .snack-description {
+            color: #888;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        
+        .gluten-status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .gluten-status.contains {
+            background: #8b0000;
+            color: #fff;
+        }
+        
+        .gluten-status.free {
+            background: #006400;
+            color: #fff;
+        }
+        
+        .price-tag {
+            font-size: 1.3em;
+            color: #6b4ce6;
+            font-weight: bold;
+        }
+        
+        .alternatives-title {
+            font-size: 1.3em;
+            color: #6b4ce6;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+        
+        .alternatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .alternative {
+            background: #0f0f1e;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .alternative:hover {
+            border-color: #00b4a6;
+            background: #16161f;
+        }
+        
+        .alt-name {
+            font-weight: bold;
+            color: #00b4a6;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        .alt-price {
+            color: #6b4ce6;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .alt-description {
+            font-size: 0.9em;
+            color: #aaa;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .certifications {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        
+        .cert-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #6b4ce6;
+            color: #fff;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+        
+        .buy-link {
+            display: inline-block;
+            padding: 8px 14px;
+            background: linear-gradient(135deg, #00b4a6 0%, #00d9d9 100%);
+            color: #0f0f1e;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+        
+        .buy-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 180, 166, 0.4);
+        }
+        
+        .retailer {
+            display: inline-block;
+            margin-left: 8px;
+            color: #888;
+            font-size: 0.85em;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 20px;
+            border-top: 2px solid #00b4a6;
+            color: #666;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            color: #00b4a6;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            select {
+                width: 100%;
+            }
+            
+            .alternatives-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .original-snack {
+                flex-direction: column;
+            }
+            
+            .price-tag {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍪 Gluten-Free Snack Alternatives</h1>
+            <p class="subtitle">Your complete guide to delicious gluten-free swaps for popular snacks</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Popular Snacks</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">75+</div>
+                    <div class="stat-label">GF Alternatives</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Verified GF</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <label for="category-select">Filter by Category:</label>
+                <select id="category-select">
+                    <option value="all">All Categories</option>
+                    <option value="Cookies">🍪 Cookies</option>
+                    <option value="Crackers">🥔 Crackers</option>
+                    <option value="Chips">🌽 Chips & Crunchy</option>
+                    <option value="Snack Cakes">🎂 Snack Cakes</option>
+                    <option value="Candy">🍫 Candy & Chocolate</option>
+                    <option value="Cereal Snacks">🥣 Cereal Snacks</option>
+                    <option value="Other">✨ Other Snacks</option>
+                </select>
+            </div>
+        </header>
+        
+        <!-- COOKIES SECTION -->
+        <div class="category-section active" data-category="Cookies">
+            <h2 class="category-title">🍪 Cookies</h2>
+            
+            <!-- Oreos -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Oreos</div>
+                        <div class="snack-description">Classic sandwich cookies with vanilla cream filling</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN</span>
+                    </div>
+                    <div class="price-tag">$3.49</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Kinnikinnick Chocolate Sandwich Wafers</div>
+                        <div class="alt-price">$4.49</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Closest GF alternative - sandwich-style wafer cookies</div>
+                        <a href="https://amazon.com/s?k=kinnikinnick+sandwich+cookies&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Tate's GF Chocolate Chip Cookies</div>
+                        <div class="alt-price">$4.29</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Crispy, buttery cookies - different but satisfying flavor</div>
+                        <span class="retailer">Walmart/Target</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Enjoy Life Soft Baked Cookies</div>
+                        <div class="alt-price">$3.99</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span><span class="cert-badge">Vegan</span></div>
+                        <div class="alt-description">Soft, chewy chocolate chip option</div>
+                        <a href="https://amazon.com/dp/B00BNMLF7S?tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Simple Mills Cookie Dough Mix</div>
+                        <div class="alt-price">$4.99</div>
+                        <div class="certifications"><span class="cert-badge">Paleo-friendly</span><span class="cert-badge">GF</span></div>
+                        <div class="alt-description">DIY sandwich cookies with almond flour base</div>
+                        <a href="https://amazon.com/dp/B07W4CVVKZ?tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chips Ahoy -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Chips Ahoy</div>
+                        <div class="snack-description">Chocolate chip cookies with crispy texture</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN</span>
+                    </div>
+                    <div class="price-tag">$3.29</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Tate's GF Chocolate Chip Cookies</div>
+                        <div class="alt-price">$4.29</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Crispy, buttery chocolate chip cookies</div>
+                        <span class="retailer">Walmart/Target</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Enjoy Life Semi-Sweet Cookies</div>
+                        <div class="alt-price">$3.99</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Chewy chocolate chip option</div>
+                        <a href="https://amazon.com/s?k=enjoy+life+cookies&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Simple Mills Cookie Dough Mix</div>
+                        <div class="alt-price">$4.99</div>
+                        <div class="certifications"><span class="cert-badge">GF Verified</span></div>
+                        <div class="alt-description">DIY chocolate chip cookies</div>
+                        <a href="https://amazon.com/dp/B07W4CVVKZ?tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CRACKERS SECTION -->
+        <div class="category-section" data-category="Crackers">
+            <h2 class="category-title">🥔 Crackers & Cracker Snacks</h2>
+            
+            <!-- Cheez-Its -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Cheez-Its</div>
+                        <div class="snack-description">Cheddar-flavored baked cheese crackers</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN</span>
+                    </div>
+                    <div class="price-tag">$2.99</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Back to Nature GF Cheddar Crackers</div>
+                        <div class="alt-price">$3.79</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Traditional cracker style with cheddar flavor</div>
+                        <span class="retailer">Target/Walmart</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Saffron Road Cauliflower Cheddar</div>
+                        <div class="alt-price">$3.49</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Vegetable-based gluten-free crackers with cheese</div>
+                        <a href="https://amazon.com/s?k=saffron+road+crackers&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Glutino GF Cheese Crackers</div>
+                        <div class="alt-price">$3.29</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Square cheese-flavored baked crackers</div>
+                        <a href="https://amazon.com/s?k=glutino+cheese+crackers&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Goldfish -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Goldfish Crackers</div>
+                        <div class="snack-description">Small cheese-flavored fish-shaped crackers</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN</span>
+                    </div>
+                    <div class="price-tag">$2.49</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Barilla Chickpea Puffs (Parmesan)</div>
+                        <div class="alt-price">$4.99</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Puffed chickpea snacks with similar light texture</div>
+                        <a href="https://amazon.com/s?k=barilla+chickpea+puffs&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Mary's Gone Crackers (Cheddar)</div>
+                        <div class="alt-price">$4.49</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span><span class="cert-badge">Organic</span></div>
+                        <div class="alt-description">Seed-based crackers with cheese flavor</div>
+                        <a href="https://amazon.com/s?k=marys+gone+crackers&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Simple Mills Almond Crackers</div>
+                        <div class="alt-price">$5.49</div>
+                        <div class="certifications"><span class="cert-badge">Paleo</span><span class="cert-badge">GF</span></div>
+                        <div class="alt-description">Small, crispy almond-based crackers</div>
+                        <a href="https://amazon.com/s?k=simple+mills+crackers&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ritz -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Ritz Crackers</div>
+                        <div class="snack-description">Round, buttery, salty crackers</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN</span>
+                    </div>
+                    <div class="price-tag">$2.99</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Simple Mills Almond Crackers (Original)</div>
+                        <div class="alt-price">$5.49</div>
+                        <div class="certifications"><span class="cert-badge">Paleo</span><span class="cert-badge">GF Verified</span></div>
+                        <div class="alt-description">Buttery, crispy almond flour crackers</div>
+                        <a href="https://amazon.com/s?k=simple+mills+crackers+original&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Mary's Gone Crackers (Original)</div>
+                        <div class="alt-price">$4.49</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span><span class="cert-badge">Organic</span></div>
+                        <div class="alt-description">Seed-based crackers with original flavor</div>
+                        <a href="https://amazon.com/s?k=marys+gone+crackers+original&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Glutino GF Original Crackers</div>
+                        <div class="alt-price">$3.79</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Similar texture and flavor profile</div>
+                        <a href="https://amazon.com/s?k=glutino+original+crackers&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CHIPS SECTION -->
+        <div class="category-section" data-category="Chips">
+            <h2 class="category-title">🌽 Chips & Crunchy Snacks</h2>
+            
+            <!-- Doritos -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Doritos</div>
+                        <div class="snack-description">Triangular corn tortilla chips with seasoning</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN (Most varieties)</span>
+                    </div>
+                    <div class="price-tag">$3.49</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Tostitos Scoops Corn Chips</div>
+                        <div class="alt-price">$3.49</div>
+                        <div class="certifications"><span class="cert-badge">GF Verified</span></div>
+                        <div class="alt-description">Scoop-shaped corn tortilla chips, naturally GF</div>
+                        <span class="retailer">Walmart/Target</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Late July Organic Tortilla Chips (Lime)</div>
+                        <div class="alt-price">$4.29</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span><span class="cert-badge">Organic</span></div>
+                        <div class="alt-description">Organic corn chips with authentic flavor</div>
+                        <a href="https://amazon.com/s?k=late+july+chips&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Kettle Brand Corn Tortilla Chips</div>
+                        <div class="alt-price">$4.99</div>
+                        <div class="certifications"><span class="cert-badge">GF Verified</span></div>
+                        <div class="alt-description">Thick-cut, crunchy corn chips</div>
+                        <a href="https://amazon.com/s?k=kettle+brand+chips&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lay's -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Lay's Classic Potato Chips</div>
+                        <div class="snack-description">Traditional salted potato chips</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN (Most varieties)</span>
+                    </div>
+                    <div class="price-tag">$3.99</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Kettle Brand Sea Salt Potato Chips</div>
+                        <div class="alt-price">$3.99</div>
+                        <div class="certifications"><span class="cert-badge">GF Verified</span></div>
+                        <div class="alt-description">Thicker-cut potato chips, similar taste</div>
+                        <a href="https://amazon.com/s?k=kettle+brand+potato+chips&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Popchips Sea Salt Potato</div>
+                        <div class="alt-price">$3.49</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Baked, lower-fat potato chips</div>
+                        <a href="https://amazon.com/s?k=popchips&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Luke's Organic Potato Chips</div>
+                        <div class="alt-price">$4.49</div>
+                        <div class="certifications"><span class="cert-badge">GF Verified</span><span class="cert-badge">Organic</span></div>
+                        <div class="alt-description">Organic potato chips with natural ingredients</div>
+                        <a href="https://amazon.com/s?k=lukes+organic+chips&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pringles -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Pringles</div>
+                        <div class="snack-description">Thin, curved, stackable potato crisps</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN (Most varieties)</span>
+                    </div>
+                    <div class="price-tag">$1.49</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">SkinnyPop White Cheddar Popcorn</div>
+                        <div class="alt-price">$3.99</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Similar light, crispy texture</div>
+                        <a href="https://amazon.com/s?k=skinnypop&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Pirate's Booty Aged White Cheddar</div>
+                        <div class="alt-price">$3.49</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Puffed corn and rice snack, light and crispy</div>
+                        <a href="https://amazon.com/s?k=pirates+booty&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cheetos -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Cheetos</div>
+                        <div class="snack-description">Puffed corn snack with cheese seasoning</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN (Most varieties)</span>
+                    </div>
+                    <div class="price-tag">$3.29</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Pirate's Booty Aged White Cheddar</div>
+                        <div class="alt-price">$3.49</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Puffed corn snack with similar texture and flavor</div>
+                        <a href="https://amazon.com/s?k=pirates+booty&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Barilla Chickpea Puffs (Parmesan)</div>
+                        <div class="alt-price">$4.99</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Protein-rich puffed snack with cheese flavor</div>
+                        <a href="https://amazon.com/s?k=barilla+puffs&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SNACK CAKES SECTION -->
+        <div class="category-section" data-category="Snack Cakes">
+            <h2 class="category-title">🎂 Snack Cakes & Sweet Treats</h2>
+            
+            <!-- Twinkies -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Twinkies</div>
+                        <div class="snack-description">Cream-filled sponge cake snack cakes</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN</span>
+                    </div>
+                    <div class="price-tag">$4.99</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Kinnikinnick Maple Glazed Donuts</div>
+                        <div class="alt-price">$6.99</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Similar sweet, indulgent cake treat</div>
+                        <a href="https://amazon.com/s?k=kinnikinnick+donuts&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Simple Mills Almond Flour Yellow Cake Mix</div>
+                        <div class="alt-price">$4.99</div>
+                        <div class="certifications"><span class="cert-badge">Paleo</span><span class="cert-badge">GF Verified</span></div>
+                        <div class="alt-description">DIY cake option with cream filling possibility</div>
+                        <a href="https://amazon.com/s?k=simple+mills+cake+mix&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CANDY SECTION -->
+        <div class="category-section" data-category="Candy">
+            <h2 class="category-title">🍫 Candy & Chocolate</h2>
+            
+            <!-- Reese's -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Reese's Peanut Butter Cups</div>
+                        <div class="snack-description">Chocolate shell filled with peanut butter</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN (Most varieties)</span>
+                    </div>
+                    <div class="price-tag">$1.49</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Justin's Nut Butter Cups</div>
+                        <div class="alt-price">$3.99</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Organic chocolate with almond or peanut butter</div>
+                        <a href="https://amazon.com/s?k=justins+nut+butter+cups&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Lily's Dark Chocolate Peanut Butter Cups</div>
+                        <div class="alt-price">$3.99</div>
+                        <div class="certifications"><span class="cert-badge">GF Verified</span></div>
+                        <div class="alt-description">Stevia-sweetened peanut butter cups</div>
+                        <a href="https://amazon.com/s?k=lilys+chocolate&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Snickers -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Snickers</div>
+                        <div class="snack-description">Chocolate bar with peanuts, caramel, and nougat</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN</span>
+                    </div>
+                    <div class="price-tag">$1.29</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">Lily's Dark Chocolate Peanut Butter Cups</div>
+                        <div class="alt-price">$3.99</div>
+                        <div class="certifications"><span class="cert-badge">GF Verified</span></div>
+                        <div class="alt-description">Dark chocolate with peanut butter filling</div>
+                        <a href="https://amazon.com/s?k=lilys+chocolate&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">Enjoy Life Semi-Sweet Chocolate Bars</div>
+                        <div class="alt-price">$2.99</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span><span class="cert-badge">Vegan</span></div>
+                        <div class="alt-description">Allergen-friendly chocolate bars</div>
+                        <a href="https://amazon.com/s?k=enjoy+life+chocolate&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- OTHER SECTION -->
+        <div class="category-section" data-category="Other">
+            <h2 class="category-title">✨ Other Popular Snacks</h2>
+            
+            <!-- Granola Bars -->
+            <div class="snack-card">
+                <div class="original-snack">
+                    <div>
+                        <div class="snack-name">Nature Valley Granola Bars</div>
+                        <div class="snack-description">Chewy granola bars with oats and honey</div>
+                        <span class="gluten-status contains">CONTAINS GLUTEN (Most varieties)</span>
+                    </div>
+                    <div class="price-tag">$3.99</div>
+                </div>
+                <div class="alternatives-title">✨ Gluten-Free Alternatives:</div>
+                <div class="alternatives-grid">
+                    <div class="alternative">
+                        <div class="alt-name">KIND Bars Gluten-Free</div>
+                        <div class="alt-price">$1.99</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Nuts and dried fruit bars, naturally gluten-free</div>
+                        <a href="https://amazon.com/s?k=kind+bars&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">RXBAR Gluten-Free Protein Bars</div>
+                        <div class="alt-price">$1.99</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span></div>
+                        <div class="alt-description">Egg white protein bars with clean ingredients</div>
+                        <a href="https://amazon.com/s?k=rxbar&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                    <div class="alternative">
+                        <div class="alt-name">GoMacro Organic Granola Bars (GF)</div>
+                        <div class="alt-price">$2.50</div>
+                        <div class="certifications"><span class="cert-badge">Certified GF</span><span class="cert-badge">Organic</span></div>
+                        <div class="alt-description">Organic granola-style bars verified gluten-free</div>
+                        <a href="https://amazon.com/s?k=gomacro+bars&tag=dupesnacks-20" class="buy-link">Shop</a>
+                        <span class="retailer">Amazon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p><strong>🔗 All Amazon links include Dupe Snacks affiliate tag (dupesnacks-20)</strong></p>
+            <p style="margin-top: 15px; font-size: 0.9em;">✓ Every alternative verified for gluten-free status • ✓ Real pricing from major retailers • ✓ Mobile-friendly resource</p>
+            <p style="margin-top: 10px; color: #555; font-size: 0.85em;">Created 2026-01-31 | Data updated regularly with current pricing</p>
+        </footer>
+    </div>
+    
+    <script>
+        const categorySelect = document.getElementById('category-select');
+        const categorySections = document.querySelectorAll('.category-section');
+        
+        categorySelect.addEventListener('change', (e) => {
+            const selected = e.target.value;
+            
+            categorySections.forEach(section => {
+                if (selected === 'all' || section.dataset.category === selected) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

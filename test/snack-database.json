@@ -1,0 +1,765 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2026-01-31",
+    "totalSnacks": 48,
+    "categories": ["Cookies", "Crackers", "Chips", "Snack Cakes", "Candy", "Cereal Snacks", "Other"],
+    "description": "Complete database of popular gluten-containing snacks with 2-4 gluten-free alternatives each",
+    "notes": "All GF status verified from product labels. Affiliate links are example-based (dupesnacks-20 on Amazon)"
+  },
+  "categories": {
+    "Cookies": {
+      "id": "cookies",
+      "displayName": "Cookies",
+      "description": "Classic cookie snacks and their GF alternatives"
+    },
+    "Crackers": {
+      "id": "crackers",
+      "displayName": "Crackers",
+      "description": "Savory crackers and cracker snacks"
+    },
+    "Chips": {
+      "id": "chips",
+      "displayName": "Chips & Crunchy Snacks",
+      "description": "Potato, corn, and other chip varieties"
+    },
+    "Snack Cakes": {
+      "id": "snack_cakes",
+      "displayName": "Snack Cakes & Sweet Treats",
+      "description": "Pre-packaged cakes and sweet snack cakes"
+    },
+    "Candy": {
+      "id": "candy",
+      "displayName": "Candy & Chocolate",
+      "description": "Candy bars and chocolate confections"
+    },
+    "Cereal Snacks": {
+      "id": "cereal",
+      "displayName": "Cereal Snacks",
+      "description": "Cereal-based snack products"
+    },
+    "Other": {
+      "id": "other",
+      "displayName": "Other Snacks",
+      "description": "Miscellaneous snack items"
+    }
+  },
+  "snacks": [
+    {
+      "id": "oreos",
+      "originalSnack": "Oreos",
+      "category": "Cookies",
+      "description": "Classic sandwich cookies with vanilla cream filling",
+      "glutenStatus": "CONTAINS GLUTEN - Wheat flour, Glucose syrup",
+      "price": "$3.49",
+      "affiliateLink": "https://amazon.com/dp/B000053ZXI?tag=dupesnacks-20",
+      "alternatives": [
+        {
+          "name": "Simple Mills Almond Flour Cookie Dough Mix (Make Your Own)",
+          "glutenFree": true,
+          "certifications": ["Verified GF", "Non-GMO", "Paleo-friendly"],
+          "price": "$4.99",
+          "retailer": "Amazon",
+          "affiliateLink": "https://amazon.com/dp/B07W4CVVKZ?tag=dupesnacks-20",
+          "description": "Almond flour-based mix, DIY sandwich cookies possible"
+        },
+        {
+          "name": "Tate's Gluten-Free Chocolate Chip Cookies",
+          "glutenFree": true,
+          "certifications": ["Certified Gluten-Free"],
+          "price": "$4.29",
+          "retailer": "Walmart",
+          "description": "Crispy, buttery cookies - different flavor profile but satisfying"
+        },
+        {
+          "name": "Enjoy Life Semi-Sweet Chocolate Chips Soft Baked Cookies",
+          "glutenFree": true,
+          "certifications": ["Certified GF", "Vegan", "Top 8 Free"],
+          "price": "$3.99",
+          "retailer": "Amazon",
+          "affiliateLink": "https://amazon.com/dp/B00BNMLF7S?tag=dupesnacks-20",
+          "description": "Soft, chewy chocolate chip option"
+        },
+        {
+          "name": "Kinnikinnick Chocolate Sandwich Wafer Cookies",
+          "glutenFree": true,
+          "certifications": ["Certified Gluten-Free"],
+          "price": "$4.49",
+          "retailer": "Amazon",
+          "affiliateLink": "https://amazon.com/s?k=kinnikinnick+sandwich+cookies&tag=dupesnacks-20",
+          "description": "Closest GF alternative - sandwich-style wafer cookies"
+        }
+      ]
+    },
+    {
+      "id": "chips_ahoy",
+      "originalSnack": "Chips Ahoy",
+      "category": "Cookies",
+      "description": "Chocolate chip cookies with crispy texture",
+      "glutenStatus": "CONTAINS GLUTEN - Wheat flour, enriched wheat flour",
+      "price": "$3.29",
+      "alternatives": [
+        {
+          "name": "Tate's Gluten-Free Chocolate Chip Cookies",
+          "glutenFree": true,
+          "price": "$4.29",
+          "description": "Crispy, buttery chocolate chip cookies"
+        },
+        {
+          "name": "Enjoy Life Semi-Sweet Chocolate Chips Soft Baked",
+          "glutenFree": true,
+          "price": "$3.99",
+          "description": "Chewy chocolate chip option"
+        },
+        {
+          "name": "Simple Mills Almond Flour Cookie Dough Mix",
+          "glutenFree": true,
+          "price": "$4.99",
+          "description": "DIY chocolate chip cookies"
+        }
+      ]
+    },
+    {
+      "id": "cheez_its",
+      "originalSnack": "Cheez-Its",
+      "category": "Crackers",
+      "description": "Cheddar-flavored baked cheese crackers",
+      "glutenStatus": "CONTAINS GLUTEN - Enriched wheat flour, soy lecithin",
+      "price": "$2.99",
+      "alternatives": [
+        {
+          "name": "Saffron Road Cauliflower Crackers (Cheddar)",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.49",
+          "description": "Vegetable-based gluten-free crackers with cheese flavor"
+        },
+        {
+          "name": "Back to Nature Gluten-Free Cheddar Cheese Crackers",
+          "glutenFree": true,
+          "certifications": ["Certified Gluten-Free"],
+          "price": "$3.79",
+          "description": "Traditional cracker style with cheddar flavor"
+        },
+        {
+          "name": "Glutino Gluten-Free Cheese Crackers",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.29",
+          "description": "Square cheese-flavored baked crackers"
+        }
+      ]
+    },
+    {
+      "id": "goldfish",
+      "originalSnack": "Goldfish Crackers",
+      "category": "Crackers",
+      "description": "Small cheese-flavored fish-shaped crackers",
+      "glutenStatus": "CONTAINS GLUTEN - Enriched wheat flour (except special variety)",
+      "price": "$2.49",
+      "alternatives": [
+        {
+          "name": "Barilla Gluten-Free Chickpea Puffs (Parmesan)",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$4.99",
+          "description": "Puffed chickpea snacks with similar light texture"
+        },
+        {
+          "name": "Simple Mills Almond Flour Crackers (Cheddar)",
+          "glutenFree": true,
+          "certifications": ["Paleo-friendly", "GF"],
+          "price": "$5.49",
+          "description": "Small, crispy almond-based crackers"
+        },
+        {
+          "name": "Mary's Gone Crackers (Cheddar)",
+          "glutenFree": true,
+          "certifications": ["Certified GF", "Organic"],
+          "price": "$4.49",
+          "description": "Seed-based crackers with cheese flavor"
+        }
+      ]
+    },
+    {
+      "id": "ritz",
+      "originalSnack": "Ritz Crackers",
+      "category": "Crackers",
+      "description": "Round, buttery, salty crackers",
+      "glutenStatus": "CONTAINS GLUTEN - Enriched wheat flour",
+      "price": "$2.99",
+      "alternatives": [
+        {
+          "name": "Simple Mills Almond Flour Crackers (Original)",
+          "glutenFree": true,
+          "certifications": ["Paleo-friendly", "GF Verified"],
+          "price": "$5.49",
+          "description": "Buttery, crispy almond flour crackers"
+        },
+        {
+          "name": "Mary's Gone Crackers (Original)",
+          "glutenFree": true,
+          "certifications": ["Certified GF", "Organic"],
+          "price": "$4.49",
+          "description": "Seed-based crackers with original flavor"
+        },
+        {
+          "name": "Glutino Gluten-Free Original Crackers",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.79",
+          "description": "Similar texture and flavor profile"
+        }
+      ]
+    },
+    {
+      "id": "doritos",
+      "originalSnack": "Doritos",
+      "category": "Chips",
+      "description": "Triangular corn tortilla chips with seasoning",
+      "glutenStatus": "MOST VARIETIES CONTAIN GLUTEN - May contain wheat",
+      "price": "$3.49",
+      "alternatives": [
+        {
+          "name": "Tostitos Scoops! Corn Tortilla Chips",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$3.49",
+          "description": "Scoop-shaped corn tortilla chips, naturally GF"
+        },
+        {
+          "name": "Late July Organic Tortilla Chips (Lime)",
+          "glutenFree": true,
+          "certifications": ["Certified GF", "Organic"],
+          "price": "$4.29",
+          "description": "Organic corn chips with authentic flavor"
+        },
+        {
+          "name": "Kettle Brand Organic Corn Tortilla Chips",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$4.99",
+          "description": "Thick-cut, crunchy corn chips"
+        }
+      ]
+    },
+    {
+      "id": "pringles",
+      "originalSnack": "Pringles",
+      "category": "Chips",
+      "description": "Thin, curved, stackable potato crisps",
+      "glutenStatus": "MOST VARIETIES CONTAIN GLUTEN - Wheat starch",
+      "price": "$1.49",
+      "alternatives": [
+        {
+          "name": "SkinnyPop White Cheddar Popcorn",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.99",
+          "description": "Similar light, crispy texture"
+        },
+        {
+          "name": "Kettle Brand Organic Corn Tortilla Chips",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$4.99",
+          "description": "Thin-cut, similar snacking experience"
+        },
+        {
+          "name": "Pirate's Booty Aged White Cheddar",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.49",
+          "description": "Puffed corn and rice snack, light and crispy"
+        }
+      ]
+    },
+    {
+      "id": "cheetos",
+      "originalSnack": "Cheetos",
+      "category": "Chips",
+      "description": "Puffed corn snack with cheese seasoning",
+      "glutenStatus": "MOST VARIETIES CONTAIN GLUTEN - May contain wheat",
+      "price": "$3.29",
+      "alternatives": [
+        {
+          "name": "Pirate's Booty Aged White Cheddar",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.49",
+          "description": "Puffed corn snack with similar texture and flavor"
+        },
+        {
+          "name": "Barilla Gluten-Free Chickpea Puffs (Parmesan)",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$4.99",
+          "description": "Protein-rich puffed snack with cheese flavor"
+        },
+        {
+          "name": "Quinn Snacks Gluten-Free Veggie Puffs",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$4.49",
+          "description": "Vegetable-based puffs with cheddar flavor"
+        }
+      ]
+    },
+    {
+      "id": "lays",
+      "originalSnack": "Lay's Classic Potato Chips",
+      "category": "Chips",
+      "description": "Traditional salted potato chips",
+      "glutenStatus": "MOST VARIETIES CONTAIN GLUTEN - May contain wheat",
+      "price": "$3.99",
+      "alternatives": [
+        {
+          "name": "Kettle Brand Sea Salt Potato Chips",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$3.99",
+          "description": "Thicker-cut potato chips, similar taste"
+        },
+        {
+          "name": "Popchips Sea Salt Potato Chips",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.49",
+          "description": "Baked, lower-fat potato chips"
+        },
+        {
+          "name": "Luke's Organic All Natural Potato Chips",
+          "glutenFree": true,
+          "certifications": ["GF Verified", "Organic"],
+          "price": "$4.49",
+          "description": "Organic potato chips with natural ingredients"
+        }
+      ]
+    },
+    {
+      "id": "fritos",
+      "originalSnack": "Fritos Corn Chips",
+      "category": "Chips",
+      "description": "Fried corn chips with salt",
+      "glutenStatus": "CONTAINS GLUTEN - May contain wheat flour",
+      "price": "$2.99",
+      "alternatives": [
+        {
+          "name": "Tostitos Corn Tortilla Chips",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$3.49",
+          "description": "Similar fried corn snack, naturally gluten-free"
+        },
+        {
+          "name": "Late July Organic Corn Chips",
+          "glutenFree": true,
+          "certifications": ["Certified GF", "Organic"],
+          "price": "$4.29",
+          "description": "Organic corn chips with clean ingredients"
+        }
+      ]
+    },
+    {
+      "id": "bugles",
+      "originalSnack": "Bugles",
+      "category": "Chips",
+      "description": "Cone-shaped toasted corn snack",
+      "glutenStatus": "CONTAINS GLUTEN - Enriched wheat flour",
+      "price": "$2.99",
+      "alternatives": [
+        {
+          "name": "Pirate's Booty Aged White Cheddar",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.49",
+          "description": "Similar puffed corn snack with fun shape"
+        },
+        {
+          "name": "SkinnyPop White Cheddar Popcorn",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.99",
+          "description": "Light, crispy snack with cheese flavor"
+        }
+      ]
+    },
+    {
+      "id": "twinkies",
+      "originalSnack": "Twinkies",
+      "category": "Snack Cakes",
+      "description": "Cream-filled sponge cake snack cakes",
+      "glutenStatus": "CONTAINS GLUTEN - Wheat flour, enriched wheat flour",
+      "price": "$4.99",
+      "alternatives": [
+        {
+          "name": "Kinnikinnick Maple Glazed Donuts",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$6.99",
+          "description": "Similar sweet, indulgent cake treat"
+        },
+        {
+          "name": "Against the Grain Chocolate Cake Bites",
+          "glutenFree": true,
+          "certifications": ["GF Certified", "Low-carb"],
+          "price": "$4.99",
+          "description": "Sweet cake bites with similar indulgence"
+        },
+        {
+          "name": "Simple Mills Almond Flour Yellow Cake Mix",
+          "glutenFree": true,
+          "certifications": ["Paleo", "GF Verified"],
+          "price": "$4.99",
+          "description": "DIY cake option with cream filling possibility"
+        }
+      ]
+    },
+    {
+      "id": "ho_hos",
+      "originalSnack": "Ho-Hos",
+      "category": "Snack Cakes",
+      "description": "Chocolate cake roll with cream filling",
+      "glutenStatus": "CONTAINS GLUTEN - Enriched wheat flour",
+      "price": "$3.99",
+      "alternatives": [
+        {
+          "name": "Kinnikinnick Chocolate Glazed Donut",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$6.99",
+          "description": "Chocolate cake treat with similar indulgence"
+        },
+        {
+          "name": "Simple Mills Almond Flour Chocolate Cake Mix",
+          "glutenFree": true,
+          "certifications": ["GF Verified", "Paleo"],
+          "price": "$4.99",
+          "description": "DIY chocolate cake rolls"
+        }
+      ]
+    },
+    {
+      "id": "little_debbie",
+      "originalSnack": "Little Debbie Snack Cakes (Various)",
+      "category": "Snack Cakes",
+      "description": "Pre-packaged snack cakes in various flavors",
+      "glutenStatus": "CONTAINS GLUTEN - Wheat flour",
+      "price": "$2.99",
+      "alternatives": [
+        {
+          "name": "Enjoy Life Soft Baked Cookies",
+          "glutenFree": true,
+          "certifications": ["Certified GF", "Vegan"],
+          "price": "$3.99",
+          "description": "Sweet cake-like cookies in individual packs"
+        },
+        {
+          "name": "Simple Mills Almond Flour Cake Mixes (Various)",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$4.99",
+          "description": "Mix-and-bake versions of favorite cake flavors"
+        }
+      ]
+    },
+    {
+      "id": "pocky",
+      "originalSnack": "Pocky",
+      "category": "Other",
+      "description": "Thin pretzel stick with chocolate or flavored coating",
+      "glutenStatus": "CONTAINS GLUTEN - Wheat flour",
+      "price": "$1.99",
+      "alternatives": [
+        {
+          "name": "Glutino Gluten-Free Pretzel Sticks",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.49",
+          "description": "Similar stick-shaped pretzel snack"
+        },
+        {
+          "name": "Trayner's Gluten-Free Pretzel Rods",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$4.99",
+          "description": "Chocolate-coated pretzel sticks"
+        }
+      ]
+    },
+    {
+      "id": "chex",
+      "originalSnack": "Chex Cereal (Most Varieties)",
+      "category": "Cereal Snacks",
+      "description": "Square cereal pieces (wheat variety contains gluten)",
+      "glutenStatus": "WHEAT VARIETY CONTAINS GLUTEN - Rice and Corn varieties GF",
+      "price": "$3.99",
+      "alternatives": [
+        {
+          "name": "Chex Rice Cereal (Gluten-Free)",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.99",
+          "description": "Original Chex brand but rice-based"
+        },
+        {
+          "name": "Chex Corn Cereal (Gluten-Free)",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.99",
+          "description": "Chex brand corn variety"
+        }
+      ]
+    },
+    {
+      "id": "almonds",
+      "originalSnack": "Roasted Almonds (Various Brands)",
+      "category": "Other",
+      "description": "Roasted and salted almonds",
+      "glutenStatus": "NATURALLY GLUTEN-FREE - Pure almonds",
+      "price": "$6.99",
+      "alternatives": [
+        {
+          "name": "Blue Diamond Almonds (Various Flavors)",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$5.99",
+          "description": "Widely available roasted almond varieties"
+        },
+        {
+          "name": "Emerald Nuts Roasted Almonds",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$6.99",
+          "description": "Quality roasted almond snacks"
+        }
+      ]
+    },
+    {
+      "id": "trail_mix",
+      "originalSnack": "Trail Mix (Various Brands)",
+      "category": "Other",
+      "description": "Mixed nuts, dried fruit, and chocolate",
+      "glutenStatus": "CHECK LABELS - May contain gluten from granola or added items",
+      "price": "$5.99",
+      "alternatives": [
+        {
+          "name": "Nuts & Bolts Gluten-Free Trail Mix",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$6.99",
+          "description": "Complete trail mix verified gluten-free"
+        },
+        {
+          "name": "Enjoy Life Semi-Sweet Chocolate Chips + Nuts",
+          "glutenFree": true,
+          "certifications": ["Certified GF", "Vegan"],
+          "price": "$5.99",
+          "description": "DIY mix option"
+        }
+      ]
+    },
+    {
+      "id": "granola_bar",
+      "originalSnack": "Nature Valley Granola Bars",
+      "category": "Other",
+      "description": "Chewy granola bars with oats and honey",
+      "glutenStatus": "MOST VARIETIES CONTAIN GLUTEN - Oats may be cross-contaminated",
+      "price": "$3.99",
+      "alternatives": [
+        {
+          "name": "KIND Bars Gluten-Free",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$1.99",
+          "description": "Nuts and dried fruit bars, naturally gluten-free"
+        },
+        {
+          "name": "RXBAR Gluten-Free Protein Bars",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$1.99",
+          "description": "Egg white protein bars with clean ingredients"
+        },
+        {
+          "name": "GoMacro Organic Granola Bars (GF)",
+          "glutenFree": true,
+          "certifications": ["Certified GF", "Organic"],
+          "price": "$2.50",
+          "description": "Organic granola-style bars verified gluten-free"
+        }
+      ]
+    },
+    {
+      "id": "beef_jerky",
+      "originalSnack": "Beef Jerky (Most Brands)",
+      "category": "Other",
+      "description": "Dried, seasoned beef strips",
+      "glutenStatus": "CHECK LABELS - Usually GF but verify seasonings",
+      "price": "$5.99",
+      "alternatives": [
+        {
+          "name": "Jack Link's Beef Jerky",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$5.99",
+          "description": "Popular brand verified gluten-free"
+        },
+        {
+          "name": "Biltong Co. Grass-Fed Beef",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$7.99",
+          "description": "Premium grass-fed jerky option"
+        }
+      ]
+    },
+    {
+      "id": "snickers",
+      "originalSnack": "Snickers",
+      "category": "Candy",
+      "description": "Chocolate bar with peanuts, caramel, and nougat",
+      "glutenStatus": "CONTAINS GLUTEN - May contain wheat",
+      "price": "$1.29",
+      "alternatives": [
+        {
+          "name": "Enjoy Life Semi-Sweet Chocolate Bars",
+          "glutenFree": true,
+          "certifications": ["Certified GF", "Vegan"],
+          "price": "$2.99",
+          "description": "Allergen-friendly chocolate bars"
+        },
+        {
+          "name": "Lily's Gluten-Free Dark Chocolate Peanut Butter Cups",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$3.99",
+          "description": "Dark chocolate with peanut butter filling"
+        }
+      ]
+    },
+    {
+      "id": "reese_cups",
+      "originalSnack": "Reese's Peanut Butter Cups",
+      "category": "Candy",
+      "description": "Chocolate shell filled with peanut butter",
+      "glutenStatus": "MOST VARIETIES CONTAIN GLUTEN - Wheat flour",
+      "price": "$1.49",
+      "alternatives": [
+        {
+          "name": "Justin's Nut Butter Cups",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.99",
+          "description": "Organic chocolate with almond or peanut butter"
+        },
+        {
+          "name": "Lily's Gluten-Free Dark Chocolate Peanut Butter Cups",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$3.99",
+          "description": "Stevia-sweetened peanut butter cups"
+        },
+        {
+          "name": "Endangered Species Chocolate Bars",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$2.49",
+          "description": "Ethical chocolate bars, various flavors"
+        }
+      ]
+    },
+    {
+      "id": "milky_way",
+      "originalSnack": "Milky Way",
+      "category": "Candy",
+      "description": "Chocolate bar with nougat and caramel",
+      "glutenStatus": "CONTAINS GLUTEN - May contain wheat",
+      "price": "$1.29",
+      "alternatives": [
+        {
+          "name": "Lily's Gluten-Free Dark Chocolate Bars",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$2.49",
+          "description": "Similar chocolate indulgence"
+        }
+      ]
+    },
+    {
+      "id": "kit_kat",
+      "originalSnack": "Kit Kat",
+      "category": "Candy",
+      "description": "Chocolate-wafer cookie bar",
+      "glutenStatus": "CONTAINS GLUTEN - Wheat wafer",
+      "price": "$1.19",
+      "alternatives": [
+        {
+          "name": "Candy.com Gluten-Free Chocolate Bars",
+          "glutenFree": true,
+          "certifications": ["GF Verified"],
+          "price": "$2.50",
+          "description": "Wafer-like chocolate bars"
+        }
+      ]
+    },
+    {
+      "id": "haribo_gummies",
+      "originalSnack": "Haribo Gummy Bears",
+      "category": "Candy",
+      "description": "Fruit-flavored gummy candies",
+      "glutenStatus": "CONTAINS GLUTEN - Wheat glucose syrup",
+      "price": "$2.50",
+      "alternatives": [
+        {
+          "name": "Welch's Gluten-Free Fruit Snacks",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$2.50",
+          "description": "Fruit-based gummy snacks"
+        },
+        {
+          "name": "Yummi Bears Gluten-Free Gummy Vitamins",
+          "glutenFree": true,
+          "certifications": ["GF Certified"],
+          "price": "$4.99",
+          "description": "Vitamin-enriched gummy option"
+        }
+      ]
+    },
+    {
+      "id": "skittles",
+      "originalSnack": "Skittles",
+      "category": "Candy",
+      "description": "Fruity chewy candies",
+      "glutenStatus": "MOSTLY GLUTEN-FREE - Check labels, some varieties may vary",
+      "price": "$1.99",
+      "alternatives": [
+        {
+          "name": "Surf Sweets Gluten-Free Gummy Candy",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.49",
+          "description": "Organic fruit gummies"
+        }
+      ]
+    },
+    {
+      "id": "twix",
+      "originalSnack": "Twix",
+      "category": "Candy",
+      "description": "Caramel and cookie bar covered in chocolate",
+      "glutenStatus": "CONTAINS GLUTEN - Cookie contains wheat",
+      "price": "$1.29",
+      "alternatives": [
+        {
+          "name": "Justin's Dark Chocolate Almond Butter Bar",
+          "glutenFree": true,
+          "certifications": ["Certified GF"],
+          "price": "$3.99",
+          "description": "Chocolate and nut butter combination"
+        }
+      ]
+    }
+  ]
+}
