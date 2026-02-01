@@ -13,9 +13,8 @@
         body {
             background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%231a1a2e" width="100" height="100"/><circle cx="50" cy="50" r="30" fill="%23ff00ff" opacity="0.1"/><circle cx="20" cy="20" r="20" fill="%2300ffff" opacity="0.1"/></svg>');
             background-color: #1a1a2e;
-            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-            color: #00ff00;
-            text-shadow: 2px 2px 4px #ff00ff;
+            font-family: Arial, sans-serif;
+            color: #000;
             overflow-x: hidden;
             padding: 20px;
         }
@@ -23,10 +22,10 @@
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: linear-gradient(135deg, #ff00ff, #00ffff);
+            background: #fff;
             border: 5px dashed #ffff00;
             padding: 20px;
-            box-shadow: 0 0 20px #ff00ff, inset 0 0 20px rgba(0,255,255,0.3);
+            box-shadow: 0 0 20px #ff00ff;
         }
         
         .header {
@@ -37,31 +36,32 @@
         }
         
         .header h1 {
-            font-size: 3em;
-            color: #00ff00;
-            text-shadow: 3px 3px 0px #ff00ff, 6px 6px 0px #ffff00;
+            font-size: 2.5em;
+            color: #ff00ff;
+            text-shadow: 2px 2px #ffff00;
             margin: 10px 0;
-            transform: skew(-5deg);
+            transform: skew(-3deg);
             animation: pulse 2s infinite;
+            font-weight: bold;
         }
         
         .header p {
-            color: #ffff00;
-            font-size: 1.2em;
-            text-shadow: 2px 2px #ff00ff;
+            color: #ff00ff;
+            font-size: 1.1em;
             font-weight: bold;
         }
         
         .marquee {
             background: #ffff00;
-            color: #ff00ff;
+            color: #000;
             padding: 10px;
             font-weight: bold;
             margin: 15px 0;
-            border: 2px solid #00ff00;
+            border: 2px solid #ff00ff;
             overflow: hidden;
             white-space: nowrap;
             animation: scroll 8s linear infinite;
+            font-size: 0.95em;
         }
         
         @keyframes scroll {
@@ -82,50 +82,52 @@
         }
         
         .amigo {
-            background: #1a1a2e;
-            border: 3px solid #00ff00;
+            background: #f0f0ff;
+            border: 3px solid #ff00ff;
             padding: 15px;
-            box-shadow: 0 0 10px #00ff00;
+            box-shadow: 0 0 10px #ff00ff;
             border-radius: 10px;
+            margin-bottom: 10px;
         }
         
         .amigo h2 {
-            color: #ffff00;
+            color: #ff00ff;
             font-size: 1.8em;
-            text-shadow: 2px 2px #ff00ff;
             margin-bottom: 10px;
             border-bottom: 2px dashed #00ff00;
             padding-bottom: 8px;
+            font-weight: bold;
         }
         
         .amigo .name {
-            color: #00ff00;
+            color: #ff00ff;
             font-weight: bold;
             font-size: 1.3em;
-            text-shadow: 1px 1px #ff00ff;
         }
         
         .amigo .passion {
-            color: #00ffff;
+            color: #000;
             font-size: 1.1em;
             margin: 10px 0;
             padding: 8px;
-            background: rgba(255,0,255,0.1);
-            border-left: 3px solid #00ffff;
+            background: #ffffcc;
+            border-left: 3px solid #ff00ff;
+            font-weight: bold;
         }
         
         .amigo .bio {
-            color: #ffff00;
+            color: #000;
             font-size: 0.95em;
             line-height: 1.6;
             margin-top: 10px;
-            text-shadow: 1px 1px #00ff00;
         }
         
         .blinktext {
             animation: blink 1s infinite;
-            color: #ff00ff;
+            color: #000;
+            background: #ffff00;
             font-weight: bold;
+            padding: 2px 4px;
         }
         
         @keyframes blink {
@@ -137,13 +139,13 @@
             text-align: center;
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 3px dashed #00ff00;
-            color: #00ff00;
+            border-top: 3px dashed #ff00ff;
+            color: #000;
         }
         
         .star {
             display: inline-block;
-            font-size: 2em;
+            font-size: 1.5em;
             margin: 0 5px;
             animation: twinkle 1.5s infinite;
         }
@@ -156,17 +158,16 @@
         .social {
             margin: 15px 0;
             padding: 10px;
-            background: rgba(0,255,255,0.1);
-            border: 2px solid #00ffff;
+            background: #ffffcc;
+            border: 2px solid #ff00ff;
             text-align: center;
         }
         
         .social a {
-            color: #ffff00;
+            color: #ff00ff;
             text-decoration: none;
             margin: 0 10px;
             font-weight: bold;
-            text-shadow: 1px 1px #ff00ff;
         }
         
         .social a:hover {
@@ -178,7 +179,7 @@
             text-align: center;
             margin: 20px 0;
             font-size: 1.5em;
-            color: #00ffff;
+            color: #ff00ff;
         }
     </style>
 </head>
@@ -257,16 +258,16 @@
             <div class="star">⭐</div>
             <div class="star">💫</div>
             <div class="star">✨</div>
-            <p style="margin: 15px 0;">
+            <p style="margin: 15px 0; font-weight: bold; color: #000;">
                 three best friends. three VERY different obsessions.
             </p>
-            <p style="font-size: 0.9em; color: #00ffff;">
+            <p style="font-size: 0.9em; color: #000; font-weight: bold;">
                 « best friends forever » | updated on: AOL Instant Messenger |
             </p>
-            <p style="margin-top: 10px; color: #ffff00; font-size: 0.85em;">
+            <p style="margin-top: 10px; color: #ff00ff; font-size: 0.85em; font-weight: bold;">
                 🎵 this page is best viewed in Internet Explorer at 1024x768 resolution 🎵
             </p>
-            <p style="margin-top: 15px; font-size: 0.8em; color: #00ffff;">
+            <p style="margin-top: 15px; font-size: 0.8em; color: #000;">
                 made with pure chaos and Comic Sans &lt;3
             </p>
         </div>
