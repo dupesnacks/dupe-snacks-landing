@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dupe Snacks - Find Your Gluten-Free Match</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: #0f1419;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #00ffff, #ff006e);
+            border-radius: 8px;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00ffff;
+        }
+
+        /* Feature Section - COMPRESSED */
+        .features {
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(15, 20, 30, 0.8));
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+
+        .features h2 span {
+            color: #00ffff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            color: #00ffff;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 0.9em;
+            color: #aaa;
+            line-height: 1.4;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 110, 0.05));
+        }
+
+        .cta-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-arrow {
+            display: inline-block;
+            font-size: 1.5em;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 40px;
+            background: #0f1419;
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #00ffff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.05s; }
+        .product-card:nth-child(2) { animation-delay: 0.1s; }
+        .product-card:nth-child(3) { animation-delay: 0.15s; }
+        .product-card:nth-child(4) { animation-delay: 0.2s; }
+        .product-card:nth-child(5) { animation-delay: 0.25s; }
+        .product-card:nth-child(6) { animation-delay: 0.3s; }
+        .product-card:nth-child(7) { animation-delay: 0.35s; }
+        .product-card:nth-child(8) { animation-delay: 0.4s; }
+
+        .product-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.5);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-brand {
+            font-size: 0.75em;
+            font-weight: 700;
+            color: #00ffff;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 1em;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .product-color {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                display: flex;
+                gap: 20px;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            Dupe Snacks
+        </div>
+        <nav>
+            <a href="#browse">Browse</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Features Section (Compressed) -->
+    <section class="features">
+        <h2>Why <span>Dupe Snacks?</span></h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3>100% Verified GF</h3>
+                <p>Every alternative has been verified for gluten-free status. Your safety is our priority.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Real Prices</h3>
+                <p>Current pricing from major retailers (Amazon, Walmart, Target). No surprises.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Smart Matches</h3>
+                <p>We find ones that match the taste and texture you miss.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>Direct Links</h3>
+                <p>One-click shopping with affiliate links to Amazon, Walmart, and Target. Buy instantly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📂</div>
+                <h3>Organized by Category</h3>
+                <p>Find alternatives to cookies, crackers, chips, snack cakes. All neatly organized.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Always Growing</h3>
+                <p>We're constantly adding new snacks and alternatives as new gluten-free products hit the market.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA to scroll -->
+    <section class="cta-section">
+        <h3>Check Out Our Top Dupes Below</h3>
+        <div class="cta-arrow">↓</div>
+    </section>
+
+    <!-- Products Showcase -->
+    <section class="products" id="browse">
+        <h2>Featured Dupes</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img class="product-image" src="doritos.png" alt="Doritos">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Doritos</div>
+                    <div class="product-name">Nacho Cheese</div>
+                    <div class="product-color" style="background-color: rgb(255, 100, 50);"></div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img class="product-image" src="lay_s.png" alt="Lay's">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Lay's</div>
+                    <div class="product-name">Barbecue</div>
+                    <div class="product-color" style="background-color: rgb(100, 50, 255);"></div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img class="product-image" src="chips_ahoy.png" alt="Chips Ahoy">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Chips Ahoy</div>
+                    <div class="product-name">Mini Chocolate Chip</div>
+                    <div class="product-color" style="background-color: rgb(50, 150, 255);"></div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img class="product-image" src="goldfish.png" alt="Goldfish">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Goldfish</div>
+                    <div class="product-name">Cheddar</div>
+                    <div class="product-color" style="background-color: rgb(255, 150, 100);"></div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img class="product-image" src="doritos.png" alt="Doritos Party">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Doritos</div>
+                    <div class="product-name">Party Size</div>
+                    <div class="product-color" style="background-color: rgb(255, 80, 100);"></div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img class="product-image" src="oreo.png" alt="Oreo">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Oreo</div>
+                    <div class="product-name">Classic</div>
+                    <div class="product-color" style="background-color: rgb(100, 100, 255);"></div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img class="product-image" src="cheez-it.png" alt="Cheez-It">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Cheez-It</div>
+                    <div class="product-name">Original</div>
+                    <div class="product-color" style="background-color: rgb(255, 200, 100);"></div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img class="product-image" src="hostess.png" alt="Hostess">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Hostess</div>
+                    <div class="product-name">Twinkies</div>
+                    <div class="product-color" style="background-color: rgb(200, 150, 255);"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>© 2026 Dupe Snacks. Finding your perfect gluten-free match.</div>
+    </footer>
+</body>
+</html>
