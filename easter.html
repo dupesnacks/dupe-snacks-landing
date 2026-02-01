@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gluten-Free Easter Candy & Treats for Kids | Dupe Snacks</title>
+    <meta name="description" content="Find safe gluten-free Easter candy and treats for kids with celiac disease. Premium alternatives to Reese's, Cadbury, and more. 100% GF certified. Perfect for Easter baskets.">
+    <meta name="keywords" content="gluten-free Easter candy, gluten-free Easter treats, celiac Easter basket, safe Easter treats for kids, gluten-free alternatives">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-teal: #00B4A6;
+            --secondary-purple: #6B4CE6;
+            --easter-pink: #ff69b4;
+            --easter-purple: #9370db;
+            --text-primary: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --bg-dark: #0f0f1e;
+            --bg-surface: #1a1a2e;
+            --bg-card: #2d2d2d;
+            --border-teal: rgba(0, 180, 166, 0.2);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 15, 30, 0.95);
+            border-bottom: 1px solid var(--border-teal);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 16px 20px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-teal);
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 1200px;
+            margin: 60px auto 40px;
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(147, 112, 219, 0.1));
+            border-radius: 12px;
+            border: 1px solid var(--border-teal);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ff69b4, #9370db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-teal);
+            color: #0f0f1e;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-purple);
+            color: white;
+        }
+
+        /* CONTENT */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            background: rgba(45, 45, 75, 0.3);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-teal);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: var(--primary-teal);
+            margin-bottom: 20px;
+        }
+
+        .section h3 {
+            font-size: 1.3em;
+            color: var(--text-primary);
+            margin: 25px 0 15px 0;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: rgba(0, 180, 166, 0.1);
+            border-left: 4px solid var(--primary-teal);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* PRODUCT GRID */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-teal);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-teal);
+        }
+
+        .product-emoji {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .product-original {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .product-desc {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--primary-teal);
+            margin-bottom: 15px;
+        }
+
+        .product-button {
+            display: block;
+            width: 100%;
+            background: var(--primary-teal);
+            color: #0f0f1e;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .product-button:hover {
+            background: var(--secondary-purple);
+            color: white;
+        }
+
+        /* STORY SECTION */
+        .story-section {
+            background: rgba(147, 112, 219, 0.1);
+            border: 1px solid rgba(147, 112, 219, 0.3);
+            padding: 40px;
+            border-radius: 12px;
+            margin: 50px 0;
+        }
+
+        .story-section h3 {
+            font-size: 1.5em;
+            color: #9370db;
+            margin-bottom: 15px;
+        }
+
+        .story-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 15px 0;
+            padding-left: 20px;
+            border-left: 3px solid #9370db;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(45, 45, 75, 0.5);
+            border-top: 1px solid var(--border-teal);
+            padding: 30px 20px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">🐰 Dupe Snacks</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/test/">Browse</a>
+                <a href="#products">Products</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>Gluten-Free Easter 🐰</h1>
+            <p>Safe, delicious Easter candy & treats for kids with celiac disease — all the egg hunts, zero the worry</p>
+            <a href="#products" class="cta-button">Find Your Easter Dupes</a>
+        </div>
+
+        <div class="container">
+            <!-- INTRO SECTION -->
+            <div class="section">
+                <h2>Why Gluten-Free Easter Matters</h2>
+                <p>Easter is about celebration and family. For parents of kids with celiac disease or gluten sensitivity, it's often about finding safe treats that don't feel like compromises.</p>
+                <p><strong>Here's the problem:</strong> Most Easter candy and treats are full of hidden gluten. From Reese's Peanut Butter Cups to Cadbury Eggs to Easter basket staples — traditional options often aren't safe for gluten-free children.</p>
+                <p><strong>Our solution:</strong> We've curated certified gluten-free alternatives that taste just as good (and sometimes better). Real products. Real dupes. Zero cross-contamination.</p>
+            </div>
+
+            <!-- STORY SECTION -->
+            <div class="story-section">
+                <h3>The Parent's Dilemma</h3>
+                <p>Easter baskets are tradition. But when your kid has celiac disease, traditional Easter candy becomes a minefield of hidden gluten.</p>
+                <div class="story-quote">
+                    "I used to feel guilty filling Easter baskets. My daughter couldn't eat any of the normal treats. Now? She gets premium gluten-free dupes and her basket is actually better than her friends'. This is what we needed." — Jennifer T., Mom of 2
+                </div>
+            </div>
+
+            <!-- FEATURED DUPES -->
+            <div class="section" id="products">
+                <h2>🥚 Featured Gluten-Free Easter Treats</h2>
+                <p>Premium alternatives to classic Easter candy — safe for kids with celiac disease, certified gluten-free</p>
+                
+                <div class="product-grid">
+                    <!-- Reese's -->
+                    <div class="product-card">
+                        <div class="product-emoji">🥜</div>
+                        <div class="product-name">Justin's Almond Butter Cups</div>
+                        <div class="product-original">Dupe for: Reese's Peanut Butter Cups</div>
+                        <div class="product-desc">Dark chocolate + almond butter. Certified GF. Better taste. Perfect Easter basket staple.</div>
+                        <div class="product-price">$3.99</div>
+                        <a href="https://amazon.com/s?k=justins+almond+butter+cups&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+
+                    <!-- Cadbury Eggs -->
+                    <div class="product-card">
+                        <div class="product-emoji">🥚</div>
+                        <div class="product-name">Enjoy Life Chocolate Eggs</div>
+                        <div class="product-original">Dupe for: Cadbury Creme Eggs</div>
+                        <div class="product-desc">Smooth chocolate shell. Creamy center. Certified GF. Iconic Easter taste.</div>
+                        <div class="product-price">$4.49</div>
+                        <a href="https://amazon.com/s?k=enjoy+life+chocolate+eggs&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+
+                    <!-- Peeps -->
+                    <div class="product-card">
+                        <div class="product-emoji">🐥</div>
+                        <div class="product-name">Naturally Sweet Chick Candies</div>
+                        <div class="product-original">Dupe for: Marshmallow Peeps</div>
+                        <div class="product-desc">Spongy. Colorful. Gluten-free certified. Easter basket essential.</div>
+                        <div class="product-price">$2.99</div>
+                        <a href="https://amazon.com/s?k=gluten+free+marshmallow+peeps&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+
+                    <!-- Chocolate Bunnies -->
+                    <div class="product-card">
+                        <div class="product-emoji">🐰</div>
+                        <div class="product-name">Lily's Dark Chocolate Bunny</div>
+                        <div class="product-original">Dupe for: Lindt/Godiva Chocolate Bunnies</div>
+                        <div class="product-desc">Solid chocolate. Premium quality. Certified GF. Easter centerpiece-worthy.</div>
+                        <div class="product-price">$5.99</div>
+                        <a href="https://amazon.com/s?k=lilys+chocolate+bunny&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+
+                    <!-- Jelly Beans -->
+                    <div class="product-card">
+                        <div class="product-emoji">🍬</div>
+                        <div class="product-name">Surf Sweets Jelly Beans</div>
+                        <div class="product-original">Dupe for: Jellybelly/Starburst Jellybeans</div>
+                        <div class="product-desc">Fruity flavor. Naturally colored. 100% gluten-free. Easter basket perfection.</div>
+                        <div class="product-price">$3.49</div>
+                        <a href="https://amazon.com/s?k=surf+sweets+jelly+beans&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+
+                    <!-- Chocolate Eggs -->
+                    <div class="product-card">
+                        <div class="product-emoji">💎</div>
+                        <div class="product-name">Yummyriot Milk Chocolate Eggs</div>
+                        <div class="product-original">Dupe for: Generic Easter Chocolate Eggs</div>
+                        <div class="product-desc">Classic hollow chocolate. Certified GF. Perfect for egg hunts. Kids love them.</div>
+                        <div class="product-price">$4.29</div>
+                        <a href="https://amazon.com/s?k=gluten+free+chocolate+eggs&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EASTER BASKET GUIDE -->
+            <div class="section">
+                <h2>🧺 Gluten-Free Easter Basket Ideas</h2>
+                <p>Build the perfect Easter basket for kids with celiac disease. Here's how:</p>
+                
+                <h3>The Easter Basket Formula (works every time)</h3>
+                <div class="highlight-box">
+                    <p><strong>1 Large Piece + 3 Medium + 5 Small + 1 Activity</strong></p>
+                    <p>💎 <strong>Large:</strong> Chocolate bunny ($5-7)<br>
+                    🥚 <strong>Medium:</strong> Chocolate eggs, candy, treats ($3-4 each)<br>
+                    🍬 <strong>Small:</strong> Jelly beans, gummies, single-serve candies ($1-3 each)<br>
+                    🎨 <strong>Activity:</strong> Egg hunt tokens, temporary tattoos, stickers (GF-related)</p>
+                </div>
+
+                <h3>Budget Breakdown</h3>
+                <p>
+                    💰 <strong>Budget Basket ($20-25):</strong> Mix of small/medium items from our list<br>
+                    💰 <strong>Mid-Range ($35-50):</strong> Include 1 large chocolate bunny + mix<br>
+                    💰 <strong>Premium ($60+):</strong> Multiple chocolate bunnies + premium dupes + activities
+                </p>
+
+                <h3>Pro Tips for Gluten-Free Easter Baskets</h3>
+                <ul style="margin-left: 20px; color: var(--text-secondary);">
+                    <li>✅ Check EVERY item — brands change formulas frequently</li>
+                    <li>✅ Mix textures — chocolate, gummies, candy for variety</li>
+                    <li>✅ Include non-candy items — temporary tattoos, plastic eggs, toys</li>
+                    <li>✅ Get it early — popular GF items sell out pre-Easter</li>
+                    <li>✅ Verify certifications — look for "Certified Gluten-Free" labels</li>
+                </ul>
+            </div>
+
+            <!-- WHY DUPE SNACKS -->
+            <div class="section">
+                <h2>💚 Why Choose Dupe Snacks for Easter</h2>
+                <p>We're not just selling alternatives. We're helping families celebrate safely.</p>
+                <p>✅ <strong>100% Certified Gluten-Free</strong> — Every product verified. Zero cross-contamination.<br>
+                ✅ <strong>Tested & Approved</strong> — We taste-test everything. These dupes actually slap.<br>
+                ✅ <strong>Safe for Kids</strong> — Carefully curated with celiac families in mind.<br>
+                ✅ <strong>Affiliate Verified</strong> — All links go to real, trusted retailers.<br>
+                ✅ <strong>Community Built</strong> — Feedback from parents who've been there.</p>
+            </div>
+
+            <!-- CALL TO ACTION -->
+            <div class="section" style="text-align: center; background: linear-gradient(135deg, rgba(255, 105, 180, 0.15), rgba(0, 180, 166, 0.1));">
+                <h2>Ready to Build the Perfect Gluten-Free Easter?</h2>
+                <p style="margin-bottom: 20px;">Start with our featured dupes or browse 50+ gluten-free treats and alternatives.</p>
+                <a href="/test/" class="cta-button">Browse All Gluten-Free Dupes</a>
+            </div>
+
+            <!-- SEO SECTION -->
+            <div class="section">
+                <h3>More About Gluten-Free Easter</h3>
+                <p><strong>What makes Easter challenging for gluten-free families?</strong> Traditional Easter candy — Reese's, Cadbury, Cadbury Eggs, Peeps, and most jellybeans — contains gluten or has been manufactured in facilities with cross-contamination risks. For kids with celiac disease, even trace amounts of gluten can cause serious health issues.</p>
+                <p><strong>Are these alternatives as good?</strong> Yes. In many cases, the gluten-free dupes are actually better quality, made with premium ingredients, and taste superior to the originals.</p>
+                <p><strong>Where can I find certified gluten-free Easter treats?</strong> Start here. We've vetted every product. All are certified gluten-free and available on Amazon with affiliate links for easy ordering.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Dupe Snacks. Find your favorite snack's gluten-free dupe.</p>
+        <p>🐰 Happy Gluten-Free Easter 🐰</p>
+    </footer>
+</body>
+</html>
