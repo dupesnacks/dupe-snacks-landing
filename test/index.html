@@ -62,6 +62,51 @@
             color: #00ffff;
         }
 
+        /* Hero Section */
+        .hero {
+            padding: 60px 40px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 110, 0.1));
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .hero h2 {
+            font-size: 2.8em;
+            font-weight: 900;
+            margin-bottom: 12px;
+            line-height: 1.2;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: #aaa;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 12px 40px;
+            background: linear-gradient(135deg, #00ffff, #ff006e);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1em;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
         /* Feature Section - COMPRESSED */
         .features {
             padding: 50px 40px;
@@ -264,6 +309,18 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                padding: 60px 30px;
+            }
+
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
             .features-grid {
                 grid-template-columns: 1fr;
             }
@@ -302,6 +359,13 @@
             <a href="#contact">Contact</a>
         </nav>
     </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Find your favorite snacks, but make them gluten-free.</h2>
+        <p>Verified alternatives to everything you miss. One click to buy.</p>
+        <a href="#browse" class="hero-cta">Browse Dupes</a>
+    </section>
 
     <!-- Features Section (Compressed) -->
     <section class="features">
