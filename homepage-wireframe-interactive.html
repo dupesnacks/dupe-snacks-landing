@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dupe Snacks - Find Gluten-Free Alternatives</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Brand Colors */
+            --primary-teal: #00B4A6;
+            --secondary-purple: #6B4CE6;
+            --cta-orange: #E67E22;
+            --accent-gold: #F1C40F;
+            --success-green: #27AE60;
+            --text-dark: #1a1a1a;
+            --text-muted: #666;
+            --bg-light: #f8f9fa;
+            --border-light: #e0e0e0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        /* HEADER / STICKY */
+        header {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            z-index: 100;
+            padding: 12px 20px;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 14px;
+            border: 2px solid var(--border-light);
+            border-radius: 24px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 0 3px rgba(0, 180, 166, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-teal) 0%, var(--secondary-purple) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--cta-orange);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #d66d1a;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-teal);
+        }
+
+        .btn-secondary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* CATEGORY GRID */
+        .section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .category-tile {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            position: relative;
+        }
+
+        .category-tile:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .category-tile-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-tile h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .category-tile p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* CAROUSEL SECTION */
+        .carousel-section {
+            margin-bottom: 60px;
+        }
+
+        .carousel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .carousel-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .carousel-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .carousel-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary-teal);
+            background: white;
+            color: var(--primary-teal);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-teal);
+            color: white;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 12px;
+            scroll-padding: 20px;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .carousel::-webkit-scrollbar-track {
+            background: var(--bg-light);
+            border-radius: 10px;
+        }
+
+        .carousel::-webkit-scrollbar-thumb {
+            background: var(--primary-teal);
+            border-radius: 10px;
+        }
+
+        .product-card {
+            flex: 0 0 calc(25% - 12px);
+            min-width: 240px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 1024px) {
+            .product-card {
+                flex: 0 0 calc(33.333% - 12px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-card {
+                flex: 0 0 calc(50% - 8px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-card {
+                flex: 0 0 calc(100% - 8px);
+            }
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f0f4ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            overflow: hidden;
+        }
+
+        .product-info {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .product-brand {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .product-popularity {
+            font-size: 13px;
+            color: var(--cta-orange);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--cta-orange);
+            margin-bottom: 12px;
+        }
+
+        .product-cta {
+            background: var(--primary-teal);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 6px;
+            border: none;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .product-cta:hover {
+            background: #009a92;
+        }
+
+        .load-more-btn {
+            display: block;
+            margin: 32px auto;
+            padding: 14px 40px;
+            background: var(--primary-teal);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            background: #009a92;
+            transform: translateY(-2px);
+        }
+
+        /* SOCIAL PROOF */
+        .social-proof {
+            background: var(--bg-light);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .social-proof-stat {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            margin-bottom: 8px;
+        }
+
+        .social-proof-text {
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary-teal);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-teal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE MOBILE */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            .search-container {
+                order: 3;
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .section {
+                padding: 40px 20px;
+            }
+        }
+
+        /* DEMO ANIMATION */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* DEMO MESSAGES */
+        .demo-notice {
+            background: #e8f5f5;
+            border-left: 4px solid var(--primary-teal);
+            padding: 16px;
+            margin-bottom: 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #0d5a52;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">🥜 Dupe Snacks</a>
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    placeholder="What snack are you missing? (Oreos, Cheez-Its, etc.)"
+                >
+            </div>
+            <div class="nav-icons">
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="cart-icon" title="Shopping Cart">🛒</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your dupe awaits</h1>
+            <p>No more settling. No more missing out. Find the perfect dupe for literally any snack you love—and it actually hits different.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary">Start Finding Your Dupes</button>
+                <button class="btn btn-secondary">How does this even work?</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY GRID -->
+    <section class="section">
+        <div class="container">
+            <div class="demo-notice">
+                💡 <strong>Try it out:</strong> Hover categories, scroll carousels, click "Find Your Dupe" to see the full experience.
+            </div>
+
+            <h2 class="section-title">Browse dupes by category</h2>
+            <div class="category-grid">
+                <div class="category-tile">
+                    <div class="category-tile-content">
+                        <h3>🍪 Cookies & Brownies</h3>
+                        <p>50+ dupes, zero gluten regrets</p>
+                    </div>
+                </div>
+                <div class="category-tile">
+                    <div class="category-tile-content">
+                        <h3>🥔 Chips & Crisps</h3>
+                        <p>45+ crunchy dupes that don't suck</p>
+                    </div>
+                </div>
+                <div class="category-tile">
+                    <div class="category-tile-content">
+                        <h3>🍘 Crackers & Bread</h3>
+                        <p>38+ dupes that actually taste good</p>
+                    </div>
+                </div>
+                <div class="category-tile">
+                    <div class="category-tile-content">
+                        <h3>🥣 Granola & Cereal</h3>
+                        <p>32+ breakfast dupes for real</p>
+                    </div>
+                </div>
+                <div class="category-tile">
+                    <div class="category-tile-content">
+                        <h3>🍬 Candy & Gum</h3>
+                        <p>28+ sweet dupes no cap</p>
+                    </div>
+                </div>
+                <div class="category-tile">
+                    <div class="category-tile-content">
+                        <h3>🥜 Other Snacks</h3>
+                        <p>42+ hidden dupe gems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAROUSEL 1: TRENDING DUPES -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="carousel-section">
+                <div class="carousel-header">
+                    <h2 class="carousel-title">🔥 The Dupes Everyone's Grabbing</h2>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" onclick="scrollCarousel('carousel1', -300)">←</button>
+                        <button class="carousel-btn" onclick="scrollCarousel('carousel1', 300)">→</button>
+                    </div>
+                </div>
+                <div class="carousel" id="carousel1">
+                    <!-- Product Cards Generated by JS -->
+                </div>
+                <button class="load-more-btn">See All the Dupes</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAROUSEL 2: BEST VALUE -->
+    <section class="section" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="carousel-section">
+                <div class="carousel-header">
+                    <h2 class="carousel-title">💸 Dupes On Budget</h2>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" onclick="scrollCarousel('carousel2', -300)">←</button>
+                        <button class="carousel-btn" onclick="scrollCarousel('carousel2', 300)">→</button>
+                    </div>
+                </div>
+                <div class="carousel" id="carousel2">
+                    <!-- Product Cards Generated by JS -->
+                </div>
+                <button class="load-more-btn">Show Me More Deals</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAROUSEL 3: NEW DUPES -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="carousel-section">
+                <div class="carousel-header">
+                    <h2 class="carousel-title">✨ New Dupes Just Dropped</h2>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" onclick="scrollCarousel('carousel3', -300)">←</button>
+                        <button class="carousel-btn" onclick="scrollCarousel('carousel3', 300)">→</button>
+                    </div>
+                </div>
+                <div class="carousel" id="carousel3">
+                    <!-- Product Cards Generated by JS -->
+                </div>
+                <button class="load-more-btn">What Else Is New?</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="social-proof-stat">45,234+</div>
+            <div class="social-proof-text">people already ditched the sad snack aisle this month</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Cookies & Brownies</a></li>
+                    <li><a href="#">Chips & Crisps</a></li>
+                    <li><a href="#">Crackers & Bread</a></li>
+                    <li><a href="#">Granola & Cereal</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Get Help</h4>
+                <ul>
+                    <li><a href="#">GF 101</a></li>
+                    <li><a href="#">Questions?</a></li>
+                    <li><a href="#">Hang with Us</a></li>
+                    <li><a href="#">Need Help?</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Affiliate Disclosure</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Dupe Snacks. All gluten-free, all the time. Made by people who get it. ❤️
+        </div>
+    </footer>
+
+    <script>
+        // CAROUSEL FUNCTIONALITY
+        function scrollCarousel(carouselId, distance) {
+            const carousel = document.getElementById(carouselId);
+            carousel.scrollBy({
+                left: distance,
+                behavior: 'smooth'
+            });
+        }
+
+        // PRODUCT DATA
+        const products = [
+            { name: 'Simple Mills Brownie Mix', brand: 'Simple Mills', popularity: 5234, price: '$4.99' },
+            { name: 'Kinnikinnick Cookies', brand: 'Kinnikinnick', popularity: 4892, price: '$5.49' },
+            { name: 'Caulipower Pasta', brand: 'Caulipower', popularity: 4156, price: '$3.99' },
+            { name: 'Udi\'s Bagels', brand: 'Udi\'s', popularity: 3847, price: '$5.99' },
+            { name: 'Bob\'s Red Mill Bread', brand: 'Bob\'s Red Mill', popularity: 3621, price: '$4.49' },
+            { name: 'Mary\'s Gone Crackers', brand: 'Mary\'s', popularity: 3204, price: '$3.79' },
+            { name: 'Barilla GF Pasta', brand: 'Barilla', popularity: 2956, price: '$2.99' },
+            { name: 'Peak Performance Chips', brand: 'Peak Performance', popularity: 2847, price: '$3.49' },
+        ];
+
+        // POPULATE CAROUSELS
+        function populateCarousel(carouselId, startIdx) {
+            const carousel = document.getElementById(carouselId);
+            carousel.innerHTML = '';
+            
+            products.forEach((product, idx) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image">🍪</div>
+                    <div class="product-info">
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-brand">${product.brand}</div>
+                        <div class="product-popularity">🔥 ${product.popularity.toLocaleString()} already grabbed this dupe</div>
+                        <div class="product-price">${product.price}</div>
+                        <button class="product-cta">Find Your Dupe →</button>
+                    </div>
+                `;
+                carousel.appendChild(card);
+            });
+        }
+
+        // INIT
+        document.addEventListener('DOMContentLoaded', () => {
+            populateCarousel('carousel1', 0);
+            populateCarousel('carousel2', 0);
+            populateCarousel('carousel3', 0);
+        });
+
+        // HAMBURGER MENU (Demo)
+        const hamburger = document.getElementById('hamburger');
+        hamburger?.addEventListener('click', () => {
+            alert('☰ Menu would show:\n🍪 Browse Snacks\n🔥 What Everyone\'s Getting\n❤️ Our Story\n❓ How We Work\n💬 Hit Us Up');
+        });
+
+        // SEARCH FOCUS EFFECT
+        const searchInput = document.querySelector('.search-input');
+        searchInput?.addEventListener('focus', () => {
+            searchInput.placeholder = 'Try: Oreos, Doritos, Cheez-Its, Hot Cheetos...';
+        });
+
+        searchInput?.addEventListener('blur', () => {
+            searchInput.placeholder = 'What snack are you missing? (Oreos, Cheez-Its, etc.)';
+        });
+    </script>
+</body>
+</html>

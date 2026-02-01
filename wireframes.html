@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dupe Snacks — Interactive Wireframes Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #00B4A6 0%, #6B4CE6 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #00B4A6;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        .wireframe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .wireframe-card {
+            border: 2px solid #00B4A6;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .wireframe-card:hover {
+            box-shadow: 0 10px 30px rgba(0,180,166,0.2);
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #00B4A6 0%, #6B4CE6 100%);
+            color: white;
+            padding: 20px;
+        }
+        .card-header h2 {
+            font-size: 20px;
+            margin: 0 0 5px 0;
+        }
+        .card-header p {
+            font-size: 13px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-desc {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #E67E22;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .cta-button:hover {
+            background: #d65a0a;
+            transform: scale(1.05);
+        }
+        .features {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .features li {
+            margin: 5px 0;
+            margin-left: 20px;
+        }
+        .status {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            border: 1px solid #c3e6cb;
+        }
+        .status strong {
+            color: #0c5f2c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Dupe Snacks Interactive Wireframes</h1>
+        <p class="subtitle">Feb 1, 2026 — Production-ready preview</p>
+        
+        <div class="status">
+            <strong>✅ All wireframes are live and interactive.</strong> Open each one to explore responsive design, filter interactions, carousels, and mobile navigation. Built from 27,848 words of UX research.
+        </div>
+
+        <div class="wireframe-grid">
+            <!-- Homepage Wireframe -->
+            <div class="wireframe-card">
+                <div class="card-header">
+                    <h2>🏠 Homepage</h2>
+                    <p>Search + Categories + Trending Dupes</p>
+                </div>
+                <div class="card-body">
+                    <div class="card-desc">
+                        Hybrid browsing experience with prominent search bar, 6-tile category grid, and 3 featured carousels showing trending, best value, and newly added dupes.
+                    </div>
+                    <ul class="features">
+                        <li>✓ Sticky search bar (responsive)</li>
+                        <li>✓ Interactive carousels</li>
+                        <li>✓ Social proof section</li>
+                        <li>✓ Mobile hamburger menu</li>
+                        <li>✓ Desktop: 1200+ | Tablet: 768–1199 | Mobile: &lt;768</li>
+                    </ul>
+                    <a href="homepage-wireframe-interactive.html" class="cta-button">View Wireframe →</a>
+                </div>
+            </div>
+
+            <!-- Alternative Page Wireframe -->
+            <div class="wireframe-card">
+                <div class="card-header">
+                    <h2>🔍 Dupe Page</h2>
+                    <p>Cards + Filters + Multi-Retailer Pricing</p>
+                </div>
+                <div class="card-body">
+                    <div class="card-desc">
+                        Card-based product grid with inline multi-retailer pricing, faceted filters, and "Most Popular" as default sort. Shows your unique upvote mechanic.
+                    </div>
+                    <ul class="features">
+                        <li>✓ 3–4 col grid (responsive)</li>
+                        <li>✓ Price slider + brand filters</li>
+                        <li>✓ "★ X,XXX bought" social proof</li>
+                        <li>✓ Amazon | Walmart | Target pricing</li>
+                        <li>✓ "Most Popular" default sort</li>
+                    </ul>
+                    <a href="alternatives-page-wireframe-interactive.html" class="cta-button">View Wireframe →</a>
+                </div>
+            </div>
+
+            <!-- Mobile Nav Wireframe -->
+            <div class="wireframe-card">
+                <div class="card-header">
+                    <h2>📱 Mobile Nav</h2>
+                    <p>Hamburger Menu + Bottom-Sheet Filters</p>
+                </div>
+                <div class="card-body">
+                    <div class="card-desc">
+                        Mobile-first navigation with animated hamburger menu, expandable category navigation, search, and bottom-sheet filter modal.
+                    </div>
+                    <ul class="features">
+                        <li>✓ Animated hamburger menu</li>
+                        <li>✓ Category expand/collapse</li>
+                        <li>✓ Bottom-sheet filter modal</li>
+                        <li>✓ Full-width search bar</li>
+                        <li>✓ Optimized for &lt;768px screens</li>
+                    </ul>
+                    <a href="mobile-nav-wireframe-interactive.html" class="cta-button">View Wireframe →</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; padding-top: 30px; border-top: 2px solid #e0e0e0; color: #666; font-size: 13px;">
+            <p><strong>What You're Looking At:</strong> These are fully interactive HTML prototypes showing the product discovery experience. Scroll, click carousels, toggle filters, test responsive design on mobile. No external dependencies — pure HTML/CSS/JS.</p>
+            <p style="margin-top: 10px;"><strong>Next Steps:</strong> Dev team uses these as specs for implementation. All pixel dimensions, colors, animations, and interactions are locked in.</p>
+            <p style="margin-top: 10px;"><strong>Brand:</strong> Teal primary (#00B4A6), Gen Z copy ("find your dupe", "this hits different"), responsive at all breakpoints.</p>
+        </div>
+    </div>
+</body>
+</html>
