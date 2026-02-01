@@ -694,6 +694,7 @@
                 rating: 4.7,
                 reviews: 342,
                 amazon: '$5.49',
+                amazonASIN: 'B004UKFXW2',
                 walmart: '$4.99',
                 target: '$5.79',
                 best: 'walmart',
@@ -707,6 +708,7 @@
                 rating: 4.8,
                 reviews: 289,
                 amazon: '$4.99',
+                amazonASIN: 'B00E8YM1I0',
                 walmart: '$4.49',
                 target: '$5.29',
                 best: 'walmart',
@@ -720,6 +722,7 @@
                 rating: 4.3,
                 reviews: 156,
                 amazon: '$5.99',
+                amazonASIN: 'B07G4L6Z1V',
                 walmart: '$5.49',
                 target: '$6.29',
                 best: 'walmart',
@@ -733,6 +736,7 @@
                 rating: 4.4,
                 reviews: 201,
                 amazon: '$6.99',
+                amazonASIN: 'B07G4L6Z1V',
                 walmart: '$6.49',
                 target: '$6.79',
                 best: 'walmart',
@@ -746,6 +750,7 @@
                 rating: 4.6,
                 reviews: 178,
                 amazon: '$4.99',
+                amazonASIN: 'B07G4L6Z1V',
                 walmart: '$4.79',
                 target: '$5.49',
                 best: 'walmart',
@@ -759,6 +764,7 @@
                 rating: 4.2,
                 reviews: 142,
                 amazon: '$5.29',
+                amazonASIN: 'B07G4L6Z1V',
                 walmart: '$4.99',
                 target: '$5.49',
                 best: 'walmart',
@@ -772,6 +778,7 @@
                 rating: 4.5,
                 reviews: 127,
                 amazon: '$3.99',
+                amazonASIN: 'B01N0SKH19',
                 walmart: '$3.79',
                 target: '$4.29',
                 best: 'walmart',
@@ -785,6 +792,7 @@
                 rating: 4.4,
                 reviews: 115,
                 amazon: '$5.49',
+                amazonASIN: 'B005M8KBEA',
                 walmart: '$5.29',
                 target: '$5.79',
                 best: 'walmart',
@@ -798,6 +806,7 @@
                 rating: 4.3,
                 reviews: 98,
                 amazon: '$6.49',
+                amazonASIN: 'B0746H8VVF',
                 walmart: '$6.29',
                 target: '$6.99',
                 best: 'walmart',
@@ -811,6 +820,7 @@
                 rating: 4.6,
                 reviews: 187,
                 amazon: '$5.99',
+                amazonASIN: 'B00BJPGB7U',
                 walmart: '$5.49',
                 target: '$5.99',
                 best: 'walmart',
@@ -824,6 +834,7 @@
                 rating: 4.2,
                 reviews: 96,
                 amazon: '$4.49',
+                amazonASIN: 'B01GTQJL9W',
                 walmart: '$3.99',
                 target: '$4.49',
                 best: 'walmart',
@@ -837,6 +848,7 @@
                 rating: 3.9,
                 reviews: 76,
                 amazon: '$5.29',
+                amazonASIN: 'B00NP5D6MI',
                 walmart: '$4.99',
                 target: '$5.49',
                 best: 'walmart',
@@ -892,7 +904,7 @@
                         </div>
 
                         <div class="product-actions">
-                            <button class="btn-buy" onclick="buyNow('${product.name}', '${product.walmart}')">Buy on Walmart</button>
+                            <button class="btn-buy" onclick="buyNow('${product.name}', '${product.amazonASIN}')">Buy on Amazon</button>
                             <button class="btn-details" onclick="alert('Details for: ' + '${product.name}')">More info</button>
                         </div>
                     </div>
@@ -900,8 +912,13 @@
             `).join('');
         }
 
-        function buyNow(name, price) {
-            alert(`Opening Walmart for:\n${name} • ${price}\n\n✓ New tab in production`);
+        function buyNow(name, asin) {
+            if (!asin) {
+                alert('Product link not available');
+                return;
+            }
+            const amazonURL = `https://amazon.com/dp/${asin}?tag=dupesnacks-20`;
+            window.open(amazonURL, '_blank');
         }
 
         function clearFilters() {
