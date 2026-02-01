@@ -449,7 +449,7 @@ function renderHomePage() {
       <!-- Carousels -->
       ${renderCarousel('trending', trending, 'Trending Dupes This Week', '⚡')}
       ${renderCarousel('value', bestValue, 'Best Value (Budget Hits Different)', '💰')}
-      ${renderCarousel('new', recent, 'Newly Added (This Week's Dupes)', '✨')}
+      ${renderCarousel('new', recent, 'Newly Added (This Weeks Dupes)', '✨')}
 
       <!-- Social Proof -->
       <section style="background: var(--bg-surface); padding: 3rem 2rem; border-radius: 12px; text-align: center; border: 1px solid var(--border-light); margin: 3rem 0;">
