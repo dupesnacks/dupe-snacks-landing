@@ -178,9 +178,10 @@
         .stock-image {
             text-align: center;
             margin: 15px 0;
-            padding: 10px;
+            padding: 20px;
             background: #ffffcc;
             border: 2px dashed #ff00ff;
+            font-size: 2em;
         }
         
         .stock-image img {
@@ -195,6 +196,71 @@
             margin-top: 5px;
             font-style: italic;
         }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                max-width: 100%;
+                padding: 15px;
+                border: 3px dashed #ffff00;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .header p {
+                font-size: 0.9em;
+            }
+            
+            .marquee {
+                font-size: 0.75em;
+                padding: 8px;
+            }
+            
+            .amigo {
+                margin-bottom: 8px;
+                padding: 12px;
+            }
+            
+            .amigo h2 {
+                font-size: 1.4em;
+            }
+            
+            .amigo .name {
+                font-size: 1.1em;
+            }
+            
+            .amigo .bio {
+                font-size: 0.9em;
+                line-height: 1.4;
+            }
+            
+            .stock-image {
+                font-size: 1.5em;
+                padding: 15px;
+                margin: 10px 0;
+            }
+            
+            .stock-label {
+                font-size: 0.7em;
+            }
+            
+            .divider {
+                font-size: 1.2em;
+            }
+            
+            .footer {
+                font-size: 0.85em;
+            }
+            
+            .star {
+                font-size: 1.2em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -207,9 +273,9 @@
             </div>
         </div>
         
-        <div class="stock-image" style="font-size: 4em; padding: 30px; background: linear-gradient(45deg, #ff00ff, #00ffff);">
-            🏎️ VROOM VROOM 🏎️
-            <div class="stock-label">Racing enthusiasts HATE this one weird trick</div>
+        <div class="stock-image" style="font-size: 3em; padding: 20px; background: linear-gradient(45deg, #ff00ff, #00ffff);">
+            🏎️ VROOM 🏎️
+            <div class="stock-label" style="font-size: 0.75em; margin-top: 8px;">Racing enthusiasts HATE this</div>
         </div>
         
         <div class="amigos">
@@ -230,9 +296,9 @@
                 </div>
             </div>
             
-            <div class="stock-image" style="font-size: 4em; padding: 30px; background: linear-gradient(45deg, #00ffff, #ffff00);">
-                📡 BEEP BOOP 📡
-                <div class="stock-label">SCIENTISTS HATE HIM</div>
+            <div class="stock-image" style="font-size: 3em; padding: 20px; background: linear-gradient(45deg, #00ffff, #ffff00);">
+                📡 BEEP 📡
+                <div class="stock-label" style="font-size: 0.75em; margin-top: 8px;">SCIENTISTS HATE HIM</div>
             </div>
             
             <div class="divider">~~~~~~~~~~~~ 💫 ~~~~~~~~~~~~</div>
@@ -256,9 +322,9 @@
                 </div>
             </div>
             
-            <div class="stock-image" style="font-size: 4em; padding: 30px; background: linear-gradient(45deg, #ffff00, #ff00ff);">
-                ⚽ GO TIMBERS ⚽
-                <div class="stock-label">SPORTS FANS REJOICE</div>
+            <div class="stock-image" style="font-size: 3em; padding: 20px; background: linear-gradient(45deg, #ffff00, #ff00ff);">
+                ⚽ TIMBERS ⚽
+                <div class="stock-label" style="font-size: 0.75em; margin-top: 8px;">SPORTS FANS REJOICE</div>
             </div>
             
             <div class="divider">~~~~~~~~~~~~ ⭐ ~~~~~~~~~~~~</div>
@@ -283,9 +349,9 @@
             </div>
         </div>
         
-        <div class="stock-image" style="font-size: 4em; padding: 30px; background: linear-gradient(45deg, #ff00ff, #ffff00);">
-            👯 BFFs FOREVER 👯
-            <div class="stock-label">FRIENDSHIP GOALS (click here for 50 free glitter graphics!)</div>
+        <div class="stock-image" style="font-size: 3em; padding: 20px; background: linear-gradient(45deg, #ff00ff, #ffff00);">
+            👯 BFFs 👯
+            <div class="stock-label" style="font-size: 0.7em; margin-top: 8px;">FRIENDSHIP GOALS</div>
         </div>
         
         <div class="footer">
@@ -305,10 +371,10 @@
                 made with pure chaos and early 2000s chaos &lt;3
             </p>
             
-            <div style="margin-top: 20px; text-align: center; background: #ffff00; padding: 20px; border: 2px dashed #ff00ff;">
-                <p style="font-size: 3em; margin: 0;">🚧 🚧 🚧</p>
-                <p style="margin-top: 10px; color: #ff00ff; font-weight: bold; font-size: 0.9em;">
-                    More Amigos Coming Soon
+            <div style="margin-top: 20px; text-align: center; background: #ffff00; padding: 15px; border: 2px dashed #ff00ff;">
+                <p style="font-size: 2em; margin: 0;">🚧 🚧 🚧</p>
+                <p style="margin-top: 8px; color: #ff00ff; font-weight: bold; font-size: 0.85em;">
+                    More Coming Soon
                 </p>
             </div>
         </div>
