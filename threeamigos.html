@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~*~ The Three Amigos ~*~</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%231a1a2e" width="100" height="100"/><circle cx="50" cy="50" r="30" fill="%23ff00ff" opacity="0.1"/><circle cx="20" cy="20" r="20" fill="%2300ffff" opacity="0.1"/></svg>');
+            background-color: #1a1a2e;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            color: #00ff00;
+            text-shadow: 2px 2px 4px #ff00ff;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ff00ff, #00ffff);
+            border: 5px dashed #ffff00;
+            padding: 20px;
+            box-shadow: 0 0 20px #ff00ff, inset 0 0 20px rgba(0,255,255,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #ffff00;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            color: #00ff00;
+            text-shadow: 3px 3px 0px #ff00ff, 6px 6px 0px #ffff00;
+            margin: 10px 0;
+            transform: skew(-5deg);
+            animation: pulse 2s infinite;
+        }
+        
+        .header p {
+            color: #ffff00;
+            font-size: 1.2em;
+            text-shadow: 2px 2px #ff00ff;
+            font-weight: bold;
+        }
+        
+        .marquee {
+            background: #ffff00;
+            color: #ff00ff;
+            padding: 10px;
+            font-weight: bold;
+            margin: 15px 0;
+            border: 2px solid #00ff00;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: scroll 8s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: skew(-5deg) scale(1); }
+            50% { transform: skew(-5deg) scale(1.05); }
+        }
+        
+        .amigos {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .amigo {
+            background: #1a1a2e;
+            border: 3px solid #00ff00;
+            padding: 15px;
+            box-shadow: 0 0 10px #00ff00;
+            border-radius: 10px;
+        }
+        
+        .amigo h2 {
+            color: #ffff00;
+            font-size: 1.8em;
+            text-shadow: 2px 2px #ff00ff;
+            margin-bottom: 10px;
+            border-bottom: 2px dashed #00ff00;
+            padding-bottom: 8px;
+        }
+        
+        .amigo .name {
+            color: #00ff00;
+            font-weight: bold;
+            font-size: 1.3em;
+            text-shadow: 1px 1px #ff00ff;
+        }
+        
+        .amigo .passion {
+            color: #00ffff;
+            font-size: 1.1em;
+            margin: 10px 0;
+            padding: 8px;
+            background: rgba(255,0,255,0.1);
+            border-left: 3px solid #00ffff;
+        }
+        
+        .amigo .bio {
+            color: #ffff00;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-top: 10px;
+            text-shadow: 1px 1px #00ff00;
+        }
+        
+        .blinktext {
+            animation: blink 1s infinite;
+            color: #ff00ff;
+            font-weight: bold;
+        }
+        
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 3px dashed #00ff00;
+            color: #00ff00;
+        }
+        
+        .star {
+            display: inline-block;
+            font-size: 2em;
+            margin: 0 5px;
+            animation: twinkle 1.5s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .social {
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(0,255,255,0.1);
+            border: 2px solid #00ffff;
+            text-align: center;
+        }
+        
+        .social a {
+            color: #ffff00;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            text-shadow: 1px 1px #ff00ff;
+        }
+        
+        .social a:hover {
+            color: #00ff00;
+            text-decoration: underline;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5em;
+            color: #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>~*~ The Three Amigos ~*~</h1>
+            <p>✨ best friends 4eva ✨</p>
+            <div class="marquee">
+                🏎️ ALEX LOVES BMWs 🏎️  |  📡 COLIN LOVES LIDAR 📡  |  🔥 JASON LOVES THE TIMBERS 🔥
+            </div>
+        </div>
+        
+        <div class="amigos">
+            <!-- ALEX -->
+            <div class="amigo">
+                <h2>🏎️ ALEX 🏎️</h2>
+                <p class="name">The Speed Demon</p>
+                <div class="passion">
+                    Passion: <strong>BMWs & Race Cars</strong>
+                </div>
+                <p class="bio">
+                    Alex is obsessed with BMWs. And I mean OBSESSED. His entire personality revolves around the color of his paint job, the horsepower rating, and how close he can get to a traffic violation without actually getting a ticket. He talks about his M3 like it's his child. His desktop background? A BMW. His phone wallpaper? A BMW. His actual dreams? Definitely a BMW.
+                    <br><br>
+                    <span class="blinktext">&lt;blink&gt; he wants you to know it's FAST &lt;/blink&gt;</span>
+                </p>
+                <div class="social">
+                    <a href="#">favorite tracks »</a> | <a href="#">0-60 times »</a>
+                </div>
+            </div>
+            
+            <div class="divider">~~~~~~~~~~~~ 💫 ~~~~~~~~~~~~</div>
+            
+            <!-- COLIN -->
+            <div class="amigo">
+                <h2>📡 COLIN 📡</h2>
+                <p class="name">The LiDAR Philosopher</p>
+                <div class="passion">
+                    Passion: <strong>LiDAR Technology</strong>
+                </div>
+                <p class="bio">
+                    Colin is that guy who brings up LiDAR at every possible opportunity. Dinner? LiDAR. Movies? LiDAR. Your birthday party? He's explaining point cloud density. He has 47 tabs open about 3D scanning and he will absolutely show you his latest point cloud visualization whether you want to see it or not.
+                    <br><br>
+                    He owns THREE LiDAR scanners (for research purposes, definitely not a problem). His idea of a fun weekend is mapping an entire building with millimeter precision. He corrects people who don't understand the difference between LiDAR and laser scanners.
+                    <br><br>
+                    <span class="blinktext">&lt;blink&gt; 905 nanometers is peak performance &lt;/blink&gt;</span>
+                </p>
+                <div class="social">
+                    <a href="#">point clouds »</a> | <a href="#">technical specs »</a>
+                </div>
+            </div>
+            
+            <div class="divider">~~~~~~~~~~~~ ⭐ ~~~~~~~~~~~~</div>
+            
+            <!-- JASON -->
+            <div class="amigo">
+                <h2>🔥 JASON 🔥</h2>
+                <p class="name">The Timbers Faithful</p>
+                <div class="passion">
+                    Passion: <strong>Portland Timbers</strong>
+                </div>
+                <p class="bio">
+                    Jason is a Portland Timbers fan with the intensity of a thousand burning suns. He knows every player's stats, every goal from the last 15 seasons, and can recite the entire squad roster while sleeping. His apartment is a shrine to the Timbers. Green and gold everything.
+                    <br><br>
+                    If the Timbers lose, Jason loses. If they win, he LIVES. He's been known to cry during matches (happy or sad tears, depends on the game). He has opinions about tactics that would make a professional coach jealous. He will absolutely argue with you about that one play from 2014.
+                    <br><br>
+                    <span class="blinktext">&lt;blink&gt; RCTID (Rose City 'Til I Die) &lt;/blink&gt;</span>
+                </p>
+                <div class="social">
+                    <a href="#">match analysis »</a> | <a href="#">GO TIMBERS »</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="star">⭐</div>
+            <div class="star">💫</div>
+            <div class="star">✨</div>
+            <p style="margin: 15px 0;">
+                three best friends. three VERY different obsessions.
+            </p>
+            <p style="font-size: 0.9em; color: #00ffff;">
+                « best friends forever » | updated on: AOL Instant Messenger |
+            </p>
+            <p style="margin-top: 10px; color: #ffff00; font-size: 0.85em;">
+                🎵 this page is best viewed in Internet Explorer at 1024x768 resolution 🎵
+            </p>
+            <p style="margin-top: 15px; font-size: 0.8em; color: #00ffff;">
+                made with pure chaos and Comic Sans &lt;3
+            </p>
+        </div>
+    </div>
+</body>
+</html>
