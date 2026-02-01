@@ -15,30 +15,29 @@
             /* Brand Colors */
             --primary-teal: #00B4A6;
             --secondary-purple: #6B4CE6;
-            --cta-orange: #E67E22;
-            --accent-gold: #F1C40F;
-            --success-green: #27AE60;
-            --text-dark: #1a1a1a;
-            --text-muted: #666;
-            --bg-light: #f8f9fa;
-            --border-light: #e0e0e0;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --text-primary: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --bg-dark: #0f0f1e;
+            --bg-surface: #1a1a2e;
+            --bg-card: #2d2d2d;
+            --border-teal: rgba(0, 180, 166, 0.2);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background: #fff;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
         }
 
         /* HEADER / STICKY */
         header {
             position: sticky;
             top: 0;
-            background: #fff;
-            border-bottom: 1px solid var(--border-light);
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            border-bottom: 1px solid var(--border-teal);
             box-shadow: var(--shadow-sm);
             z-index: 100;
             padding: 12px 20px;
@@ -71,8 +70,10 @@
             width: 100%;
             padding: 12px 16px;
             font-size: 14px;
-            border: 2px solid var(--border-light);
+            border: 2px solid var(--border-teal);
             border-radius: 24px;
+            background: rgba(45, 45, 75, 0.6);
+            color: var(--text-primary);
             transition: all 0.3s ease;
             font-family: inherit;
         }
@@ -169,7 +170,7 @@
         }
 
         .btn-primary {
-            background: var(--cta-orange);
+            background: var(--primary-teal);
             color: white;
         }
 
@@ -180,7 +181,7 @@
         }
 
         .btn-secondary {
-            background: white;
+            background: var(--bg-surface);
             color: var(--primary-teal);
         }
 
@@ -204,7 +205,7 @@
         .section-title {
             font-size: 32px;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--text-primary);
             margin-bottom: 40px;
             text-align: center;
         }
@@ -230,7 +231,7 @@
         }
 
         .category-tile {
-            background: white;
+            background: var(--bg-surface);
             border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
@@ -258,13 +259,13 @@
         .category-tile h3 {
             font-size: 20px;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--text-primary);
             margin-bottom: 8px;
         }
 
         .category-tile p {
             font-size: 14px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
         }
 
         /* CAROUSEL SECTION */
@@ -282,7 +283,7 @@
         .carousel-title {
             font-size: 24px;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--text-primary);
         }
 
         .carousel-controls {
@@ -294,7 +295,7 @@
             width: 40px;
             height: 40px;
             border: 2px solid var(--primary-teal);
-            background: white;
+            background: var(--bg-surface);
             color: var(--primary-teal);
             border-radius: 50%;
             cursor: pointer;
@@ -321,7 +322,7 @@
         }
 
         .carousel::-webkit-scrollbar-track {
-            background: var(--bg-light);
+            background: var(--bg-dark);
             border-radius: 10px;
         }
 
@@ -333,7 +334,7 @@
         .product-card {
             flex: 0 0 calc(25% - 12px);
             min-width: 240px;
-            background: white;
+            background: var(--bg-surface);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
@@ -386,19 +387,19 @@
         .product-name {
             font-size: 14px;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--text-primary);
             margin-bottom: 8px;
         }
 
         .product-brand {
             font-size: 12px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             margin-bottom: 12px;
         }
 
         .product-popularity {
             font-size: 13px;
-            color: var(--cta-orange);
+            color: var(--primary-teal);
             font-weight: 600;
             margin-bottom: 12px;
         }
@@ -406,7 +407,7 @@
         .product-price {
             font-size: 18px;
             font-weight: 700;
-            color: var(--cta-orange);
+            color: var(--primary-teal);
             margin-bottom: 12px;
         }
 
@@ -448,7 +449,7 @@
 
         /* SOCIAL PROOF */
         .social-proof {
-            background: var(--bg-light);
+            background: var(--bg-dark);
             padding: 40px 20px;
             text-align: center;
         }
@@ -462,7 +463,7 @@
 
         .social-proof-text {
             font-size: 16px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
         }
 
         /* FOOTER */
@@ -661,7 +662,7 @@
     </section>
 
     <!-- CAROUSEL 1: TRENDING DUPES -->
-    <section class="section" style="background: white;">
+    <section class="section" style="background: var(--bg-surface);">
         <div class="container">
             <div class="carousel-section">
                 <div class="carousel-header">
@@ -680,7 +681,7 @@
     </section>
 
     <!-- CAROUSEL 2: BEST VALUE -->
-    <section class="section" style="background: var(--bg-light);">
+    <section class="section" style="background: var(--bg-dark);">
         <div class="container">
             <div class="carousel-section">
                 <div class="carousel-header">
@@ -699,7 +700,7 @@
     </section>
 
     <!-- CAROUSEL 3: NEW DUPES -->
-    <section class="section" style="background: white;">
+    <section class="section" style="background: var(--bg-surface);">
         <div class="container">
             <div class="carousel-section">
                 <div class="carousel-header">
