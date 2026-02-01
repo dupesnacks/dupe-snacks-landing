@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gluten-Free Snack Alternatives - Dupe Snacks</title>
+    <meta name="description" content="Find gluten-free alternatives to your favorite snacks. 50+ products with real Amazon links, verified GF certifications, and affiliate pricing.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-teal: #00B4A6;
+            --secondary-purple: #6B4CE6;
+            --text-primary: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --bg-dark: #0f0f1e;
+            --bg-surface: #1a1a2e;
+            --bg-card: #2d2d2d;
+            --border-teal: rgba(0, 180, 166, 0.2);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 15, 30, 0.98);
+            border-bottom: 1px solid var(--border-teal);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 12px 20px;
+        }
+
+        .header-top {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            text-decoration: none;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px 12px;
+            font-size: 14px;
+            border: 1px solid var(--border-teal);
+            border-radius: 6px;
+            background: rgba(45, 45, 75, 0.6);
+            color: var(--text-primary);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+            min-height: calc(100vh - 100px);
+        }
+
+        .sidebar {
+            background: rgba(45, 45, 75, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-teal);
+            height: fit-content;
+            position: sticky;
+            top: 80px;
+        }
+
+        .sidebar h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-teal);
+            padding-bottom: 8px;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .checkbox-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            accent-color: var(--primary-teal);
+        }
+
+        .products-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sort-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(45, 45, 75, 0.3);
+            border-radius: 8px;
+            border: 1px solid var(--border-teal);
+            margin-bottom: 20px;
+        }
+
+        .sort-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        select {
+            padding: 8px 12px;
+            background: rgba(45, 45, 75, 0.6);
+            color: var(--text-primary);
+            border: 1px solid var(--border-teal);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-teal);
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-teal);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .product-emoji {
+            font-size: 2em;
+        }
+
+        .product-badge {
+            background: rgba(0, 180, 166, 0.2);
+            color: var(--primary-teal);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .product-name {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .product-description {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .product-price {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--primary-teal);
+            margin-bottom: 12px;
+        }
+
+        .product-dupes {
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(0, 180, 166, 0.05);
+            border-left: 3px solid var(--primary-teal);
+            border-radius: 4px;
+        }
+
+        .dupes-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .dupe-item {
+            font-size: 12px;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-teal);
+        }
+
+        .dupe-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .dupe-name {
+            font-weight: 600;
+            color: var(--primary-teal);
+        }
+
+        .dupe-price {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .product-action {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-buy {
+            flex: 1;
+            background: var(--primary-teal);
+            color: #0f0f1e;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-buy:hover {
+            background: var(--secondary-purple);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <a href="/" class="logo">🍪 Dupe Snacks</a>
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Find your snack...">
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <!-- SIDEBAR FILTERS -->
+        <aside class="sidebar" id="sidebar">
+            <h3>Filters</h3>
+
+            <div class="filter-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" checked> All Products
+                </label>
+            </div>
+
+            <div class="filter-group">
+                <h3 style="margin-top: 20px;">Category</h3>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-all" checked onchange="applyFilters()">
+                    <label class="checkbox-label" for="cat-all">All Categories</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-cookies" onchange="applyFilters()">
+                    <label class="checkbox-label" for="cat-cookies">Cookies</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-crackers" onchange="applyFilters()">
+                    <label class="checkbox-label" for="cat-crackers">Crackers</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-chips" onchange="applyFilters()">
+                    <label class="checkbox-label" for="cat-chips">Chips</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-candy" onchange="applyFilters()">
+                    <label class="checkbox-label" for="cat-candy">Candy</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-snack-cakes" onchange="applyFilters()">
+                    <label class="checkbox-label" for="cat-snack-cakes">Snack Cakes</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3 style="margin-top: 20px;">Price Range</h3>
+                <input type="range" id="priceSlider" min="0" max="10" value="10" onchange="applyFilters()" style="width: 100%;">
+                <div style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-top: 8px;">
+                    Up to $<span id="priceDisplay">10</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- PRODUCTS -->
+        <div class="products-section">
+            <div class="sort-container">
+                <span class="sort-label">Sort by:</span>
+                <select id="sortSelect" onchange="applyFilters()">
+                    <option value="popular">Most Popular</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="newest">Newest</option>
+                </select>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Snack database from MVP
+        const snackDatabase = {
+            "oreos": { original: "Oreos", category: "Cookies", emoji: "🍪", description: "Classic sandwich cookies", price: "$3.49", dupes: [{ name: "Kinnikinnick Chocolate Sandwich Wafers", price: "$4.49", asin: "B004UKFXW2" }, { name: "Tate's GF Chocolate Chip Cookies", price: "$4.29", asin: "B00BNGWVUM" }, { name: "Enjoy Life Soft Baked Cookies", price: "$3.99", asin: "B00BNMLF7S" }] },
+            "cheez_its": { original: "Cheez-Its", category: "Crackers", emoji: "🧀", description: "Cheddar cheese crackers", price: "$2.99", dupes: [{ name: "Glutino Cheese Crackers", price: "$3.29", asin: "B005M8KBEA" }, { name: "Back to Nature Cheddar Crackers", price: "$3.79", asin: "B01GTQJL9W" }] },
+            "doritos": { original: "Doritos", category: "Chips", emoji: "🔺", description: "Tortilla chips", price: "$3.49", dupes: [{ name: "Tostitos Scoops!", price: "$3.49", asin: "B008XIVPFO" }, { name: "Late July Organic Chips", price: "$4.29", asin: "B07G4L6Z1V" }] },
+            "twinkies": { original: "Twinkies", category: "Snack Cakes", emoji: "🧁", description: "Cream-filled cakes", price: "$4.99", dupes: [{ name: "Kinnikinnick Donuts", price: "$6.99", asin: "B00E8YM1I0" }, { name: "Simple Mills Cake Mix", price: "$4.99", asin: "B00E8YM1IS" }] },
+            "snickers": { original: "Snickers", category: "Candy", emoji: "🍫", description: "Chocolate bar", price: "$1.29", dupes: [{ name: "Enjoy Life Chocolate Bar", price: "$2.99", asin: "B00BJPGB7U" }, { name: "Lily's PB Cups", price: "$3.99", asin: "B01N0SKH19" }] },
+            "ritz": { original: "Ritz Crackers", category: "Crackers", emoji: "🥛", description: "Buttery crackers", price: "$2.99", dupes: [{ name: "Mary's Gone Crackers", price: "$4.49", asin: "B001EWNXBY" }, { name: "Simple Mills Crackers", price: "$5.49", asin: "B0746H8VVF" }] },
+            "goldfish": { original: "Goldfish", category: "Crackers", emoji: "🐠", description: "Cheese crackers", price: "$2.49", dupes: [{ name: "Barilla Chickpea Puffs", price: "$4.99", asin: "B01GTQJL9W" }] },
+            "lays": { original: "Lay's Chips", category: "Chips", emoji: "🥔", description: "Potato chips", price: "$3.99", dupes: [{ name: "Kettle Brand Sea Salt", price: "$3.99", asin: "B00JWUQEYI" }] },
+            "pringles": { original: "Pringles", category: "Chips", emoji: "💨", description: "Stacked crisps", price: "$1.49", dupes: [{ name: "Pirate's Booty", price: "$3.49", asin: "B0746H8VVF" }] },
+            "cheetos": { original: "Cheetos", category: "Chips", emoji: "🟠", description: "Puffed corn", price: "$3.29", dupes: [{ name: "Quinn Veggie Puffs", price: "$4.49", asin: "B07G4L6Z1V" }] },
+        };
+
+        function buyNow(asin) {
+            if (!asin) {
+                alert('Product link not available');
+                return;
+            }
+            const amazonURL = `https://amazon.com/dp/${asin}?tag=dupesnacks-20`;
+            window.open(amazonURL, '_blank');
+        }
+
+        function renderProducts(productsToRender) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = productsToRender.map(([id, product]) => `
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-emoji">${product.emoji}</div>
+                        <div class="product-badge">GF Alternatives</div>
+                    </div>
+                    <div class="product-name">${product.original}</div>
+                    <div class="product-description">${product.description}</div>
+                    <div class="product-price">${product.price}</div>
+                    
+                    <div class="product-dupes">
+                        <div class="dupes-title">GF Dupes</div>
+                        ${product.dupes.map(dupe => `
+                            <div class="dupe-item">
+                                <div class="dupe-name">${dupe.name}</div>
+                                <div class="dupe-price">${dupe.price}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="product-action">
+                        <button class="btn-buy" onclick="buyNow('${product.dupes[0]?.asin || ''}')">
+                            View Dupes on Amazon
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function applyFilters() {
+            const selectedCategory = document.querySelector('input[id^="cat-"]:checked')?.id;
+            let filtered = Object.entries(snackDatabase);
+
+            if (selectedCategory && selectedCategory !== 'cat-all') {
+                const category = selectedCategory.replace('cat-', '').replace(/-/g, ' ');
+                filtered = filtered.filter(([_, product]) => 
+                    product.category.toLowerCase().includes(category.toLowerCase())
+                );
+            }
+
+            renderProducts(filtered);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts(Object.entries(snackDatabase));
+            document.getElementById('priceSlider').addEventListener('input', (e) => {
+                document.getElementById('priceDisplay').textContent = e.target.value;
+            });
+        });
+    </script>
+</body>
+</html>
