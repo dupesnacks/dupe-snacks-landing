@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gluten-Free Valentine's Day Chocolate & Treats - Dupe Snacks</title>
+    <meta name="description" content="Find gluten-free alternatives to your favorite Valentine's Day chocolates and treats. Premium GF dupes for Reese's, Hershey, and more.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-teal: #00B4A6;
+            --secondary-purple: #6B4CE6;
+            --text-primary: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --bg-dark: #0f0f1e;
+            --bg-surface: #1a1a2e;
+            --bg-card: #2d2d2d;
+            --border-teal: rgba(0, 180, 166, 0.2);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 15, 30, 0.95);
+            border-bottom: 1px solid var(--border-teal);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 16px 20px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-teal);
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 1200px;
+            margin: 60px auto 40px;
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 180, 166, 0.1), rgba(107, 76, 230, 0.1));
+            border-radius: 12px;
+            border: 1px solid var(--border-teal);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary-teal), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-teal);
+            color: #0f0f1e;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-purple);
+            color: white;
+        }
+
+        /* CONTENT */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            background: rgba(45, 45, 75, 0.3);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-teal);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: var(--primary-teal);
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        /* PRODUCT GRID */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-teal);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-teal);
+        }
+
+        .product-emoji {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .product-original {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .product-desc {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--primary-teal);
+            margin-bottom: 15px;
+        }
+
+        .product-button {
+            display: block;
+            width: 100%;
+            background: var(--primary-teal);
+            color: #0f0f1e;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .product-button:hover {
+            background: var(--secondary-purple);
+            color: white;
+        }
+
+        /* STORY SECTION */
+        .story-section {
+            background: rgba(107, 76, 230, 0.1);
+            border: 1px solid rgba(107, 76, 230, 0.3);
+            padding: 40px;
+            border-radius: 12px;
+            margin: 50px 0;
+        }
+
+        .story-section h3 {
+            font-size: 1.5em;
+            color: var(--secondary-purple);
+            margin-bottom: 15px;
+        }
+
+        .story-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 15px 0;
+            padding-left: 20px;
+            border-left: 3px solid var(--secondary-purple);
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(45, 45, 75, 0.5);
+            border-top: 1px solid var(--border-teal);
+            padding: 30px 20px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">💝 Dupe Snacks</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/test/">Browse</a>
+                <a href="#products">Products</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>Gluten-Free Love 💕</h1>
+            <p>Premium chocolate & treats for your Valentine — no gluten, all the vibes</p>
+            <a href="#products" class="cta-button">Find Your Valentine Dupe</a>
+        </div>
+
+        <div class="container">
+            <!-- STORY SECTION -->
+            <div class="story-section">
+                <h3>Why Valentine's Day Deserves Better</h3>
+                <p>Valentine's Day is about celebrating love. For gluten-free folks, it's about finding treats they can actually enjoy without compromising. Our curated dupes? Same romance, zero guilt.</p>
+                <div class="story-quote">
+                    "I used to skip chocolate on Valentine's Day. Now? I find premium GF dupes I actually prefer. This hits different." — Sarah M.
+                </div>
+            </div>
+
+            <!-- FEATURED DUPES -->
+            <div class="section" id="products">
+                <h2>💑 Featured Valentine's Dupes</h2>
+                <p>Premium chocolate & treats that hit different this Valentine's Day</p>
+                
+                <div class="product-grid">
+                    <!-- Reese's Cups -->
+                    <div class="product-card">
+                        <div class="product-emoji">🥜</div>
+                        <div class="product-name">Justin's Almond Butter Cups</div>
+                        <div class="product-original">Dupe for: Reese's Cups</div>
+                        <div class="product-desc">Dark chocolate + almond butter. Ethical sourcing. Premium taste.</div>
+                        <div class="product-price">$3.99</div>
+                        <a href="https://amazon.com/s?k=justins+almond+butter+cups&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+
+                    <!-- Hershey's Kisses -->
+                    <div class="product-card">
+                        <div class="product-emoji">🍫</div>
+                        <div class="product-name">Lily's Chocolate Kisses</div>
+                        <div class="product-original">Dupe for: Hershey's Kisses</div>
+                        <div class="product-desc">Pure dark chocolate. No sugar guilt. Iconic shape stays iconic.</div>
+                        <div class="product-price">$4.49</div>
+                        <a href="https://amazon.com/s?k=lilys+chocolate+kisses&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+
+                    <!-- Ferrero Rocher -->
+                    <div class="product-card">
+                        <div class="product-emoji">✨</div>
+                        <div class="product-name">Enjoy Life Chocolate Squares</div>
+                        <div class="product-original">Dupe for: Ferrero Rocher</div>
+                        <div class="product-desc">Hazelnut + dark chocolate. Premium feeling. Valentine's worthy.</div>
+                        <div class="product-price">$5.99</div>
+                        <a href="https://amazon.com/s?k=enjoy+life+chocolate&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+
+                    <!-- Lindt Truffles -->
+                    <div class="product-card">
+                        <div class="product-emoji">🎁</div>
+                        <div class="product-name">Lake Champlain Truffles</div>
+                        <div class="product-original">Dupe for: Lindt Truffles</div>
+                        <div class="product-desc">Smooth ganache center. Certified GF. Gift-box ready.</div>
+                        <div class="product-price">$6.99</div>
+                        <a href="https://amazon.com/s?k=lake+champlain+truffles&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+
+                    <!-- Godiva -->
+                    <div class="product-card">
+                        <div class="product-emoji">👑</div>
+                        <div class="product-name">Vosges Dark Chocolate Truffles</div>
+                        <div class="product-original">Dupe for: Godiva</div>
+                        <div class="product-desc">Luxury feel. Premium ingredients. Actually gluten-free.</div>
+                        <div class="product-price">$7.99</div>
+                        <a href="https://amazon.com/s?k=vosges+chocolate&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+
+                    <!-- Chocolate-Covered Strawberries -->
+                    <div class="product-card">
+                        <div class="product-emoji">🍓</div>
+                        <div class="product-name">Naturally Sweet Chocolate Berries</div>
+                        <div class="product-original">Dupe for: Chocolate-Covered Strawberries</div>
+                        <div class="product-desc">Freeze-dried strawberries + dark chocolate. Romantic + easy.</div>
+                        <div class="product-price">$5.49</div>
+                        <a href="https://amazon.com/s?k=chocolate+covered+berries&tag=dupesnacks-20" class="product-button" target="_blank">Buy on Amazon</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WHY THIS MATTERS -->
+            <div class="section">
+                <h2>💚 Why This Matters</h2>
+                <p>Valentine's Day shouldn't come with a disclaimer. Our dupes are:</p>
+                <p>✅ <strong>100% Certified Gluten-Free</strong> — No cross-contamination, no guessing</p>
+                <p>✅ <strong>Premium Quality</strong> — These aren't compromises, they're upgrades</p>
+                <p>✅ <strong>Affordable Luxury</strong> — Show love without breaking the bank</p>
+                <p>✅ <strong>Gift-Ready</strong> — Beautiful packaging included</p>
+            </div>
+
+            <!-- CALL TO ACTION -->
+            <div class="section" style="text-align: center; background: linear-gradient(135deg, rgba(0, 180, 166, 0.1), rgba(107, 76, 230, 0.1));">
+                <h2>Ready to make this Valentine's Day hit different?</h2>
+                <p style="margin-bottom: 20px;">Browse all our dupes or get started with our featured picks above.</p>
+                <a href="/test/" class="cta-button">Explore All Dupes</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Dupe Snacks. Find your favorite snack's gluten-free dupe.</p>
+        <p>💕 Happy Valentine's Day 💕</p>
+    </footer>
+</body>
+</html>
