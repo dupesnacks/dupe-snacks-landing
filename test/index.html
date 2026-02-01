@@ -3,478 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dupe Snacks - Find Your Gluten-Free Match</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-        }
-
-        body {
-            background: #0f1419;
-            color: #fff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.5em;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #00ffff, #ff006e);
-            border-radius: 8px;
-        }
-
-        nav a {
-            color: #aaa;
-            text-decoration: none;
-            margin-left: 30px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #00ffff;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 60px 40px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 110, 0.1));
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-        }
-
-        .hero h2 {
-            font-size: 2.8em;
-            font-weight: 900;
-            margin-bottom: 12px;
-            line-height: 1.2;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            color: #aaa;
-            margin-bottom: 25px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-cta {
-            display: inline-block;
-            padding: 12px 40px;
-            background: linear-gradient(135deg, #00ffff, #ff006e);
-            color: #000;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1em;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .hero-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
-        }
-
-        /* Feature Section - COMPRESSED */
-        .features {
-            padding: 50px 40px;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(15, 20, 30, 0.8));
-        }
-
-        .features h2 {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 30px;
-        }
-
-        .features h2 span {
-            color: #00ffff;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 18px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            border-color: rgba(0, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 2.2em;
-            margin-bottom: 8px;
-        }
-
-        .feature-card h3 {
-            color: #00ffff;
-            font-size: 1em;
-            margin-bottom: 6px;
-        }
-
-        .feature-card p {
-            font-size: 0.85em;
-            color: #aaa;
-            line-height: 1.3;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 20px 40px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 110, 0.05));
-        }
-
-        .cta-section h3 {
-            font-size: 1.3em;
-            margin-bottom: 8px;
-        }
-
-        .cta-arrow {
-            display: inline-block;
-            font-size: 1.2em;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-
-        /* Products Section */
-        .products {
-            padding: 50px 40px 80px 40px;
-            background: #0f1419;
-        }
-
-        .products h2 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            background: linear-gradient(135deg, #00ffff, #ff006e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .product-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-            border-radius: 20px;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .product-card:nth-child(1) { animation-delay: 0.05s; }
-        .product-card:nth-child(2) { animation-delay: 0.1s; }
-        .product-card:nth-child(3) { animation-delay: 0.15s; }
-        .product-card:nth-child(4) { animation-delay: 0.2s; }
-        .product-card:nth-child(5) { animation-delay: 0.25s; }
-        .product-card:nth-child(6) { animation-delay: 0.3s; }
-        .product-card:nth-child(7) { animation-delay: 0.35s; }
-        .product-card:nth-child(8) { animation-delay: 0.4s; }
-
-        .product-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 255, 255, 0.2);
-            border-color: rgba(0, 255, 255, 0.5);
-        }
-
-        .product-image-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 4/5;
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
-        }
-
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            padding: 16px;
-            text-align: center;
-        }
-
-        .product-brand {
-            font-size: 0.7em;
-            font-weight: 700;
-            color: #00ffff;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 4px;
-        }
-
-        .product-name {
-            font-size: 0.95em;
-            color: #fff;
-            margin-bottom: 0;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        footer {
-            padding: 40px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 60px 30px;
-            }
-
-            .hero h2 {
-                font-size: 2em;
-            }
-
-            .hero p {
-                font-size: 1.1em;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-
-            header {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            nav {
-                display: flex;
-                gap: 20px;
-            }
-
-            nav a {
-                margin-left: 0;
-            }
-        }
-    </style>
+    <title>Dupe Snacks - Find Your Snack Dupe 🍪🔥</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <div class="logo-icon"></div>
-            Dupe Snacks
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo" onclick="navigateToHome()">🍪 Dupe Snacks</div>
+        
+        <div class="nav-search-container">
+            <input type="text" class="search-input" placeholder="Find your snack dupe (e.g., Oreos)...">
         </div>
-        <nav>
-            <a href="#browse">Browse</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Dupe your favorite snacks.<br>Make them gluten-free.</h2>
-        <p>Verified alternatives to everything you miss. One click to buy.</p>
-        <a href="#browse" class="hero-cta">Browse Dupes</a>
-    </section>
-
-    <!-- Features Section (Compressed) -->
-    <section class="features">
-        <h2>Why <span>Dupe Snacks?</span></h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">✅</div>
-                <h3>100% Verified GF</h3>
-                <p>No guessing. No labels to decode. Every snack is actually gluten-free certified.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3>Taste That Hits</h3>
-                <p>We're not just finding alternatives—we're finding the ones that actually slap. Same vibes, zero guilt.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Buy Instantly</h3>
-                <p>Found your snack? Click and it's on the way. Direct links to Amazon, Target, Walmart. No friction.</p>
-            </div>
+        <div class="nav-links">
+            <a href="browse.html" class="nav-link">Browse</a>
+            <a href="#" class="nav-link" onclick="event.preventDefault(); alert('About: Dupe Snacks helps you find gluten-free alternatives to your favorite snacks!')">About</a>
+            <a href="#" class="nav-link" onclick="event.preventDefault(); alert('Contact us at hello@dupesnacks.com')">Contact</a>
         </div>
-    </section>
 
-    <!-- CTA to scroll -->
-    <section class="cta-section">
-        <h3>Check Out Our Top Dupes Below</h3>
-        <div class="cta-arrow">↓</div>
-    </section>
+        <button class="hamburger" id="mobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
 
-    <!-- Products Showcase -->
-    <section class="products" id="browse">
-        <h2>Featured Dupes</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="/test/doritos.png" alt="Doritos">
-                </div>
-                <div class="product-info">
-                    <div class="product-brand">Doritos</div>
-                    <div class="product-name">Nacho Cheese</div>
-                </div>
-            </div>
+    <!-- MAIN CONTENT -->
+    <main>
+        <div id="mainContent"></div>
+    </main>
 
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="/test/lay_s.png" alt="Lay's">
-                </div>
-                <div class="product-info">
-                    <div class="product-brand">Lay's</div>
-                    <div class="product-name">Barbecue</div>
-                </div>
-            </div>
+    <!-- MODALS -->
+    
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="productModalOverlay"></div>
+    <div class="modal" id="productModal">
+        <div id="productModalContent"></div>
+    </div>
 
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="/test/chips_ahoy.png" alt="Chips Ahoy">
-                </div>
-                <div class="product-info">
-                    <div class="product-brand">Chips Ahoy</div>
-                    <div class="product-name">Mini Chocolate Chip</div>
-                </div>
-            </div>
+    <!-- Filter Modal (Mobile) -->
+    <div class="modal-overlay" id="filterOverlay"></div>
+    <div class="modal" id="filterModal">
+        <div class="modal-handle"></div>
+        <h2 class="modal-title">🔧 Filter Dupes</h2>
 
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="/test/goldfish.png" alt="Goldfish">
-                </div>
-                <div class="product-info">
-                    <div class="product-brand">Goldfish</div>
-                    <div class="product-name">Cheddar</div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="/test/doritos.png" alt="Doritos Party">
-                </div>
-                <div class="product-info">
-                    <div class="product-brand">Doritos</div>
-                    <div class="product-name">Party Size</div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="/test/oreo.png" alt="Oreo">
-                </div>
-                <div class="product-info">
-                    <div class="product-brand">Oreo</div>
-                    <div class="product-name">Classic</div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="/test/cheez-it.png" alt="Cheez-It">
-                </div>
-                <div class="product-info">
-                    <div class="product-brand">Cheez-It</div>
-                    <div class="product-name">Original</div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-wrapper">
-                    <img class="product-image" src="/test/hostess.png" alt="Hostess">
-                </div>
-                <div class="product-info">
-                    <div class="product-brand">Hostess</div>
-                    <div class="product-name">Twinkies</div>
-                </div>
+        <!-- Price Range -->
+        <div class="filter-group">
+            <label class="filter-label">Price Range</label>
+            <input type="range" class="slider" id="priceSlider" min="0" max="10" value="10" 
+                   oninput="appState.filters.price[1] = parseFloat(this.value); renderBrowsePage();">
+            <div class="price-range">
+                <span>$0</span>
+                <span id="priceDisplay">$10+</span>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div>© 2026 Dupe Snacks. Finding your perfect gluten-free match.</div>
-    </footer>
+        <!-- Retailer -->
+        <div class="filter-group">
+            <label class="filter-label">Retailer</label>
+            <div class="filter-option">
+                <input type="checkbox" id="amazonCheck" class="checkbox" checked onchange="updateRetailers()">
+                <label for="amazonCheck">Amazon</label>
+            </div>
+            <div class="filter-option">
+                <input type="checkbox" id="walmartCheck" class="checkbox" checked onchange="updateRetailers()">
+                <label for="walmartCheck">Walmart</label>
+            </div>
+            <div class="filter-option">
+                <input type="checkbox" id="targetCheck" class="checkbox" checked onchange="updateRetailers()">
+                <label for="targetCheck">Target</label>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="filter-group">
+            <label class="filter-label">Features</label>
+            <div class="filter-option">
+                <input type="checkbox" id="certifiedCheck" class="checkbox" onchange="updateFeatures()">
+                <label for="certifiedCheck">Certified Gluten-Free</label>
+            </div>
+            <div class="filter-option">
+                <input type="checkbox" id="organicCheck" class="checkbox" onchange="updateFeatures()">
+                <label for="organicCheck">Organic</label>
+            </div>
+            <div class="filter-option">
+                <input type="checkbox" id="veganCheck" class="checkbox" onchange="updateFeatures()">
+                <label for="veganCheck">Vegan</label>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="modal-footer">
+            <button class="btn" style="flex: 1;" onclick="closeFilters(); renderBrowsePage();">Apply Filters</button>
+            <button class="btn btn-secondary" style="flex: 1;" onclick="closeFilters()">Close</button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="app.js"></script>
+    <script>
+        // Mobile menu handler
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            this.style.transform = this.style.transform === 'rotate(90deg)' ? 'rotate(0)' : 'rotate(90deg)';
+        });
+
+        // Filter helpers
+        function updateRetailers() {
+            const retailers = [];
+            if (document.getElementById('amazonCheck').checked) retailers.push('Amazon');
+            if (document.getElementById('walmartCheck').checked) retailers.push('Walmart');
+            if (document.getElementById('targetCheck').checked) retailers.push('Target');
+            appState.filters.retailers = retailers;
+        }
+
+        function updateFeatures() {
+            const features = [];
+            if (document.getElementById('certifiedCheck').checked) features.push('Certified');
+            if (document.getElementById('organicCheck').checked) features.push('Organic');
+            if (document.getElementById('veganCheck').checked) features.push('Vegan');
+            appState.filters.features = features;
+        }
+
+        // Price slider display
+        document.getElementById('priceSlider')?.addEventListener('input', function(e) {
+            const val = parseFloat(e.target.value);
+            document.getElementById('priceDisplay').textContent = val === 10 ? '$10+' : '$' + val;
+        });
+    </script>
 </body>
 </html>

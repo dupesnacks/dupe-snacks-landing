@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Dupes - Dupe Snacks</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-wrapper {
+            display: flex;
+            margin-top: 70px;
+            min-height: 100vh;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            width: 280px;
+            padding: 2rem;
+            background: var(--bg-surface);
+            border-right: 1px solid var(--border-light);
+            overflow-y: auto;
+            max-height: calc(100vh - 70px);
+            position: sticky;
+            top: 70px;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .sort-select {
+            padding: 0.75rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-medium);
+            border-radius: 8px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sort-select:hover {
+            border-color: var(--primary);
+        }
+
+        .sort-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 180, 166, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .page-wrapper {
+                gap: 1rem;
+            }
+
+            .sidebar {
+                width: 240px;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-wrapper {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .sidebar {
+                display: none;
+                width: 100%;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: auto;
+                max-height: 70vh;
+                border-right: none;
+                border-top: 1px solid var(--border-light);
+                z-index: 998;
+                padding: 1.5rem;
+            }
+
+            .sidebar.active {
+                display: block;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .results-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .sort-select {
+                width: 100%;
+            }
+        }
+
+        .filter-btn-mobile {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .filter-btn-mobile {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo" onclick="window.location.href='index.html'">🍪 Dupe Snacks</div>
+        
+        <div class="nav-search-container">
+            <input type="text" class="search-input" placeholder="Find your snack dupe...">
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link" onclick="event.preventDefault(); alert('About: Dupe Snacks helps you find gluten-free alternatives!')">About</a>
+        </div>
+
+        <button class="hamburger" id="mobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- PAGE WRAPPER -->
+    <div class="page-wrapper">
+        <!-- SIDEBAR FILTERS -->
+        <aside class="sidebar" id="sidebar">
+            <h2 class="sidebar-title">🔧 Filter Dupes</h2>
+
+            <!-- Price Range -->
+            <div class="filter-group">
+                <label class="filter-label">Price Range</label>
+                <input type="range" class="slider" id="priceSlider" min="0" max="10" value="10" 
+                       oninput="updatePrice(this.value)">
+                <div class="price-range">
+                    <span>$0</span>
+                    <span id="priceDisplay">$10+</span>
+                </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="filter-group">
+                <label class="filter-label">Category</label>
+                <div class="filter-option">
+                    <input type="radio" name="category" id="catAll" class="checkbox" checked onchange="filterByCategory(null)">
+                    <label for="catAll">All</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" name="category" id="catCookies" class="checkbox" onchange="filterByCategory('Cookies')">
+                    <label for="catCookies">Cookies</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" name="category" id="catCrackers" class="checkbox" onchange="filterByCategory('Crackers')">
+                    <label for="catCrackers">Crackers</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" name="category" id="catChips" class="checkbox" onchange="filterByCategory('Chips')">
+                    <label for="catChips">Chips</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" name="category" id="catSnackCakes" class="checkbox" onchange="filterByCategory('Snack Cakes')">
+                    <label for="catSnackCakes">Snack Cakes</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" name="category" id="catCandy" class="checkbox" onchange="filterByCategory('Candy')">
+                    <label for="catCandy">Candy</label>
+                </div>
+            </div>
+
+            <!-- Retailer -->
+            <div class="filter-group">
+                <label class="filter-label">Retailer</label>
+                <div class="filter-option">
+                    <input type="checkbox" id="amazonCheck" class="checkbox" checked onchange="updateRetailers()">
+                    <label for="amazonCheck">Amazon</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="walmartCheck" class="checkbox" checked onchange="updateRetailers()">
+                    <label for="walmartCheck">Walmart</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="targetCheck" class="checkbox" checked onchange="updateRetailers()">
+                    <label for="targetCheck">Target</label>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="filter-group">
+                <label class="filter-label">Features</label>
+                <div class="filter-option">
+                    <input type="checkbox" id="certifiedCheck" class="checkbox" onchange="updateFeatures()">
+                    <label for="certifiedCheck">Certified GF</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="organicCheck" class="checkbox" onchange="updateFeatures()">
+                    <label for="organicCheck">Organic</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="veganCheck" class="checkbox" onchange="updateFeatures()">
+                    <label for="veganCheck">Vegan</label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <button class="btn filter-btn-mobile" onclick="toggleSidebarMobile()">🔧 Filters</button>
+
+            <!-- Results Header -->
+            <div class="results-header">
+                <div>
+                    <h2>Browse Dupes</h2>
+                    <p style="color: #aaaaaa; margin-top: 0.5rem;" id="resultCount">Loading...</p>
+                </div>
+                <select class="sort-select" onchange="changeSort(this.value)">
+                    <option value="popular">⭐ Most Popular</option>
+                    <option value="value">💰 Best Value</option>
+                    <option value="newest">✨ Newest</option>
+                </select>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-3" id="productGrid">
+                <div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #aaaaaa;">
+                    Loading products...
+                </div>
+            </div>
+
+            <!-- Load More -->
+            <button class="btn" style="display: block; margin: 3rem auto;" id="loadMoreBtn" onclick="loadMoreProducts()" style="display: none;">Load More Dupes →</button>
+        </main>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="productModalOverlay"></div>
+    <div class="modal" id="productModal">
+        <div id="productModalContent"></div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="app.js"></script>
+    <script>
+        let displayCount = 12;
+        
+        function updatePrice(val) {
+            const priceVal = parseFloat(val);
+            appState.filters.price[1] = priceVal;
+            document.getElementById('priceDisplay').textContent = priceVal === 10 ? '$10+' : '$' + priceVal;
+            renderBrowseProducts();
+        }
+
+        function filterByCategory(cat) {
+            appState.selectedCategory = cat;
+            renderBrowseProducts();
+        }
+
+        function updateRetailers() {
+            const retailers = [];
+            if (document.getElementById('amazonCheck').checked) retailers.push('Amazon');
+            if (document.getElementById('walmartCheck').checked) retailers.push('Walmart');
+            if (document.getElementById('targetCheck').checked) retailers.push('Target');
+            appState.filters.retailers = retailers;
+            renderBrowseProducts();
+        }
+
+        function updateFeatures() {
+            const features = [];
+            if (document.getElementById('certifiedCheck').checked) features.push('Certified');
+            if (document.getElementById('organicCheck').checked) features.push('Organic');
+            if (document.getElementById('veganCheck').checked) features.push('Vegan');
+            appState.filters.features = features;
+            renderBrowseProducts();
+        }
+
+        function changeSort(sortType) {
+            appState.sortBy = sortType;
+            renderBrowseProducts();
+        }
+
+        function renderBrowseProducts() {
+            const filtered = getFilteredSnacks();
+            const sorted = getSortedSnacks(filtered);
+            displayCount = 12;
+
+            document.getElementById('resultCount').textContent = `Showing ${sorted.length} product${sorted.length !== 1 ? 's' : ''}`;
+
+            let html = '';
+            sorted.slice(0, displayCount).forEach(snack => {
+                html += renderProductCard(snack, true);
+            });
+
+            document.getElementById('productGrid').innerHTML = html;
+            document.getElementById('loadMoreBtn').style.display = sorted.length > displayCount ? 'block' : 'none';
+        }
+
+        function loadMoreProducts() {
+            displayCount += 12;
+            const filtered = getFilteredSnacks();
+            const sorted = getSortedSnacks(filtered);
+
+            let html = '';
+            sorted.forEach(snack => {
+                html += renderProductCard(snack, true);
+            });
+
+            document.getElementById('productGrid').innerHTML = html;
+            document.getElementById('loadMoreBtn').style.display = sorted.length > displayCount ? 'block' : 'none';
+        }
+
+        function toggleSidebarMobile() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
+        // Search input
+        document.querySelector('.search-input').addEventListener('input', (e) => {
+            appState.searchQuery = e.target.value;
+            renderBrowseProducts();
+        });
+
+        // Mobile menu
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            this.style.transform = this.style.transform === 'rotate(90deg)' ? 'rotate(0)' : 'rotate(90deg)';
+        });
+
+        // Close product modal on overlay click
+        document.getElementById('productModalOverlay').addEventListener('click', closeProductDetail);
+
+        // Handle URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('category');
+        if (categoryParam) {
+            appState.selectedCategory = categoryParam;
+            // Check the radio button
+            const catElement = document.getElementById('catAll');
+            if (catElement) catElement.checked = false;
+            const catId = 'cat' + categoryParam.replace(/\s+/g, '');
+            const catCheck = document.getElementById(catId);
+            if (catCheck) catCheck.checked = true;
+        }
+
+        // Initialize
+        renderBrowseProducts();
+    </script>
+</body>
+</html>
