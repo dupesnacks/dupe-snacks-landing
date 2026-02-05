@@ -176,7 +176,7 @@
         
         .hero-stats {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-top: 50px;
             padding-top: 50px;
@@ -185,46 +185,18 @@
         
         .stat {
             padding: 20px;
-            text-align: center;
         }
         
         .stat-number {
             font-size: 2.5em;
             font-weight: 800;
             color: var(--primary-orange);
-            line-height: 1;
         }
         
         .stat-label {
             color: var(--text-muted);
             font-size: 0.95em;
             margin-top: 10px;
-            line-height: 1.4;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .stat {
-                padding: 15px;
-                border-bottom: 2px solid var(--border-light);
-                text-align: center;
-            }
-            
-            .stat:last-child {
-                border-bottom: none;
-            }
-            
-            .stat-number {
-                font-size: 2em;
-            }
-            
-            .stat-label {
-                font-size: 0.9em;
-            }
         }
         
         /* Value Proposition Section */
@@ -698,11 +670,7 @@
             <h1>Better Energy. Better <span class="highlight">Margins.</span></h1>
             <p class="subheading">Stop losing money on energy drinks. Big Drink Energy gives you 40% lower cost, better taste, and full control over your margins.</p>
             
-            <div style="max-width: 600px; margin: 40px auto 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.15);">
-                <img src="hero-lifestyle.jpg" alt="Big Drink Energy in action" style="width: 100%; height: auto; display: block;">
-            </div>
-            
-            <div class="hero-cta" style="margin-top: 40px;">
+            <div class="hero-cta">
                 <a href="#contact" class="primary">Start Your Free Pilot</a>
                 <a href="#how-it-works" class="secondary">See How It Works →</a>
             </div>
@@ -744,17 +712,6 @@
                     <h3>Customers Demand Better</h3>
                     <p>Your health-conscious customers want quality. But they don't want to pay for Red Bull's brand tax. They want a better option.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Showcase -->
-    <section class="value-props" style="background: white;">
-        <div class="section-container">
-            <h2 class="section-title">Meet <span class="orange">Big Drink Energy</span></h2>
-            <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-                <img src="cans.jpg" alt="Big Drink Energy Original and Sugar Free" style="width: 100%; max-width: 600px; height: auto; margin-bottom: 30px; border-radius: 12px;">
-                <p style="color: var(--text-muted); font-size: 1.05em; line-height: 1.7;">Available in Original and Sugar Free. Same proven formula, crafted specifically for QSR operators who demand better quality and better margins.</p>
             </div>
         </div>
     </section>
@@ -849,16 +806,6 @@
         </div>
     </section>
 
-    <!-- Brand Showcase -->
-    <section class="value-props" style="background: white; text-align: center;">
-        <div class="section-container">
-            <div style="max-width: 500px; margin: 0 auto;">
-                <img src="logo.jpg" alt="Big Drink Energy Brand" style="width: 100%; max-width: 450px; height: auto;">
-                <p style="color: var(--text-muted); margin-top: 20px; font-size: 1em; line-height: 1.7;">Built by a founder who understands QSR operations. Built for a market that deserves better.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Product Features -->
     <section class="features" id="features">
         <div class="section-container">
@@ -905,14 +852,6 @@
                     <p>Already trusted by leading QSR concepts. References available.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Product Detail Visual -->
-    <section class="value-props" style="background: #f5f5f5;">
-        <div class="section-container" style="max-width: 600px;">
-            <img src="can-detail.jpg" alt="Big Drink Energy Product Detail" style="width: 100%; height: auto; margin-bottom: 30px; border-radius: 12px;">
-            <p style="text-align: center; color: var(--text-muted); font-size: 1em; line-height: 1.7;"><strong>Every detail matters.</strong> We obsessed over formulation, taste, and how it works in your environment. The result: an energy drink your customers will crave, and your margins will love.</p>
         </div>
     </section>
 
