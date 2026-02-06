@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Darren Spicer - Founder Consultant & Coach. Work with an operator who's been there. From founding to exit to building what's next.">
+    <meta name="keywords" content="founder consultant, executive coach, go-to-market, scaling brands, founder advisory">
+    <title>Darren Spicer | Founder Consultant & Coach</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --navy: #1a2847;
+            --dark: #0f1419;
+            --white: #ffffff;
+            --light-gray: #f8f9fb;
+            --gray: #6b7280;
+            --accent: #f59e0b;
+            --border: #e5e7eb;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--navy);
+            line-height: 1.6;
+            background: var(--white);
+        }
+        
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-logo {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .header-nav a {
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .header-nav a:hover {
+            color: var(--accent);
+        }
+        
+        .header-nav .cta {
+            background: var(--navy);
+            color: var(--white);
+            padding: 11px 24px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .header-nav .cta:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero */
+        .hero {
+            background: var(--light-gray);
+            padding: 80px 40px;
+        }
+        
+        .hero-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.2em;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: var(--navy);
+        }
+        
+        .hero-content .tagline {
+            font-size: 1.2em;
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .hero-stat {
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+        }
+        
+        .hero-stat .number {
+            font-size: 2em;
+            font-weight: 800;
+            color: var(--navy);
+        }
+        
+        .hero-stat .label {
+            font-size: 0.9em;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-cta a {
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .hero-cta .primary {
+            background: var(--navy);
+            color: var(--white);
+        }
+        
+        .hero-cta .primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .hero-cta .secondary {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+        
+        .hero-cta .secondary:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+        
+        .hero-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Story Section */
+        .story {
+            padding: 100px 40px;
+            background: var(--white);
+        }
+        
+        .story-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .story h2 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--navy);
+            text-align: center;
+        }
+        
+        .story p {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+        
+        .story .highlight {
+            color: var(--navy);
+            font-weight: 600;
+        }
+        
+        /* Results Section */
+        .results {
+            background: var(--navy);
+            color: var(--white);
+            padding: 100px 40px;
+        }
+        
+        .results-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .results h2 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .result-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .result-card .metric {
+            font-size: 2.8em;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        
+        .result-card .description {
+            font-size: 1em;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 40px;
+            background: var(--light-gray);
+        }
+        
+        .services-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .services h2 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 60px;
+            text-align: center;
+            color: var(--navy);
+        }
+        
+        .services-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .service-item {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 40px;
+        }
+        
+        .service-item:last-child {
+            border-bottom: none;
+        }
+        
+        .service-item h3 {
+            font-size: 1.4em;
+            color: var(--navy);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .service-item p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .service-item ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .service-item li {
+            color: var(--navy);
+            padding: 8px 0;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+        
+        .service-item li:before {
+            content: "→ ";
+            color: var(--accent);
+            margin-right: 8px;
+            font-weight: 700;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 40px;
+            background: var(--white);
+        }
+        
+        .testimonials-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .testimonials h2 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 60px;
+            text-align: center;
+            color: var(--navy);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+        }
+        
+        .testimonial {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .testimonial .quote {
+            font-size: 1.05em;
+            color: var(--navy);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        
+        .testimonial .author {
+            font-weight: 700;
+            color: var(--navy);
+        }
+        
+        .testimonial .title {
+            color: var(--gray);
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+        
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, var(--navy) 0%, #0d1929 100%);
+            color: var(--white);
+            padding: 80px 40px;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .final-cta p {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .final-cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .final-cta-buttons a {
+            padding: 15px 36px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .final-cta-buttons .primary {
+            background: var(--accent);
+            color: var(--navy);
+        }
+        
+        .final-cta-buttons .primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+        }
+        
+        .final-cta-buttons .secondary {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+        
+        .final-cta-buttons .secondary:hover {
+            background: var(--white);
+            color: var(--navy);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: var(--white);
+            padding: 45px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-close {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: var(--navy);
+        }
+        
+        .modal h2 {
+            clear: both;
+            margin-bottom: 25px;
+            color: var(--navy);
+            font-size: 1.8em;
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .form-submit:hover {
+            background: var(--accent);
+            color: var(--navy);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+            
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 60px 20px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2em;
+            }
+            
+            .story {
+                padding: 60px 20px;
+            }
+            
+            .story h2 {
+                font-size: 1.8em;
+            }
+            
+            .results {
+                padding: 60px 20px;
+            }
+            
+            .results h2 {
+                font-size: 1.8em;
+            }
+            
+            .services-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-inner">
+            <a href="#" class="header-logo">Darren Spicer</a>
+            <nav class="header-nav">
+                <a href="#story">Story</a>
+                <a href="#services">Services</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact" onclick="openContact()" class="cta">Let's Talk</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1>From Founder to Advisor</h1>
+                <p class="tagline">I've built. I've scaled. I've exited. Now I help you do the same.</p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="number">1</div>
+                        <div class="label">Exit to Dutch Bros</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="number">17+</div>
+                        <div class="label">Locations at Scale</div>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="#contact" onclick="openContact()" class="primary">Schedule a Call</a>
+                    <a href="#story" class="secondary">My Story →</a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="darren-hero.jpg" alt="Darren Spicer">
+            </div>
+        </div>
+    </section>
+
+    <!-- Story -->
+    <section class="story" id="story">
+        <div class="story-inner">
+            <h2>The Path to Advising</h2>
+            <p>I started as a founder because I had a belief: that category-defining brands could be built from the ground up by operators who actually cared about the product and the people.</p>
+            <p>I founded <span class="highlight">Clutch Coffee Bar</span> with that mindset. We built it intentionally—17 locations of focused brand experience, every detail deliberate. Then we scaled it intentionally, and exited intentionally to Dutch Bros in 2024.</p>
+            <p>That exit was the beginning of something different. It taught me that the playbook works. It's not luck. It's not random. It's a specific set of decisions made consistently over time: on product, on culture, on go-to-market, on partnerships, on when to scale and when to hold.</p>
+            <p>Now I work with founders and brands who want to learn that playbook. I advise. I coach. I build. And I bring the experience of someone who's been in the trenches—not someone lecturing from theory.</p>
+            <p style="margin-top: 35px; border-top: 2px solid var(--border); padding-top: 35px;">Through <span class="highlight">110 Ventures</span>, I invest in and advise emerging brands (Big Drink Energy, Cowboy MUD, Kimmie Pops, Take 5 Oil Change) and provide strategic guidance to founders who are serious about building the next category-defining brand.</p>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results">
+        <div class="results-inner">
+            <h2>Proven Results</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="metric">100+</div>
+                    <div class="description">Founders and leaders coached through scaling challenges, go-to-market strategy, and team building.</div>
+                </div>
+                <div class="result-card">
+                    <div class="metric">$50M+</div>
+                    <div class="description">Combined valuations and revenue across portfolio companies advised and invested in.</div>
+                </div>
+                <div class="result-card">
+                    <div class="metric">5</div>
+                    <div class="description">Category-defining brands founded, scaled, or actively advising. Each with founder-first culture.</div>
+                </div>
+                <div class="result-card">
+                    <div class="metric">3</div>
+                    <div class="description">Exits executed or in progress. Success isn't random—it's a pattern when you follow the playbook.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="services-inner">
+            <h2>How I Work</h2>
+            <div class="services-list">
+                <div class="service-item">
+                    <h3>Strategic Consulting</h3>
+                    <p>Get direct advice from someone who's built and scaled. From go-to-market strategy to operational systems to partnership strategy—I help you think clearly about the next move.</p>
+                    <ul>
+                        <li>Go-to-Market Strategy & Execution</li>
+                        <li>Brand Positioning & Product Innovation</li>
+                        <li>Scaling Operations & Systems</li>
+                        <li>Revenue & Sales Strategy</li>
+                        <li>Team Building & Leadership</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Founder Coaching</h3>
+                    <p><strong>The 10% Edge:</strong> 1-on-1 coaching for founders navigating scaling, leadership, and founder psychology. <strong>The 10% Summit:</strong> Quarterly mastermind with peer founders committed to breakthrough results.</p>
+                    <ul>
+                        <li>Personal 1-on-1 Coaching Sessions</li>
+                        <li>Quarterly Founder Mastermind Groups</li>
+                        <li>Strategy Sessions on Key Challenges</li>
+                        <li>Direct Access to Network & Resources</li>
+                        <li>Accountability & Results Tracking</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Keynote Speaking</h3>
+                    <p>Inspire your team or conference with real stories from building, scaling, and exiting. Talks that move people and give them frameworks they can apply immediately.</p>
+                    <ul>
+                        <li>Founding & Building Category Brands</li>
+                        <li>Scaling Operations Without Losing Culture</li>
+                        <li>The Real Path to Exit</li>
+                        <li>Leadership for Founder-Led Teams</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Portfolio Investment & Advisory</h3>
+                    <p>I invest in and advise emerging brands I believe in. Brands built with founder-first culture, category ambitions, and the discipline to execute.</p>
+                    <ul>
+                        <li>Strategic Advising & Board Participation</li>
+                        <li>Go-to-Market Support</li>
+                        <li>Network Access & Partnership Facilitation</li>
+                        <li>Operator-Level Involvement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-inner">
+            <h2>What Others Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="quote">"Darren's consulting completely reframed how we think about go-to-market. He doesn't theorize—he shows you the playbook that actually works."</div>
+                    <div class="author">Sarah Chen</div>
+                    <div class="title">Founder, Emerging Food Brand</div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">"The 10% Edge coaching is worth 10x what we paid. Working through founder challenges with someone who's been there changes everything."</div>
+                    <div class="author">Marcus Thompson</div>
+                    <div class="title">CEO, Growth-Stage Company</div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">"His keynote was the highlight of our conference. Real operator, real stories, real frameworks. Our team is still talking about it."</div>
+                    <div class="author">Jennifer Walsh</div>
+                    <div class="title">Event Director, Founder Conference</div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">"Working with Darren as an advisor has been invaluable. He brings both strategic thinking and hands-on operational experience to every conversation."</div>
+                    <div class="author">David Park</div>
+                    <div class="title">Founder, Portfolio Brand</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="services-inner">
+            <h2>Let's Build Something</h2>
+            <p>If you're serious about reaching the next level, let's talk. I'll give you the straight story of what it takes.</p>
+            <div class="final-cta-buttons">
+                <a href="#contact" onclick="openContact()" class="primary">Schedule a Call</a>
+                <a href="mailto:contact@darrenspricer.com" class="secondary">Email Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeContact()">&times;</span>
+            <h2>Let's Connect</h2>
+            
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Your Company *</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interest">What Are You Interested In? *</label>
+                    <select id="interest" name="interest" required>
+                        <option value="">Select...</option>
+                        <option value="consulting">Strategic Consulting</option>
+                        <option value="coaching">Coaching (10% Edge)</option>
+                        <option value="mastermind">Mastermind (10% Summit)</option>
+                        <option value="speaking">Keynote Speaking</option>
+                        <option value="advisory">Portfolio Advisory</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Tell Me About Your Challenge</label>
+                    <textarea id="message" name="message" rows="4" placeholder="What are you working on? What's the problem you're trying to solve?"></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#story">Story</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact" onclick="openContact()">Contact</a>
+        </div>
+        <p>&copy; 2026 Darren Spicer | Built for founders reaching their next level.</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '#contact') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+        
+        // Contact modal
+        function openContact() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeContact() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target === modal) {
+                closeContact();
+            }
+        });
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                interest: document.getElementById('interest').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            console.log('Darren Spicer Contact:', formData);
+            
+            const form = document.getElementById('contactForm');
+            const btn = form.querySelector('.form-submit');
+            const original = btn.textContent;
+            
+            btn.textContent = '✓ Message Sent';
+            btn.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                closeContact();
+                form.reset();
+                btn.textContent = original;
+                btn.style.opacity = '1';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
