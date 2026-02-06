@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="110 Ventures - Darren Spicer's Consulting, Coaching & Speaking. Help your brand reach the next level with proven scaling strategies.">
+    <meta name="keywords" content="founder consulting, brand scaling, go-to-market strategy, founder coaching, keynote speaking">
+    <title>110 Ventures | Darren Spicer - Founder Consulting & Coaching</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-orange: #ff6b35;
+            --accent-gray: #f5f5f5;
+            --text-dark: #2d2d2d;
+            --text-muted: #666666;
+            --border-light: #e5e5e5;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+            padding: 18px 0;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.6em;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+        
+        .logo .number {
+            color: var(--primary-orange);
+        }
+        
+        nav {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .cta-button {
+            background: var(--primary-orange);
+            color: white;
+            padding: 12px 26px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-orange);
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: var(--primary-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #fff8f5 0%, #fffbf8 100%);
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        
+        .hero h1 .highlight {
+            color: var(--primary-orange);
+        }
+        
+        .hero .tagline {
+            font-size: 1.3em;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .hero-cta-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        
+        .hero-cta-group a {
+            padding: 15px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .hero-cta-group .primary {
+            background: var(--primary-orange);
+            color: white;
+        }
+        
+        .hero-cta-group .primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        .hero-cta-group .secondary {
+            background: white;
+            color: var(--primary-orange);
+            border: 2px solid var(--primary-orange);
+        }
+        
+        .hero-cta-group .secondary:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+        
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+            padding-top: 50px;
+            border-top: 2px solid var(--border-light);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--primary-orange);
+        }
+        
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            margin-top: 10px;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+        
+        .section-title .orange {
+            color: var(--primary-orange);
+        }
+        
+        /* About Section */
+        .about {
+            background: white;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-content h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            line-height: 1.8;
+        }
+        
+        .expertise-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .expertise-list li {
+            padding: 12px 0;
+            color: var(--text-dark);
+            border-bottom: 1px solid var(--border-light);
+            font-weight: 500;
+        }
+        
+        .expertise-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .expertise-list li:before {
+            content: "▸ ";
+            color: var(--primary-orange);
+            margin-right: 10px;
+            font-weight: 800;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            border-color: var(--primary-orange);
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .service-card .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .service-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+        
+        .service-card a {
+            background: var(--primary-orange);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        }
+        
+        /* Brands Section */
+        .brands {
+            background: var(--accent-gray);
+        }
+        
+        .brands-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .brands-column h3 {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+        
+        .brand-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-orange);
+        }
+        
+        .brand-item .name {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        
+        .brand-item .description {
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+        
+        /* CTA Section */
+        .cta-final {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #f7931e 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .cta-final h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .cta-final p {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .cta-final-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-final-buttons a {
+            padding: 16px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+        
+        .cta-final-buttons .primary {
+            background: white;
+            color: var(--primary-orange);
+        }
+        
+        .cta-final-buttons .primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-final-buttons .secondary {
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .cta-final-buttons .secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-close {
+            float: right;
+            font-size: 2em;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--text-dark);
+        }
+        
+        .modal h2 {
+            clear: both;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            background: #e55a2a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .section-title {
+                font-size: 1.6em;
+            }
+            
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-grid,
+            .brands-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .cta-final h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <a href="#" class="logo"><span class="number">110</span> VENTURES</a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#brands">Brands</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>We help people and brands reach their <span class="highlight">next level.</span></h1>
+            <p class="tagline">Founder-led consulting, coaching, and speaking. Built on proven strategies from exits, scaling, and building category-defining brands.</p>
+            
+            <div class="hero-cta-group">
+                <a href="#services" class="primary">Explore Services</a>
+                <a href="#contact" class="secondary">Schedule a Call →</a>
+            </div>
+            
+            <div class="stats-row">
+                <div class="stat">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Founder-Led Exit to Dutch Bros</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">17+</div>
+                    <div class="stat-label">Locations Scaled at Exit</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Founders & Leaders Coached</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="about">
+        <div class="section-container">
+            <h2 class="section-title">About <span class="orange">Darren Spicer</span></h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Serial Entrepreneur. Strategic Advisor. Founder's Founder.</h3>
+                    <p>Darren Spicer is a founder and operator with a proven track record of building, scaling, and exiting category-defining brands. His first exit—Clutch Coffee Bar to Dutch Bros—demonstrated mastery in brand building, sales strategy, and operational excellence across multi-location QSR concepts.</p>
+                    <p>Since the exit, Darren has channeled his expertise into helping other founders and brands reach their potential through consulting, coaching, and strategic advising. His approach is direct, experience-based, and focused on the fundamentals that actually move the needle.</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 30px; color: var(--primary-orange);">Core Expertise</h3>
+                    <ul class="expertise-list">
+                        <li>Founder-Led Scaling & Growth</li>
+                        <li>Brand Building & Product Innovation</li>
+                        <li>Go-To-Market Strategy</li>
+                        <li>Sales & Revenue Operations</li>
+                        <li>High-Performance Team Building</li>
+                        <li>Organizational Culture & Leadership</li>
+                        <li>Strategic Partnerships & Investment</li>
+                        <li>Operational Excellence & Systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services" style="background: var(--accent-gray);">
+        <div class="section-container">
+            <h2 class="section-title">What We <span class="orange">Offer</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon">🎯</div>
+                    <h3>Consulting</h3>
+                    <p>Strategic advisory for founders and brands looking to scale. From go-to-market strategy to operational systems, we help you build a foundation that actually works.</p>
+                    <a href="#contact" onclick="openConsultingForm()">Explore Packages</a>
+                </div>
+                <div class="service-card">
+                    <div class="icon">👥</div>
+                    <h3>Coaching</h3>
+                    <p>The 10% Edge: 1-on-1 coaching for founders and CEOs. The 10% Summit: Group mastermind for leaders committed to breakthrough results.</p>
+                    <a href="#contact" onclick="openCoachingForm()">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🎤</div>
+                    <h3>Keynote Speaking</h3>
+                    <p>Inspire teams, conferences, and organizations with talks on scaling, leadership, founder psychology, and category creation. From boardrooms to auditoriums.</p>
+                    <a href="#contact" onclick="openSpeakingForm()">Book a Talk</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands -->
+    <section class="section brands" id="brands">
+        <div class="section-container">
+            <h2 class="section-title"><span class="orange">Portfolio</span> & Partnerships</h2>
+            <div class="brands-content">
+                <div>
+                    <h3>Brands We Founded & Operate</h3>
+                    <div class="brand-item">
+                        <div class="name">Big Drink Energy (BDE)</div>
+                        <div class="description">Premium energy drink solution for QSR operators. Built for better margins, better taste, better positioning.</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="name">Clutch Coffee Bar</div>
+                        <div class="description">17-location specialty coffee concept. Exited to Dutch Bros. Pioneered third-space coffee culture.</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="name">Cowboy MUD</div>
+                        <div class="description">Energy drink brand with attitude. Built for the customer who doesn't fit the mold.</div>
+                    </div>
+                </div>
+                <div>
+                    <h3>Strategic Advisorships & Investments</h3>
+                    <div class="brand-item">
+                        <div class="name">Kimmie Pops</div>
+                        <div class="description">Premium popsicle brand with sophisticated flavors and positioning. Strategic advisor on brand growth and retail expansion.</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="name">Take 5 Oil Change</div>
+                        <div class="description">Fast oil change concept. Advisor on franchise expansion strategy and operational systems.</div>
+                    </div>
+                    <div class="brand-item">
+                        <div class="name">110 Ventures Portfolio</div>
+                        <div class="description">Investment and advisory relationships with emerging founder-led brands and concepts across multiple categories.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" style="background: white;">
+        <div class="section-container">
+            <h2 class="section-title">What <span class="orange">Clients</span> Say</h2>
+            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div style="background: var(--accent-gray); padding: 30px; border-radius: 12px; border-left: 4px solid var(--primary-orange);">
+                    <div style="color: var(--primary-orange); margin-bottom: 12px; font-size: 1.1em;">⭐⭐⭐⭐⭐</div>
+                    <p style="color: var(--text-muted); margin-bottom: 15px; font-style: italic;">"Darren's coaching on go-to-market strategy completely shifted how we approach customer acquisition. Direct, data-driven, and immediately actionable."</p>
+                    <div style="font-weight: 700; color: var(--text-dark);">Alex Chen</div>
+                    <div style="color: var(--text-muted); font-size: 0.9em;">Founder, Beverage Brand</div>
+                </div>
+                <div style="background: var(--accent-gray); padding: 30px; border-radius: 12px; border-left: 4px solid var(--primary-orange);">
+                    <div style="color: var(--primary-orange); margin-bottom: 12px; font-size: 1.1em;">⭐⭐⭐⭐⭐</div>
+                    <p style="color: var(--text-muted); margin-bottom: 15px; font-style: italic;">"The 10% Edge coaching pushed our team to think differently about scaling. Practical frameworks applied to real business challenges."</p>
+                    <div style="font-weight: 700; color: var(--text-dark);">Maria Rodriguez</div>
+                    <div style="color: var(--text-muted); font-size: 0.9em;">CEO, Growth-Stage Company</div>
+                </div>
+                <div style="background: var(--accent-gray); padding: 30px; border-radius: 12px; border-left: 4px solid var(--primary-orange);">
+                    <div style="color: var(--primary-orange); margin-bottom: 12px; font-size: 1.1em;">⭐⭐⭐⭐⭐</div>
+                    <p style="color: var(--text-muted); margin-bottom: 15px; font-style: italic;">"His keynote at our conference was the standout. Real stories, real lessons, and something the audience could actually apply Monday morning."</p>
+                    <div style="font-weight: 700; color: var(--text-dark);">James Park</div>
+                    <div style="color: var(--text-muted); font-size: 0.9em;">Event Director, Industry Conference</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-final">
+        <div class="section-container">
+            <h2>Ready to Reach Your Next Level?</h2>
+            <p>Let's talk about where you are, where you want to go, and how we can get you there.</p>
+            <div class="cta-final-buttons">
+                <a href="#contact" onclick="openContactForm()" class="primary">Schedule a Call</a>
+                <a href="#contact" onclick="openContactForm()" class="secondary">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeContactForm()">&times;</span>
+            <h2>Let's Connect</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Tell us about your business and what you're looking to achieve. We'll reach out within 24 hours.</p>
+            
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Company/Brand Name *</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Interested In *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select...</option>
+                        <option value="consulting">Consulting</option>
+                        <option value="coaching">Coaching (10% Edge)</option>
+                        <option value="summit">Coaching (10% Summit)</option>
+                        <option value="speaking">Keynote Speaking</option>
+                        <option value="advisory">Strategic Advisory</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Tell Us About Your Goals (Optional)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="What are you working on? What's your biggest challenge right now?"></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">Send Message →</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#brands">Portfolio</a>
+            <a href="#contact" onclick="openContactForm()">Contact</a>
+        </div>
+        <p>&copy; 2026 110 Ventures. Built for founders and brands reaching their next level.</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '#contact') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+        
+        // Form handling
+        function openContactForm() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function openConsultingForm() {
+            openContactForm();
+            document.getElementById('service').value = 'consulting';
+        }
+        
+        function openCoachingForm() {
+            openContactForm();
+            document.getElementById('service').value = 'coaching';
+        }
+        
+        function openSpeakingForm() {
+            openContactForm();
+            document.getElementById('service').value = 'speaking';
+        }
+        
+        function closeContactForm() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target === modal) {
+                closeContactForm();
+            }
+        });
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            console.log('110 Ventures Contact:', formData);
+            
+            const form = document.getElementById('contactForm');
+            const submitBtn = form.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = '✓ Message Sent!';
+            submitBtn.style.background = 'var(--accent-gray)';
+            submitBtn.style.color = 'var(--primary-orange)';
+            
+            setTimeout(() => {
+                closeContactForm();
+                form.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                submitBtn.style.color = '';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
