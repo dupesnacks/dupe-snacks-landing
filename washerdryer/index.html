@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oregon Appliance Rental - Washer & Dryer Rentals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Nav */
+        header {
+            background: #1e3a5f;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8c 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #1e3a5f;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #1e3a5f;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: #f8f9fa;
+            padding: 80px 20px;
+            margin: 80px 0;
+        }
+
+        .pricing-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .price-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .price-card:hover {
+            border-color: #ff6b35;
+        }
+
+        .price-card h3 {
+            color: #1e3a5f;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 3rem;
+            color: #ff6b35;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .price-period {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+            color: #666;
+        }
+
+        .price-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .price-card li:last-child {
+            border-bottom: none;
+        }
+
+        .price-card li:before {
+            content: "✓ ";
+            color: #ff6b35;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .step {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #ff6b35;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .step h3 {
+            color: #1e3a5f;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #f8f9fa;
+            padding: 80px 20px;
+            margin: 80px 0;
+        }
+
+        .testimonials-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .stars {
+            color: #ff6b35;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .testimonial p {
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: #1e3a5f;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-title {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: #1e3a5f;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .contact-method {
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+
+        .contact-method h4 {
+            color: #1e3a5f;
+            margin-bottom: 10px;
+        }
+
+        .contact-method a {
+            color: #ff6b35;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contact-method a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3a5f;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Image sections */
+        .image-section {
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .price {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🏠 Oregon Appliance Rental</div>
+            <ul class="nav-links">
+                <li><a href="#features">Why Us</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Quality Washer & Dryer Rentals</h1>
+            <p>Free delivery, free installation, and we handle all the maintenance. Get the appliances you need without the hassle.</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Free Delivery & Installation</h3>
+                <p>We handle everything. No installation fees, no hidden charges. We deliver, install, and haul away your old machines.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>Complete Maintenance</h3>
+                <p>We take care of all repairs and maintenance. If something breaks, we fix it at no extra cost. You don't worry about a thing.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>5-Star Rated Service</h3>
+                <p>29 reviews, 5.0 stars on Facebook. Highly rated since 2005. Our customers know they can trust us.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Affordable Pricing</h3>
+                <p>Washer from $50/month. Dryer from $50/month. Sets available at $70/month. No long-term contracts required.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Multiple Options</h3>
+                <p>Many types and brands available. Choose the model that fits your needs. Easy upgrades if your situation changes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Local & Reliable</h3>
+                <p>Serving the area with integrity. Quick response times. Same-day installation available.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Section -->
+    <section class="image-section">
+        <h2 class="section-title">Our Appliances</h2>
+        <img src="https://images.unsplash.com/photo-1584622181563-430f63602d4b?w=800&q=80" alt="Modern Washer and Dryer" style="max-width: 600px;">
+        <p style="margin-top: 20px; color: #666;">Quality appliances, professionally maintained</p>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-content">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Washer Only</h3>
+                    <div class="price">$50<span class="price-period">/month</span></div>
+                    <ul>
+                        <li>Free Delivery</li>
+                        <li>Free Installation</li>
+                        <li>Maintenance Included</li>
+                        <li>24/7 Support</li>
+                        <li>No Long-Term Contract</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Rent Now</a>
+                </div>
+                <div class="price-card" style="border-color: #ff6b35;">
+                    <h3>Washer + Dryer Set</h3>
+                    <div class="price">$70<span class="price-period">/month</span></div>
+                    <ul>
+                        <li>Free Delivery</li>
+                        <li>Free Installation</li>
+                        <li>Maintenance Included</li>
+                        <li>24/7 Support</li>
+                        <li>No Long-Term Contract</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Most Popular</a>
+                </div>
+                <div class="price-card">
+                    <h3>Dryer Only</h3>
+                    <div class="price">$50<span class="price-period">/month</span></div>
+                    <ul>
+                        <li>Free Delivery</li>
+                        <li>Free Installation</li>
+                        <li>Maintenance Included</li>
+                        <li>24/7 Support</li>
+                        <li>No Long-Term Contract</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Rent Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Contact Us</h3>
+                <p>Call or text to discuss your needs. We'll help you choose the right appliance for your situation.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Schedule Installation</h3>
+                <p>Pick a convenient time. We'll deliver, install, and haul away your old machines at no extra cost.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Start Using</h3>
+                <p>Start washing and drying immediately. No complications, no stress.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>We Handle Everything</h3>
+                <p>If anything needs maintenance or repair, just call. We take care of it. You pay nothing extra.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonials-content">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Great service. They delivered and installed same day. Everything works perfectly. Highly recommend!"</p>
+                    <div class="testimonial-author">Sarah M.</div>
+                    <div class="testimonial-title">Verified Customer</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Best rental decision I made. No hassle, no stress. When something broke, they fixed it same day. Worth every penny."</p>
+                    <div class="testimonial-author">James L.</div>
+                    <div class="testimonial-title">Verified Customer</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Professional, reliable, and affordable. I've been a customer for years. They never let me down."</p>
+                    <div class="testimonial-author">Maria G.</div>
+                    <div class="testimonial-title">Long-Term Customer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Ready to Get Started?</h2>
+        <p style="color: #666; margin-bottom: 30px; font-size: 1.1rem;">Contact us today for a free consultation. We're here to help make your life easier.</p>
+        <div class="contact-methods">
+            <div class="contact-method">
+                <h4>📞 Call/Text</h4>
+                <a href="tel:+18476448762">(847) 644-8762</a>
+                <p style="font-size: 0.9rem; color: #999; margin-top: 10px;">Available 7 days a week</p>
+            </div>
+            <div class="contact-method">
+                <h4>📧 Email</h4>
+                <a href="mailto:oregon.appliance.rental@gmail.com">oregon.appliance.rental@gmail.com</a>
+                <p style="font-size: 0.9rem; color: #999; margin-top: 10px;">We respond within 24 hours</p>
+            </div>
+        </div>
+        <p style="color: #666; margin-top: 40px; font-size: 0.95rem;">Free delivery and installation to the local area. Same-day setup available.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Oregon Appliance Rental</h3>
+            <div class="footer-links">
+                <a href="#features">Why Us</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>&copy; 2026 Oregon Appliance Rental. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.9;">(847) 644-8762 | oregon.appliance.rental@gmail.com</p>
+        </div>
+    </footer>
+</body>
+</html>
